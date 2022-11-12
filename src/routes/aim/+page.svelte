@@ -1,99 +1,84 @@
 <script>
-    let time = 0
+    let time;
     let targetFinished = 0
-    let interval;
-
-    function startGame () {
+    const numTargets = 20;
+    const target = './target.png'
+    function startGame (){
         gameStarted = true;
-        interval=setInterval(increaseTime,1000);
         createRandomCircle ();
+        const beginning = new Date();
+        const beginningTime = beginning.getTime();
+        const interval = setInterval(() => {
+            const current = new Date();
+            const currentTime = current.getTime();
+            time = currentTime - beginningTime;
+        }, 10);
     }
 
-    // board.addEventListener( 'click', ( event ) => {
-    //     if ( event.target.classList.contains( 'circle' ) ) {
-    //         targetFinished++
-    //         event.target.remove()
-    //         createRandomCircle()
-    //         remainingEl.innerHTML = 20-targetFinished
-    //     }
-    //     if(targetFinished==20){
-    //         finishGame()
-    //     }
-    // })
-
-    // function startGame() {
-    //     createRandomCircle()
-    // }
-
-    // const moonLanding = new Date();
-    // for(let i = 0; i < 100000000; i++) { }
-    // const now = new Date();
-
-    // console.log(now.getMilliseconds() - moonLanding.getMilliseconds());
-
-    function increaseTime() {
-        if(targetFinished!=20){
-            ++time;
-        }
-            let current = time;
-            if ( current < 10 ) {
-                current = `0${ current }`
-            }
-    }
-
-    let finishTime;
+    let divWidth;
+    let divHeight;
+    let finishTime = 0;
     let avg;
     function finishGame() {
+        gameFinished = true;
         finishTime = time;
-        avg = (time/20);
-    }   
+        avg = (time/numTargets);
+    }
 
-    let top = 0
-    let left = 0
-    let width = 0
-    let height = 0;
-    let circleSize = 0;
+    let circleSize = 100;
+    let top = getRandomNumber(0, divHeight - circleSize)
+    let left = getRandomNumber(0, divWidth - circleSize)
     function createRandomCircle() {
-        circleSize = 10;
-        width = 100;
-        height = 100;
-        top = getRandomNumber( 0, width - circleSize )
-        left = getRandomNumber( 0, height - circleSize )
+        console.log(top, left);
+        console.log(divHeight, divWidth)
+        top = getRandomNumber(0, divHeight - circleSize)
+        left = getRandomNumber(0, divWidth - circleSize)
     }
 
     function getRandomNumber( min, max ) {
         return Math.round( Math.random() * ( max - min ) + min )
     }
 
+    function restartGame () {
+        targetFinished = 0;
+        gameFinished = false;
+        startGame();
+    }
+
     let gameStarted = false;
     let gameFinished = false;
+    $: targetFinished >= numTargets? finishGame(): console.log("Noi");
 </script>
+
 <div class="container">
     <div class="screen">
         <span>
             <p class="heading">Aim Training</p>
         </span>
     {#if gameFinished}
-        <h1 class="result-text">Time: <span class="primary" >{ finishTime }s</span></h1>
-        <h1 class="result-text">Average Time: <span class="primary" >{ avg }s</span></h1>
-        <div class="restartBtn" on:click={restartGame()}>Click to Restart</div>
+    <div class="board">
+        <h1 class="result-text">Time: <span class="primary" >{ finishTime / 1000} s</span></h1>
+        <h1 class="result-text">Average Time: <span class="primary" >{avg} ms</span></h1>
+        <div class="restartBtn" on:click={restartGame}>Click to Restart</div>
+    </div>
     {:else if gameStarted}
         <span class="row">
             <span class="details">
-                <p>Time: <span id="time">00s</span></p>
-                <p>Remaining: <span id="remaining">20</span></p>
+                <!-- <p>Time: <span id="time">00s</span></p> -->
+                <p id="time">Time: {(time / 1000).toFixed(3)} s</p>
+                <p id="remaining">Remaining: {numTargets - targetFinished}</p>
             </span>
 
             <span class="start">
-                <p href="#" id="start" on:click={restartGame()}>New Game</p>
+                <p href="#" id="start" on:click={restartGame}>New Game</p>
             </span>
         </span>
-        <div class="board">
-            <div class="circle" style="top: {top}; left: {left}; width:{width}; height: {height}" on:click={drawNewCircle()}></div>
+        <div class="board" bind:clientWidth={divWidth} bind:clientHeight={divHeight}>
+            <div class="circle" style="background-image: url('{target}'); top: {top}px; left: {left}px;" on:click={()=>{createRandomCircle();targetFinished ++;}} ></div>
         </div>
     {:else}
         <div class="board">
-            <div class="start-game" on:click={() => startGame()}>
+            <div class="start-game" on:click={startGame}>
                 <p class="starttext"> Click to start</p>
             </div>
         </div>
@@ -222,11 +207,13 @@
     overflow: hidden;
     }
     .circle {
-        display: flex;
-        background: url("target.png");
+        width: 100px;
+        height: 100px;
         background-repeat:no-repeat ;
         background-size: cover;
         position: absolute;
+        /* top: 50px; */
+        /* left: 50px; */
         border-radius: 50%;
         cursor: pointer;
         animation-name: circle-animation;
