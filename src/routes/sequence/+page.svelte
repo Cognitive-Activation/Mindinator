@@ -1,4 +1,5 @@
 <script>
+    import SEO from "../../components/SEO.svelte";
     let glowing = new Array(9).fill(false);
     let level = 1;
     const glowTime = 1000;
@@ -63,6 +64,11 @@
         showSequence();
     }
 </script>
+
+<SEO
+    title="Sequence Memory"
+    description="Stimulation of cognitive function through repetitive retention of an increasing pattern"
+/>
 
 <div class="container">
     {#if gameStarted}

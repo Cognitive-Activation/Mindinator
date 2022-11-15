@@ -1,12 +1,12 @@
 <script>
+    import SEO from "../../components/SEO.svelte";
     let datas = [
         {
             name: "Simultaneous Stimulation",
-            desc: "Coming Soon...",
-            // desc: "Activates your brain through 2 simultaneous text inputs",
+            desc: "Activates your brain through 2 simultaneous text inputs",
             img: "./SimultaneousStimulation.svg",
             border: "cyan",
-            link: "/simultaneous-1"
+            link: "/simultaneous-1",
         },
         {
             name: "Simultaneous Stimulation level 2",
@@ -14,7 +14,7 @@
             // desc: "Activates your brain through 2 simultaneous inputs (text + Audio)",
             img: "./SimultaneousStimulationlev2.svg",
             border: "red",
-            link: "/simultaneous-2"
+            link: "/simultaneous-2",
         },
         {
             name: "Simultaneous Stimulation level 3",
@@ -22,35 +22,35 @@
             // desc: "Activates your brain through 3 simultaneous inputs (2 × text + 1 × Audio)",
             img: "./SimultaneousStimulationlev3.svg",
             border: "orange",
-            link: "/simultaneous-3"
+            link: "/simultaneous-3",
         },
         {
             name: "Reaction Test ",
             desc: "Test your reaction time to changing colors",
             img: "./ReactionTest.svg",
             border: "blue",
-            link: "/reaction"
+            link: "/reaction",
         },
         {
             name: "Reaction test (Peripheral Vision)",
             desc: "Test your reaction time with peripheral vision inputs",
             img: "ReactionTestVision.svg",
             border: "cyan",
-            link: "/peripheral"
+            link: "/peripheral",
         },
         {
             name: "Aim Trainer",
             desc: "Test and improve your hand-eye coordination",
             img: "./aimTrainer.svg",
             border: "red",
-            link: "/aim"
+            link: "/aim",
         },
         {
             name: "Sequence Memory",
             desc: "Try to remember an increasing sequence",
             img: "./maze.svg",
             border: "orange",
-            link: "/sequence"
+            link: "/sequence",
         },
         {
             name: "Number Memory",
@@ -58,7 +58,7 @@
             // desc: "The number keeps on increasing; try to remember all of it.",
             img: "./number.svg",
             border: "blue",
-            link: "/number"
+            link: "/number",
         },
         {
             name: "Word Retention",
@@ -66,7 +66,7 @@
             // desc: "Try to remember an increasing number of words",
             img: "./wordRetener.svg",
             border: "cyan",
-            link: "/word"
+            link: "/word",
         },
         {
             name: "Chimpanzee Test",
@@ -74,40 +74,45 @@
             // desc: "Check if you are smarter than a chimpanzee",
             img: "./chimp.svg",
             border: "red",
-            link: "/chimpanzee"
+            link: "/chimpanzee",
         },
         {
             name: "Verbal Memory",
             desc: "Tell if the shown word is new or repeated",
             img: "./verbal.svg",
             border: "orange",
-            link: "/verbal"
+            link: "/word",
         },
         {
             name: "Wordle",
             desc: "Coming Soon...",
             img: "./verbal.svg",
             border: "blue",
-            link: "/wordle"
+            link: "/wordle",
         },
     ];
 </script>
+
+<SEO
+    title="Games"
+    description="Choose from a bunch of scientifically proven brain activation games aimed at improving your work efficiency"
+/>
 
 <span class="body">
     <span class="grid-container">
         {#each datas as data}
             <span class="card {data.border} column">
-                <a href="{data.link}">
-                <span class="info column">
-                    <p class="title">{data.name}</p>
-                    <p class="description">{data.desc}</p>
-                </span>
+                <a href={data.link}>
+                    <span class="info column">
+                        <p class="title">{data.name}</p>
+                        <p class="description">{data.desc}</p>
+                    </span>
 
-                <span
-                    class="image"
-                    style="background: url({data.img}); background-size: cover; background-repeat: no-repeat;"
-                />
-            </a>
+                    <span
+                        class="image"
+                        style="background: url({data.img}); background-size: cover; background-repeat: no-repeat;"
+                    />
+                </a>
             </span>
         {/each}
     </span>

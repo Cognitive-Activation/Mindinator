@@ -1,4 +1,6 @@
 <script>
+    import SEO from "../../components/SEO.svelte";
+
     let page = "main-page";
     let greenAppeared = false;
     let greenAppearedTime = null;
@@ -49,6 +51,11 @@
         }
     }
 </script>
+
+<SEO
+    title="Reaction time test"
+    description="Check your reaction time by clicking as fast as possible when the screen changes color, this examination evaluates your reflex action"
+/>
 
 {#if page == "end-page"}
     <div class="end-screen">

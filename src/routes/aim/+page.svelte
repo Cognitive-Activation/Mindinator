@@ -1,4 +1,6 @@
 <script>
+    import SEO from '../../components/SEO.svelte'
+
     let time;
     let targetFinished = 0;
     const numTargets = 20;
@@ -47,6 +49,8 @@
     let gameFinished = false;
     $: targetFinished >= numTargets ? finishGame() : console.log('');
 </script>
+
+<SEO title="Aim trainer" description = "Sharpen your Aim and activate your senses by hitting 20 targets in the lowest time possible"/>
 
 <div class="container">
     <div class="screen">

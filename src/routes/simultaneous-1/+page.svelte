@@ -1,0 +1,395 @@
+<script>
+    import SEO from '../../components/SEO.svelte';
+
+    let stage = 1;
+    let whiteInput = "";
+    let time = 0;
+    let result;
+    let dataRecieved = false;
+    let promise = Promise;
+    let blackInput = "";
+    let blackOriginal = "";
+    let whiteOriginal = "";
+    let gameStarted = false;
+    let timeOver = false;
+    let stagePageRemove = true;
+    let expected;
+    let entered;
+
+    function displayStagePage() {
+        stagePageRemove = false;
+        setTimeout(removeStagePage, 800);
+    }
+
+    async function removeStagePage() {
+        stagePageRemove = true;
+        promise = await getSentenses();
+    }
+
+    function onSubmit() {
+        whiteInput = whiteInput.toLowerCase();
+        whiteInput = whiteInput.split(" ").join(" ");
+
+        blackInput = blackInput.toLowerCase();
+        blackInput = blackInput.split(" ").join(" ");
+
+        blackOriginal = blackOriginal.toLowerCase();
+        blackOriginal = blackOriginal.split(" ").join(" ");
+
+        whiteOriginal = whiteOriginal.toLowerCase();
+        whiteOriginal = whiteOriginal.split(" ").join(" ");
+
+        if (blackInput === blackOriginal && whiteInput === whiteOriginal) {
+            stage++;
+            refresh();
+            displayStagePage();
+        } else {
+            if (blackInput === blackOriginal) {
+                expected = whiteOriginal;
+                entered = whiteInput;
+            } else {
+                expected = blackOriginal;
+                entered = blackInput;
+            }
+
+            result = false;
+            gameStarted = false;
+        }
+    }
+
+    async function clickedtoStart() {
+        stage = 1;
+        refresh();
+        displayStagePage();
+    }
+
+    function refresh() {
+        gameStarted = true;
+        result = true;
+        blackInput = whiteInput = "";
+        timeOver = false;
+        time = 0;
+        dataRecieved = false;
+    }
+
+    function startTime() {
+        const beginning = new Date();
+        const beginningTime = beginning.getTime();
+        const interval = setInterval(() => {
+            const current = new Date();
+            const currentTime = current.getTime();
+            time = currentTime - beginningTime;
+
+            if (time > 5000) {
+                timeOver = true;
+                time = 5000;
+                clearInterval(interval);
+            }
+        }, 10);
+    }
+
+    async function getSentenses() {
+        const res = await fetch(
+            `http://cognitivestimulation.tech/api/sentence/getsentence${
+                stage + 2
+            }`
+        );
+        const text = await res.json();
+        if (res.ok) {
+            console.log(text);
+            blackOriginal = text[0];
+            whiteOriginal = text[1];
+            dataRecieved = true;
+            startTime();
+            return text;
+        } else {
+            throw new Error(text);
+        }
+    }
+</script>
+
+<SEO
+    title="Simultaneous stimulation Level 1"
+    description="Cognitive activation achieved through simultaneous input retention put together in fun to play game with competitive analysis"
+/>
+
+<span class="body column">
+    <span class="title">
+        <p>Simultaneous Stimulation</p>
+    </span>
+
+    <form class="container column" on:submit|preventDefault={onSubmit}>
+        {#if stagePageRemove == false}
+            <span class="game-start-container">
+                <p>Stage - {stage}</p>
+            </span>
+        {/if}
+
+        {#if gameStarted == false}
+            <span on:click={clickedtoStart} class="game-start-container">
+                <p>Click to Start</p>
+            </span>
+        {/if}
+
+        {#if result == false}
+            <span on:click={clickedtoStart} class="game-start-container column">
+                <p style="color: #078080;">Incorrect answer!</p>
+                <span class="row msg">
+                    <p>Expected:</p>
+                    <pre />
+                    <p class="expMsg">{expected}</p>
+                </span>
+
+                <span class="row msg">
+                    <p>Entered:</p>
+                    <pre />
+                    <p class="errorMsg">{entered}</p>
+                </span>
+
+                <p>Click to Restart</p>
+            </span>
+        {/if}
+
+        <span class="row board-container">
+            <span class="board black">
+                {#if timeOver == false}
+                    <p class="text black-text">
+                        {#if dataRecieved == false}
+                            <p>...</p>
+                        {:else if timeOver == false}
+                            {#await promise}
+                                <p>...</p>
+                            {:then data}
+                                <p>{data[0]}</p>
+                            {:catch error}
+                                <p>...</p>
+                            {/await}
+                        {/if}
+                    </p>
+                {/if}
+
+                {#if timeOver == true}
+                    <span class="input-tag-container">
+                        <input
+                            bind:value={blackInput}
+                            id="black-tag"
+                            autocomplete="off"
+                            autofocus
+                            type="text"
+                            required
+                            class="black-tag"
+                            placeholder="Type here"
+                        />
+                    </span>
+                {/if}
+            </span>
+
+            <span class="timer">
+                <p class="timer-p-tag">
+                    {(5 - time / 1000).toFixed(2)}
+                </p>
+            </span>
+
+            <span class="board white">
+                {#if timeOver == false}
+                    <p class="text white-text">
+                        {#if dataRecieved == false}
+                            <p>...</p>
+                        {:else if timeOver == false}
+                            {#await promise}
+                                <p>...</p>
+                            {:then data}
+                                <p>{data[1]}</p>
+                            {:catch error}
+                                <p>...</p>
+                            {/await}
+                        {/if}
+                    </p>
+                {/if}
+
+                {#if timeOver == true}
+                    <span class="input-tag-container">
+                        <input
+                            bind:value={whiteInput}
+                            id="white-tag"
+                            type="text"
+                            autocomplete="off"
+                            required
+                            class="white-tag"
+                            placeholder="Type here"
+                        />
+                    </span>
+                {/if}
+            </span>
+        </span>
+
+        <button class="submit-btn" type="submit">Submit</button>
+    </form>
+</span>
+
+<style>
+    .msg {
+        font-size: 1.3rem;
+    }
+
+    .expMsg {
+        color: green;
+        max-width: 90%;
+    }
+    .errorMsg {
+        color: red;
+        max-width: 90%;
+    }
+    .title {
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: #1b1a1a;
+    }
+    .game-start-container {
+        background-color: transparent;
+        position: absolute;
+        color: #f8f5f2;
+        font-weight: bold;
+        cursor: pointer;
+        background-color: #1b1a1a;
+        backdrop-filter: blur(5px);
+        font-size: 2rem;
+        gap: 0.6rem;
+        height: 100%;
+        overflow-x: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+    body {
+        margin: 0%;
+        padding: 0%;
+    }
+    .body {
+        margin: 0%;
+        padding: 0%;
+        width: 100%;
+        box-sizing: border-box;
+        background-color: #f8f5f2;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow-x: hidden;
+    }
+    .row {
+        display: flex;
+        align-items: center;
+    }
+    .column {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .container {
+        height: 35rem;
+        overflow-x: hidden;
+        display: flex;
+        position: relative;
+        border-radius: 10px;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        background-color: #f8f5f2;
+        user-select: none;
+    }
+    .board-container {
+        height: 100%;
+        padding: 1rem;
+        width: 100%;
+        justify-content: space-around;
+    }
+    .board {
+        width: 40%;
+        height: 90%;
+        border-radius: 8px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        display: flex;
+        transition: 0.2s all;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 3rem;
+        padding: 1rem;
+    }
+    .black {
+        background-color: #232323;
+        color: #fffffe;
+    }
+    .white {
+        background-color: #fffffe;
+        color: #232323;
+    }
+
+    input {
+        border: none;
+        height: 1.5rem;
+        width: 100%;
+        padding-left: 0.4rem;
+    }
+    input:focus {
+        outline: none;
+    }
+    .black-tag {
+        background-color: #232323;
+        color: white;
+    }
+
+    .input-tag-container {
+        max-width: 20rem;
+        width: 100%;
+        height: 1.8rem;
+        transition: 0.2s all;
+        display: flex;
+        align-items: flex-start;
+        background-color: #078080;
+    }
+
+    .timer {
+        padding: 1rem;
+        font-size: 2rem;
+        color: #16161a;
+        font-weight: bold;
+    }
+    .text {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+    .submit-btn {
+        background-color: #1e6b6b;
+        color: #f8f5f2;
+        padding: 0.5rem 1rem;
+        margin-bottom: 2rem;
+        border: none;
+        font-size: 1rem;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: 0.3s all;
+    }
+    .submit-btn:hover {
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+
+    @media screen and (max-width: 800px) {
+        .board-container {
+            flex-direction: column;
+            width: 100%;
+            justify-content: center;
+        }
+        .board {
+            width: 80%;
+        }
+        .submit-btn {
+            margin-bottom: 1rem;
+        }
+        p {
+            margin: 0%;
+        }
+    }
+</style>

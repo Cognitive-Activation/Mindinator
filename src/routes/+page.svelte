@@ -1,7 +1,14 @@
+<script>
+    import SEO from "../components/SEO.svelte";
+</script>
+
+<SEO title="Brain games" description="Games that will train your brain." />
+
 <div class="main">
-<h1>MINDINATOR</h1>
-<h2><a class="start" href="./games">Start</a></h2>
+    <h1>MINDINATOR</h1>
+    <h2><a class="start" href="./games">Start</a></h2>
 </div>
+
 <p class="desc">
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum sunt
     quibusdam laborum provident quo, fugit inventore at, esse, ipsam voluptates
@@ -14,13 +21,12 @@
     nesciunt temporibus labore itaque nihil! Hic, harum aspernatur!
 </p>
 
-
 <style>
     @font-face {
-        font-family: 'Jura';
+        font-family: "Jura";
         font-style: normal;
         font-weight: 400;
-        src: url('./fonts/Jura-Regular.ttf');
+        src: url("./fonts/Jura-Regular.ttf");
     }
 
     .start {
@@ -32,7 +38,7 @@
         font-size: larger;
     }
     .main {
-        font-family: 'Jura';
+        font-family: "Jura";
         display: flex;
         flex-direction: column;
         gap: 1rem;

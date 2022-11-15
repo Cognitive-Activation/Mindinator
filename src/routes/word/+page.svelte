@@ -1,4 +1,6 @@
 <script>
+    import SEO from "../../components/SEO.svelte";
+
     let page = "main-page";
     let score = 0;
     let lives = 3;
@@ -17,7 +19,7 @@
     async function getWord() {
         if (lives == 0) page = "end-page";
         const x = await fetch(
-            "https://mindinator.com/api/word/getsingleword"
+            "https://cognitivestimulation.tech/api/word/getsingleword"
         );
         const y = await x.json();
         let chance = Math.random() * 100;
@@ -56,6 +58,11 @@
     }
 </script>
 
+<SEO
+    title="Word memory"
+    description="Try to remember the words if they are new or repeated, this exercise will stimulate your retentive cognitive functions"
+/>
+
 {#if page == "main-page"}
     <div class="main-menu" on:click={playGame}>
         <div class="container">
@@ -88,12 +95,16 @@
 {/if}
 
 <style>
+    :global(body) {
+        overflow: hidden;
+    }
     * {
         box-sizing: border-box;
     }
 
     .play-area {
         width: 100%;
+        height: 100vh;
         background: #0d3b66;
         display: grid;
         place-items: center;
@@ -107,6 +118,7 @@
     .main-menu {
         display: grid;
         width: 100%;
+        height: 100vh;
         background: #0d3b66;
         color: #fff;
         font-family: "Roboto", sans-serif;

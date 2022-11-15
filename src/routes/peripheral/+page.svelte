@@ -1,4 +1,6 @@
 <script>
+    import SEO from "../../components/SEO.svelte";
+
     let page = "main-page";
     let greenAppeared = false;
     let greenAppearedTime = null;
@@ -49,6 +51,11 @@
         }
     }
 </script>
+
+<SEO
+    title="Reaction time test ( peripheral vision )"
+    description="Evaluate your reaction time to color change on the screen perceived through your peripheral vision"
+/>
 
 {#if page == "end-page"}
     <div class="end-screen">
