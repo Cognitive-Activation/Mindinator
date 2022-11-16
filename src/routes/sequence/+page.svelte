@@ -1,11 +1,12 @@
 <script>
     import SEO from "../../components/SEO.svelte";
-    let glowing = new Array(9).fill(false);
+    let glowingPink = new Array(9).fill(false);
+    let glowingBlue = new Array(9).fill(false);
     let level = 1;
-    const glowTime = 1000;
+    const glowTime = 700;
     let gameStarted = false;
     let gameFinished = false;
-    let flag = false;
+    let userTurn = false;
     let round = 0;
 
     let sequence = [];
@@ -21,27 +22,27 @@
     }
 
     function makeGlow() {
-        setTimeout(() => (flag = true), level * 1000);
+        setTimeout(() => (userTurn = true), level * 1000);
         sequence.forEach((element, id) => {
             setTimeout(glowColor, (id + 1) * glowTime, element);
         });
     }
 
     function glowColor(num) {
-        glowing[num] = true;
-        setTimeout(() => (glowing[num] = false), glowTime / 2);
+        glowingBlue[num] = true;
+        setTimeout(() => (glowingBlue[num] = false), glowTime / 2);
     }
 
     function userGlow(num) {
-        glowing[num] = true;
-        setTimeout(() => (glowing[num] = false), glowTime / 2);
+        glowingPink[num] = true;
+        setTimeout(() => (glowingPink[num] = false), glowTime / 2);
         check(num);
     }
 
     function check(num) {
-        if (flag && sequence[round] == num) {
+        if (userTurn && sequence[round] == num) {
             round++;
-        } else if (flag) {
+        } else if (userTurn) {
             gameFinished = true;
             gameStarted = false;
         }
@@ -49,7 +50,7 @@
         if (round == level) {
             level++;
             round = 0;
-            flag = false;
+            userTurn = false;
             showSequence();
         }
     }
@@ -60,7 +61,7 @@
         round = 0;
         gameFinished = false;
         gameStarted = true;
-        flag = false;
+        userTurn = false;
         showSequence();
     }
 </script>
@@ -73,13 +74,15 @@
 <div class="container">
     {#if gameStarted}
         <h1>Level: {level}</h1>
-        <h1>{flag ? "Your" : "Wait for your"} Turn</h1>
+        <h1>{userTurn ? "Your" : "Wait for your"} Turn</h1>
         <span class="game">
             {#each Array(9) as _, index (index)}
+                <!-- svelte-ignore a11y-click-events-have-key-events -->
                 <span
-                    class="box"
+                    class="box {userTurn? 'bgBlue' : 'bgPink'}"
                     id="box-{index}"
-                    class:sel-box={glowing[index] == true}
+                    class:boxBlue={glowingBlue[index] == true}
+                    class:boxPink={glowingPink[index] == true}
                     on:click={() => userGlow(index)}
                 />
             {/each}
@@ -103,11 +106,9 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 100vh;
+        height: 80vh;
         width: 100%;
-        overflow: hidden;
         flex-direction: column;
-        background: #f8f5f2;
         color: #f45d48;
     }
 
@@ -124,10 +125,23 @@
         margin: 20px;
         background-color: #f45d48;
         border: 2px solid black;
-        transition: background-color 0.4s;
+        transition: background-color 0.4s ease-in-out;
     }
 
-    .sel-box {
-        background-color: #f8f5f2;
+    .bgPink {
+        background-color: #F56387;
+    }
+
+    .bgBlue {
+        background-color: #41AAF5;
+    }
+    
+    
+    .boxBlue {
+        background-color: #41AAF5;
+    }
+
+    .boxPink {
+        background-color: #F56387;
     }
 </style>
