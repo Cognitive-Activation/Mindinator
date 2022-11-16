@@ -1,7 +1,6 @@
 <span class="navbar-container row gap1">
   <span class="name row gap1">
-    <span> logo </span>
-
+    <span>logo</span>
     <span> Mindinator </span>
   </span>
 
