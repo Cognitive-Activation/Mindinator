@@ -18,42 +18,6 @@
 </span>
 
 <style>
-  :global(body) {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    /* background-color: #222222; */
-    color: white;
-    background: radial-gradient(
-      50% 50% at 50% 50%,
-      rgba(44, 44, 44, 0.78) 0%,
-      #2c2c2c 100%
-    );
-  }
-  :global(*) {
-    margin: 0%;
-    padding: 0%;
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-  }
-  :global(a){
-    text-decoration: none;
-    color:white;
-  }
-  :global(a:link(#exclude), a:visited(#exclude) ){
-    text-decoration: none;
-    color: blue;
-  }
-  :global(.row) {
-    display: flex;
-    align-items: center;
-  }
-  :global(.column) {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-  }
   .home-container {
     padding:5rem 5rem;
     align-items: center;
