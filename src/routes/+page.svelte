@@ -20,8 +20,6 @@
 </span>
 
 <style>
-<<<<<<< HEAD
-=======
   @font-face{
     font-family: 'RedHat';
     font-weight: 400;
@@ -29,40 +27,6 @@
     margin: 0%;
     src: url('fonts/RedHatDisplay-VariableFont_wght.ttf');
   }
-  :global(body) {
-    display: flex;
-    font-family:'RedHat';
-    flex-direction: column;
-    min-height: 100vh;
-    /* background-color: #222222; */
-    color: white;
-    background: radial-gradient(50% 50% at 50% 50%, #1e1d1d 0%, #010101 100%);
-  }
-  :global(*) {
-    margin: 0%;
-    padding: 0%;
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-  }
-  :global(a) {
-    text-decoration: none;
-    color: white;
-  }
-  :global(a:link(#exclude), a:visited(#exclude)) {
-    text-decoration: none;
-    color: blue;
-  }
-  :global(.row) {
-    display: flex;
-    align-items: center;
-  }
-  :global(.column) {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-  }
->>>>>>> a2de26d485f039370c2b9a3236e7ebe97dd7acf3
   .home-container {
     padding: 5rem 6rem;
     align-items: center;
