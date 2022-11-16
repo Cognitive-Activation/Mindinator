@@ -11,7 +11,7 @@
 
     <p>Riddles</p>
 
-    <p>Sign in</p>
+    <p style="color: #41aaf5;">Sign in</p>
   </span>
 </span>
 
