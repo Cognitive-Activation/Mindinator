@@ -8,7 +8,10 @@
     let gameFinished = false;
     let userTurn = false;
     let round = 0;
-
+    const audioFiles = [];
+    for (let i = 0; i < 9; i++) {
+        audioFiles.push(new Audio(`/audio/${i+1}.wav`));
+    }
     let sequence = [];
     function showSequence() {
         gameStarted = true;
@@ -22,7 +25,7 @@
     }
 
     function makeGlow() {
-        setTimeout(() => (userTurn = true), level * 1000);
+        setTimeout(() => (userTurn = true), (level + 0.5) * glowTime);
         sequence.forEach((element, id) => {
             setTimeout(glowColor, (id + 1) * glowTime, element);
         });
@@ -30,11 +33,14 @@
 
     function glowColor(num) {
         glowingBlue[num] = true;
+        audioFiles[num].play();
         setTimeout(() => (glowingBlue[num] = false), glowTime / 2);
     }
 
     function userGlow(num) {
         glowingPink[num] = true;
+        // dispatch("playPause");
+        audioFiles[num].play();
         setTimeout(() => (glowingPink[num] = false), glowTime / 2);
         check(num);
     }
@@ -79,7 +85,7 @@
             {#each Array(9) as _, index (index)}
                 <!-- svelte-ignore a11y-click-events-have-key-events -->
                 <span
-                    class="box {userTurn? 'bgBlue' : 'bgPink'}"
+                    class="box {userTurn ? 'bgBlue' : 'bgPink'}"
                     id="box-{index}"
                     class:boxBlue={glowingBlue[index] == true}
                     class:boxPink={glowingPink[index] == true}
@@ -129,19 +135,18 @@
     }
 
     .bgPink {
-        background-color: #F56387;
+        background-color: #f56387;
     }
 
     .bgBlue {
-        background-color: #41AAF5;
+        background-color: #41aaf5;
     }
-    
-    
+
     .boxBlue {
-        background-color: #41AAF5;
+        background-color: #41aaf5;
     }
 
     .boxPink {
-        background-color: #F56387;
+        background-color: #f56387;
     }
 </style>
