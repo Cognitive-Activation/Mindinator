@@ -171,6 +171,7 @@
     background: radial-gradient(50% 50% at 50% 50%, #1e1d1d 0%, #010101 100%);
     font-size: 1.3rem;
     border-radius: 15px;
+    text-align: center;
     z-index: 100;
     justify-content: center;
     align-items: center;
