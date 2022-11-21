@@ -1,31 +1,38 @@
-<span class="home-container row">
-  <span class="home-page-content column">
-    <p class="title">Mindinator</p>
+<script>
+  import Seo from "../components/SEO.svelte";
+  import Transition from "../components/Transition.svelte";
+</script>
 
-    <p class="desc">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-      commodo consequat.
-    </p>
+<!-- <SEO title = /> -->
+<Transition>
+  <span class="home-container row">
+    <span class="home-page-content column">
+      <p class="title">Mindinator</p>
 
-    <a class="start-button" href="/games">Start</a>
-  </span>
+      <p class="desc">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat.
+      </p>
 
-  <span class="img-container">
-    <span class="blur-span">
+      <a class="start-button" href="/games">Start</a>
     </span>
-    <img class="brain-img" src="brain-img.png" alt="" />
+
+    <span class="img-container">
+      <span class="blur-span" />
+      <img class="brain-img" src="brain.svg" alt="" />
+    </span>
   </span>
-</span>
+</Transition>
 
 <style>
-  @font-face{
-    font-family: 'RedHat';
+  @font-face {
+    font-family: "RedHat";
     font-weight: 400;
     padding: 0%;
     margin: 0%;
-    src: url('fonts/RedHatDisplay-VariableFont_wght.ttf');
+    src: url("fonts/RedHatDisplay-VariableFont_wght.ttf");
   }
   .home-container {
     padding: 5rem 6rem;
@@ -79,17 +86,17 @@
     -webkit-transition: all 0.4s ease-in-out;
     transition: all 0.4s ease-in-out;
   }
-  .img-container{
+  .img-container {
     position: relative;
   }
-  .blur-span{
+  .blur-span {
     width: 50%;
     height: 50%;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     position: absolute;
-    background: linear-gradient(138.53deg, #F56387 6.31%, #41AAF5 90.61%);
+    background: linear-gradient(138.53deg, #f56387 6.31%, #41aaf5 90.61%);
     border: 1px solid #000000;
     filter: blur(85px);
     z-index: -10;

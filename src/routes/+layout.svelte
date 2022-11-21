@@ -1,7 +1,8 @@
 <script>
   import Navbar from "../components/Navbar.svelte";
-  import '../styles/globals.css'
+    import Transition from "../components/Transition.svelte";
+  import "../styles/globals.css";
 </script>
 
 <Navbar />
-<slot />
+<slot>404 not found</slot>

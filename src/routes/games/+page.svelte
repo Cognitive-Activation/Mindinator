@@ -1,5 +1,6 @@
 <script>
   import SEO from "../../components/SEO.svelte";
+  import Transition from "../../components/Transition.svelte";
   let datas = [
     {
       name: "Simultaneous Stimulation",
@@ -98,25 +99,27 @@
   description="Choose from a bunch of scientifically proven brain activation games aimed at improving your work efficiency"
 />
 
-<span class="body">
-  <span class="grid-container">
-    {#each datas as data}
-      <span>
-        <a class="card {data.border} column" href={data.link}>
-          <span class="info column">
-            <p class="title">{data.name}</p>
-            <p class="description">{data.desc}</p>
-          </span>
+<Transition>
+  <span class="body">
+    <span class="grid-container">
+      {#each datas as data}
+        <span>
+          <a class="card {data.border} column" href={data.link}>
+            <span class="info column">
+              <p class="title">{data.name}</p>
+              <p class="description">{data.desc}</p>
+            </span>
 
-          <span
-            class="image"
-            style="background: url({data.img}); background-size: cover; background-repeat: no-repeat;"
-          />
-        </a>
-      </span>
-    {/each}
+            <span
+              class="image"
+              style="background: url({data.img}); background-size: cover; background-repeat: no-repeat;"
+            />
+          </a>
+        </span>
+      {/each}
+    </span>
   </span>
-</span>
+</Transition>
 
 <style>
   :root {
