@@ -39,13 +39,6 @@
 	.st33{fill:url(#SVGID_33_);}
 	.st34{fill:url(#SVGID_34_);}
 </style>
-<g id="Background">
-	<radialGradient id="SVGID_1_" cx="700" cy="700" r="1030.7566" gradientUnits="userSpaceOnUse">
-		<stop  offset="0" style="stop-color:#004E92"/>
-		<stop  offset="1" style="stop-color:#000428"/>
-	</radialGradient>
-	<rect class="st0" width="1400" height="1400"/>
-</g>
 <g id="Objects">
 	
 		<radialGradient id="SVGID_2_" cx="700" cy="1182.3302" r="176.6553" gradientTransform="matrix(3.7356 0 0 0.5894 -1914.9446 522.1599)" gradientUnits="userSpaceOnUse">

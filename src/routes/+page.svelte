@@ -21,7 +21,7 @@
 
     <span class="img-container">
       <span class="blur-span" />
-      <img class="brain-img" src="brain.svg" alt="" />
+      <img src="./brain.svg" alt="brainimg" />
     </span>
   </span>
 </Transition>
@@ -88,6 +88,19 @@
   }
   .img-container {
     position: relative;
+    width: 100%;
+    min-width: 15rem;
+    max-width: 40rem;
+    height: 40rem;
+    height: 100%;
+    min-height: 15rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .img-container > img {
+    width: 100%;
+    height: 100%;
   }
   .blur-span {
     width: 50%;
@@ -100,5 +113,32 @@
     border: 1px solid #000000;
     filter: blur(85px);
     z-index: -10;
+  }
+  @media screen and (max-width: 950px) {
+    .home-container {
+      padding: 1rem;
+      height: fit-content;
+      justify-content: flex-start;
+      gap: 0;
+      flex-direction: column-reverse;
+      max-height: none;
+    }
+    .home-page-content {
+      margin-left: 0%;
+    }
+    .title {
+      display: none;
+    }
+    .img-container>img{
+      max-width: 15rem;
+      max-height: 15rem;
+    }
+    .desc {
+      text-align: center;
+      padding: 1.5rem;
+    }
+    .home-page-content {
+      align-items: center;
+    }
   }
 </style>
