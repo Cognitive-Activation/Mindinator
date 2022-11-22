@@ -1,6 +1,5 @@
 <script>
-  import { space } from "svelte/internal";
-  import SEO from "../../components/SEO.svelte";
+  import SEO from "../../../components/SEO.svelte";
 
   let stage = 1;
   let time = 0;

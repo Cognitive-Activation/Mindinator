@@ -1,5 +1,6 @@
 <script>
-  import SEO from "../../components/SEO.svelte";
+    import { fly } from "svelte/transition";
+  import SEO from "../../../components/SEO.svelte";
 
   let page = "main-page";
   let score = 0;
@@ -90,10 +91,12 @@
               </p>
             </div>
 
-            <h1 id="word">{displayWord}</h1>
+            <h1 id="word" in:fly={{delay: 10, duration: 100, y: 50}} >{displayWord}</h1>
+
+    <!-- <div in:fly={{ delay: 100, duration: 2000, x: -5000, }} out:fly={{ delay: 200, duration: 1000,  x: 5000, }}> -->
 
             <div class="submit-options">
-              <button class="btn button" on:click={seenClicked}>Seen</button>
+              <button class="btn button" on:click={seenClicked} >Seen</button>
               <button class="btn button" on:click={newClicked}>New</button>
             </div>
           </span>

@@ -1,9 +1,13 @@
 <script>
-  import Seo from "../components/SEO.svelte";
+  import SEO from "../components/SEO.svelte";
   import Transition from "../components/Transition.svelte";
 </script>
 
-<!-- <SEO title = /> -->
+<SEO
+  title="Brain Games"
+  description="Mindinator is your daily dose of brain activation. Work more consciously with an activated mind and excel at all your endeavors"
+/>
+
 <Transition>
   <span class="home-container row">
     <span class="home-page-content column">
@@ -129,7 +133,7 @@
     .title {
       display: none;
     }
-    .img-container>img{
+    .img-container > img {
       max-width: 15rem;
       max-height: 15rem;
     }

@@ -1,7 +1,7 @@
 <script>
-    import SEO from "../../components/SEO.svelte";
-    let glowingPink = new Array(9).fill(false);
-    let glowingBlue = new Array(9).fill(false);
+    import { prevent_default } from "svelte/internal";
+    import SEO from "../../../components/SEO.svelte";
+    let glowing = new Array(9).fill(false);
     let level = 1;
     const glowTime = 700;
     let gameStarted = false;
@@ -10,7 +10,7 @@
     let round = 0;
     const audioFiles = [];
     for (let i = 0; i < 9; i++) {
-        audioFiles.push(new Audio(`/audio/${i+1}.wav`));
+        audioFiles.push(new Audio(`/audio/${i + 1}.wav`));
     }
     let sequence = [];
     function showSequence() {
@@ -32,16 +32,16 @@
     }
 
     function glowColor(num) {
-        glowingBlue[num] = true;
+        glowing[num] = true;
         audioFiles[num].play();
-        setTimeout(() => (glowingBlue[num] = false), glowTime / 2);
+        setTimeout(() => (glowing[num] = false), glowTime / 2);
     }
 
     function userGlow(num) {
-        glowingPink[num] = true;
+        glowing[num] = true;
         // dispatch("playPause");
         audioFiles[num].play();
-        setTimeout(() => (glowingPink[num] = false), glowTime / 2);
+        setTimeout(() => (glowing[num] = false), glowTime / 2);
         check(num);
     }
 
@@ -70,6 +70,14 @@
         userTurn = false;
         showSequence();
     }
+
+    function handleClick() {
+        if (gameFinished) {
+            restartGame();
+        } else {
+            showSequence();
+        }
+    }
 </script>
 
 <SEO
@@ -83,27 +91,29 @@
         <h1>{userTurn ? "Your" : "Wait for your"} Turn</h1>
         <span class="game">
             {#each Array(9) as _, index (index)}
-                <!-- svelte-ignore a11y-click-events-have-key-events -->
                 <span
                     class="box {userTurn ? 'bgBlue' : 'bgPink'}"
                     id="box-{index}"
-                    class:boxBlue={glowingBlue[index] == true}
-                    class:boxPink={glowingPink[index] == true}
+                    class:boxGlow={glowing[index] == true}
                     on:click={() => userGlow(index)}
                 />
             {/each}
         </span>
     {:else if gameFinished}
-        <h1>Game Finished!</h1>
-        <h1>Your Final Score: {level}</h1>
-        <h1 on:click={restartGame}>Click here to try again</h1>
+        <div on:click={restartGame} class="container">
+            <h1>Game Finished!</h1>
+            <h1>Your Final Score: {level}</h1>
+            <h1>Click anywhere to try again</h1>
+        </div>
     {:else}
-        <h1>Sequence Memory</h1>
-        <p>
-            Remember the sequence in which the blocks glow, and repeat them when
-            it's your turn
-        </p>
-        <p on:click={showSequence}>Click here to get started</p>
+        <div on:click={showSequence} class="container">
+            <h1>Sequence Memory</h1>
+            <p>
+                Remember the sequence in which the blocks glow, and repeat them
+                when it's your turn
+            </p>
+            <p>Click here to get started</p>
+        </div>
     {/if}
 </div>
 
@@ -142,11 +152,7 @@
         background-color: #41aaf5;
     }
 
-    .boxBlue {
-        background-color: #41aaf5;
-    }
-
-    .boxPink {
-        background-color: #f56387;
+    .boxGlow {
+        background-color: white;
     }
 </style>

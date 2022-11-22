@@ -1,5 +1,5 @@
 <script>
-    import SEO from "../../components/SEO.svelte";
+    import SEO from "../../../components/SEO.svelte";
 
     let page = "main-page";
     let greenAppeared = false;

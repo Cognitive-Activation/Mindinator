@@ -1,5 +1,5 @@
 <script>
-  import SEO from "../../components/SEO.svelte";
+  import SEO from "../../../components/SEO.svelte";
 
   let time;
   let targetFinished = 0;
