@@ -1,4 +1,5 @@
 <script>
+  import { fly } from "svelte/transition";
   let menuSelected = false;
 </script>
 
@@ -18,7 +19,11 @@
     <p style="color: #41aaf5;">Sign in</p>
   </span>
   {#if menuSelected == true}
-    <span class="mobile-menu-options menu-options row  gap1">
+    <span
+      class="mobile-menu-options menu-options row  gap1"
+      in:fly={{ delay: 0, duration: 500, x: 50 }}
+      out:fly={{ delay: 0, duration: 500, x: 50 }}
+    >
       <span class="class1">
         <span class="menu-heading">
           <span>
