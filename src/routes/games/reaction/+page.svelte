@@ -31,7 +31,7 @@
   function playGame() {
     page = "play-page";
     setRedColor();
-    setTimeout(setGreenColor, Math.floor(Math.random() * 10 + 2) * 1000);
+    setTimeout(setGreenColor, Math.floor(Math.random() * 6 + 2) * 1000);
   }
 
   function handleAnchorClick(event) {
@@ -95,7 +95,9 @@
     <div class="container">
       <div
         class="clickable-area"
-        style="background-color:{greenAppeared ? 'green' : 'red'}"
+        style="background-color:{greenAppeared
+          ? 'rgba(110, 255, 50, 1)'
+          : '#FF4141'}"
         on:click={playAreaClicked}
       >
         <div style="color: white;">
