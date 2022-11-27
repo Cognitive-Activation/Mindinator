@@ -5,8 +5,11 @@
 
 <span class="navbar-container row gap1">
   <span class="name row gap1">
-    <span>logo</span>
-    <span>Mindinator </span>
+    <span class="logo">
+    </span>
+    <span>
+      <a href="/">Mindinator</a>
+    </span>
   </span>
 
   <span class="menu-options row  gap1">
@@ -67,6 +70,15 @@
 </span>
 
 <style>
+  .logo{
+    background: url('./brain.svg');
+    display: flex;
+    position: relative;
+    width: 2rem;
+    height: 2rem;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
   .row {
     display: flex;
     align-items: center;
@@ -81,6 +93,7 @@
   }
   .navbar-container {
     padding: 2rem;
+    font-size: 1.2rem;
     justify-content: space-between;
   }
   .menu-options {

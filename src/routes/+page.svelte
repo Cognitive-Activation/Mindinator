@@ -57,7 +57,7 @@
 
       <span class="img-container">
         <span class="blur-span" />
-        <img src="./brain.svg" alt="brainimg" />
+        <img src="./brain.svg" alt="brainimg"/>
       </span>
     </section>
 
@@ -257,6 +257,14 @@
     border: 1px solid #000000;
     filter: blur(85px);
     z-index: 1;
+  }
+  .section1>.img-container img{
+    width: 80%;
+    height: 80%;
+  }
+  .section1 .img-container .blur-span{
+    width: 70%;
+    height: 70%;
   }
   @media screen and (max-width: 950px) {
     /* .home-container {

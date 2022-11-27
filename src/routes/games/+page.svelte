@@ -38,7 +38,7 @@
       border: "blue",
       link: "/games/reaction",
       backgroundcolor:"background: rgba(106, 103, 206, 1);",
-      imagestyle: "left: 35%; top: 25%;"
+      imagestyle: "left: 33%; top: 25%;"
     },
     {
       name: "Reaction test (Peripheral Vision)",
@@ -104,7 +104,7 @@
       border: "orange",
       link: "/games/word",
       backgroundcolor:"background: rgba(65, 170, 245, 1);",
-      imagestyle: "left: 60%; top: 40%;"
+      imagestyle: "left: 30%; top: 40%; width:12rem;"
     },
     {
       name: "Wordle",
@@ -113,7 +113,7 @@
       border: "blue",
       link: "/wordle",
       backgroundcolor:"background: rgba(217, 225, 228, 1);",
-      imagestyle: "left: 60%; top: 40%;"
+      imagestyle: "left: 30%; top: 40%; width:12rem;"
     },
   ];
 </script>

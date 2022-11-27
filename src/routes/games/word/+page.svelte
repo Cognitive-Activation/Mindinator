@@ -5,7 +5,7 @@
   let page = "main-page";
   let score = 0;
   let lives = 3;
-
+  let previous=null
   let seenSet = new Set();
 
   let displayWord = null;
@@ -14,7 +14,7 @@
 
   function getRandomFromSet() {
     let items = Array.from(seenSet);
-    return items[Math.floor(Math.random() * items.length)];
+    return items[Math.floor(Math.random() * (items.length))];
   }
 
   async function getWord() {
@@ -25,10 +25,15 @@
     const y = await x.json();
     let chance = Math.random() * 100;
 
-    if (!seenSet.size || chance >= 35) {
+    if (!seenSet.size || chance >= 35 || score<3) {
       displayWord = y[0];
+      previous=y[0]
     } else {
-      displayWord = getRandomFromSet();
+      displayWord=getRandomFromSet()
+        while(displayWord==previous){
+          displayWord=getRandomFromSet();
+        }
+        previous=displayWord
     }
   }
 
