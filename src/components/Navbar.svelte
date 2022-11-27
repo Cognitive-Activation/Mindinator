@@ -10,10 +10,11 @@
   </span>
 
   <span class="menu-options row  gap1">
+
     <p>Dashboard</p>
 
     <p>Blog</p>
-
+  
     <p>Riddles</p>
 
     <p style="color: #41aaf5;">Sign in</p>

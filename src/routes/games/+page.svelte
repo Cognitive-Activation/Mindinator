@@ -8,6 +8,8 @@
       img: "./SimultaneousStimulation.svg",
       border: "cyan",
       link: "/games/simultaneous-1",
+      backgroundcolor:"background: rgba(237, 228, 224, 1);",
+      imagestyle: "left: 50%; top: 15.58%;"
     },
     {
       name: "Simultaneous Stimulation level 2",
@@ -16,6 +18,8 @@
       img: "./SimultaneousStimulationlev2.svg",
       border: "red",
       // link: "/games/simultaneous-2",
+      backgroundcolor:"background: rgba(255, 159, 159, 1);",
+      imagestyle: "left: 50%; top: 15.58%;"
     },
     {
       name: "Simultaneous Stimulation level 3",
@@ -24,6 +28,8 @@
       img: "./SimultaneousStimulationlev3.svg",
       border: "orange",
       // link: "/simultaneous-3",
+      backgroundcolor:"background: rgba(250, 188, 58, 1);",
+      imagestyle: "left: 50%; top: 15.58%;"
     },
     {
       name: "Reaction Test ",
@@ -31,6 +37,8 @@
       img: "./ReactionTest.svg",
       border: "blue",
       link: "/games/reaction",
+      backgroundcolor:"background: rgba(106, 103, 206, 1);",
+      imagestyle: "left: 35%; top: 25%;"
     },
     {
       name: "Reaction test (Peripheral Vision)",
@@ -38,6 +46,8 @@
       img: "ReactionTestVision.svg",
       border: "cyan",
       link: "/games/peripheral",
+      backgroundcolor:"background: rgba(255, 214, 236, 1);",
+      imagestyle: "left: 55%; top: 40%;"
     },
     {
       name: "Aim Trainer",
@@ -45,6 +55,8 @@
       img: "./aimTrainer.svg",
       border: "red",
       link: "/games/aim",
+      backgroundcolor:"background: rgba(0, 207, 149, 1);",
+      imagestyle: "left: 35%; top: 25%;"
     },
     {
       name: "Sequence Memory",
@@ -52,6 +64,8 @@
       img: "./maze.svg",
       border: "orange",
       link: "/games/sequence",
+      backgroundcolor:"background: rgba(255, 116, 177, 1);",
+      imagestyle: "left: 35%; top: 25%;"
     },
     {
       name: "Number Memory",
@@ -60,6 +74,8 @@
       img: "./number.svg",
       border: "blue",
       link: "/games/number",
+      backgroundcolor:"background: rgba(255, 171, 115, 1);",
+      imagestyle: "left: 65%; top: 40%; transform:rotate(-45deg)"
     },
     {
       name: "Word Retention",
@@ -68,6 +84,8 @@
       img: "./wordRetener.svg",
       border: "cyan",
       // link: "/games/word",
+      backgroundcolor:"background: rgba(190, 138, 191, 1);",
+      imagestyle: "left: 10%; top: 40%; transform:rotate(25deg)"
     },
     {
       name: "Chimpanzee Test",
@@ -76,6 +94,8 @@
       img: "./chimp.svg",
       border: "red",
       // link: "/chimpanzee",
+      backgroundcolor:"background: rgba(250, 188, 58, 1);",
+      imagestyle: "left: 0%; top: 0%; height:15rem; width:12rem;"
     },
     {
       name: "Verbal Memory",
@@ -83,6 +103,8 @@
       img: "./verbal.svg",
       border: "orange",
       link: "/games/word",
+      backgroundcolor:"background: rgba(65, 170, 245, 1);",
+      imagestyle: "left: 60%; top: 40%;"
     },
     {
       name: "Wordle",
@@ -90,6 +112,8 @@
       img: "./verbal.svg",
       border: "blue",
       link: "/wordle",
+      backgroundcolor:"background: rgba(217, 225, 228, 1);",
+      imagestyle: "left: 60%; top: 40%;"
     },
   ];
 </script>
@@ -103,8 +127,7 @@
   <span class="body">
     <span class="grid-container">
       {#each datas as data}
-        <span>
-          <a class="card {data.border} column" href={data.link}>
+          <a class="card column" style=" {data.backgroundcolor};" href={data.link}>
             <span class="info column">
               <p class="title">{data.name}</p>
               <p class="description">{data.desc}</p>
@@ -112,38 +135,15 @@
 
             <span
               class="image"
-              style="background: url({data.img}); background-size: cover; background-repeat: no-repeat;"
+              style="background: url({data.img}); background-size: cover; background-repeat: no-repeat; {data.imagestyle}"
             />
           </a>
-        </span>
       {/each}
     </span>
   </span>
 </Transition>
 
 <style>
-  :root {
-    --red: hsl(0, 78%, 62%);
-    --cyan: hsl(180, 62%, 55%);
-    --orange: hsl(34, 97%, 64%);
-    --blue: hsl(212, 86%, 64%);
-  }
-  .cyan {
-    border-top: 3px solid var(--cyan);
-  }
-
-  .red {
-    border-top: 3px solid var(--red);
-  }
-
-  .blue {
-    border-top: 3px solid var(--blue);
-  }
-
-  .orange {
-    border-top: 3px solid var(--orange);
-  }
-
   .column {
     display: flex;
     flex-direction: column;
@@ -187,19 +187,17 @@
   }
 
   .card {
-    width: 85%;
-    min-width: 18rem;
+    min-width: 19rem;
+    color: #1b1a1a;
     position: relative;
-    background-color: #1b1a1a;
-    color: #f8f5f2;
-    min-height: 20rem;
-    max-height: 25rem;
+    min-height: 15rem;
+    max-height: 20rem;
     border-radius: 10px;
     transition: 0.5s all;
     padding: 2rem 1.5rem;
     justify-content: space-between;
     align-items: center;
-    gap: 1rem;
+    gap: 0.5rem;
     cursor: pointer;
     top: 0%;
     transition: 0.2s all ease;
@@ -214,12 +212,10 @@
     font-size: 1.4rem;
     font-weight: bold;
     text-align: center;
-    color: #fffffe;
   }
 
   .description {
     font-size: 1.1rem;
-    color: #f8f5f2;
     margin-left: 1rem;
   }
 
@@ -229,9 +225,10 @@
 
   .image {
     margin-left: auto;
+    position: absolute;
     display: flex;
-    width: 5rem;
-    height: 5rem;
+    width: 9rem;
+    height: 9rem;
     background-size: cover;
     background-repeat: no-repeat;
   }
