@@ -1,7 +1,7 @@
 <script>
   import SEO from "../components/SEO.svelte";
   import Transition from "../components/Transition.svelte";
-  const words = ["mind", "active", "stimulated"];
+  const words = ["healthy", "active", "stimulated"];
   let content = "";
   let first = false;
   let second = false;
@@ -39,16 +39,16 @@
         <p class="title">Mindinator</p>
 
         <span class="desc">
-          <span>Your pit stop for a healthy</span>
+          <span>Your pit stop for a </span>
           <span class="dynamic-txt">
             {#if first}
-              <p>Mind</p>
+              <p>healthy mind</p>
             {/if}
             {#if second}
-              <p>Active</p>
+              <p>active mind</p>
             {/if}
             {#if third}
-              <p>Stimulated</p>
+              <p>stimulated mind</p>
             {/if}
           </span>
         </span>
@@ -57,7 +57,7 @@
 
       <span class="img-container">
         <span class="blur-span" />
-        <img src="./brain-img.png" alt="brainimg" />
+        <img src="./brain.svg" alt="brainimg" />
       </span>
     </section>
 
@@ -143,16 +143,20 @@
     display: flex;
     padding: 2rem;  
   }
+  .section1{
+    height: 40rem;
+  }
   .desc {
     display: flex;
-    font-size: 1.6rem;
+    font-size: 1rem;
+    text-align: start;
     gap: 0.4rem;
+    font-size: 1.3rem;
+    overflow: hidden;
   }
   .dynamic-txt {
     color: #f8406e;
     position: relative;
-    min-width: none;
-    text-align: start;
   }
   .dynamic-txt::before {
     content: "";
@@ -163,7 +167,7 @@
     border-left: 2px solid #41aaf5;
     height: 100%;
     animation: typing 4s steps(10) infinite;
-    background: rgba(8, 8, 8, 255);
+    background: #010101;
   }
   @keyframes typing {
     40%,
