@@ -3,10 +3,12 @@
     display: flex;
     font-family:'RedHat';
     flex-direction: column;
+    width: 100%;
     min-height: 100vh;
+    background-color: #010101;
     /* background-color: #222222; */
     color: white;
-    background: radial-gradient(50% 50% at 50% 50%, #1e1d1d 0%, #010101 100%);
+    /* background: radial-gradient(50% 50% at 50% 50%, #1e1d1d 0%, #010101 100%); */
     overflow-x: hidden;
   }
   * {

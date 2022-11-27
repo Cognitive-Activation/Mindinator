@@ -19,9 +19,6 @@
         display: flex;
     }
 
-    .card {
-    }
-
     :root {
         --red: hsl(0, 78%, 62%);
         --cyan: hsl(180, 62%, 55%);
