@@ -38,7 +38,7 @@
     event.preventDefault();
     const link = event.currentTarget;
     const anchorId = new URL(link.href).hash.replace("#", "");
-    const anchor = document.getElementById(anchorId);
+    const anchor = document.getElementById(anchorId); 
     window.scrollTo({
       top: anchor.offsetTop,
       behavior: "smooth",
@@ -69,13 +69,13 @@
 />
 <span class="reaction-container" id="rc-container">
   {#if page == "end-page"}
-    <div class="container">
+    <div class="container" on:click={resetGame}>
       <div class="end-screen">
         <h1>Reaction Time Test</h1>
         <div class="reaction-time-text avg-time">
           Average time = {avgTime.toFixed(0)}ms
         </div>
-        <button class="button" on:click={resetGame}>Play Again</button>
+        <p>Click to play again !</p>
       </div>
     </div>
   {:else if page == "main-page"}
@@ -137,6 +137,10 @@
     justify-content: center;
     align-items: center;
   }
+    .end-screen,
+  .resultPage{
+  }
+  
   .end-screen,
   .main-menu,
   .resultPage,
@@ -163,7 +167,7 @@
   .avg-time,
   .resultPage > p:last-child,
   .main-menu > p:last-child {
-    color: #00cf95;
+    color: #272f85;
     letter-spacing: 0.2rem;
     text-transform: uppercase;
     margin-top: 2rem;

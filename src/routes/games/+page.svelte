@@ -8,8 +8,8 @@
       img: "./SimultaneousStimulation.svg",
       border: "cyan",
       link: "/games/simultaneous-1",
-      backgroundcolor:"background: rgba(237, 228, 224, 1);",
-      imagestyle: "left: 50%; top: 15.58%;"
+      backgroundcolor: "background: rgba(237, 228, 224, 1);",
+      imagestyle: "left: 50%; top: 40%;",
     },
     {
       name: "Simultaneous Stimulation level 2",
@@ -18,8 +18,8 @@
       img: "./SimultaneousStimulationlev2.svg",
       border: "red",
       // link: "/games/simultaneous-2",
-      backgroundcolor:"background: rgba(255, 159, 159, 1);",
-      imagestyle: "left: 50%; top: 15.58%;"
+      backgroundcolor: "background: rgba(255, 159, 159, 1);",
+      imagestyle: "left: 5%; top: 40%;",
     },
     {
       name: "Simultaneous Stimulation level 3",
@@ -28,8 +28,8 @@
       img: "./SimultaneousStimulationlev3.svg",
       border: "orange",
       // link: "/simultaneous-3",
-      backgroundcolor:"background: rgba(250, 188, 58, 1);",
-      imagestyle: "left: 50%; top: 15.58%;"
+      backgroundcolor: "background: rgba(250, 188, 58, 1);",
+      imagestyle: "left: 33%; top: 30%;",
     },
     {
       name: "Reaction Test ",
@@ -37,8 +37,8 @@
       img: "./ReactionTest.svg",
       border: "blue",
       link: "/games/reaction",
-      backgroundcolor:"background: rgba(106, 103, 206, 1);",
-      imagestyle: "left: 33%; top: 25%;"
+      backgroundcolor: "background: rgba(106, 103, 206, 1);",
+      imagestyle: "left: 33%; top: 25%;",
     },
     {
       name: "Reaction test (Peripheral Vision)",
@@ -46,8 +46,8 @@
       img: "ReactionTestVision.svg",
       border: "cyan",
       link: "/games/peripheral",
-      backgroundcolor:"background: rgba(255, 214, 236, 1);",
-      imagestyle: "left: 55%; top: 40%;"
+      backgroundcolor: "background: rgba(255, 214, 236, 1);",
+      imagestyle: "left: 55%; top: 40%;",
     },
     {
       name: "Aim Trainer",
@@ -55,8 +55,8 @@
       img: "./aimTrainer.svg",
       border: "red",
       link: "/games/aim",
-      backgroundcolor:"background: rgba(0, 207, 149, 1);",
-      imagestyle: "left: 35%; top: 25%;"
+      backgroundcolor: "background: rgba(0, 207, 149, 1);",
+      imagestyle: "left: 35%; top: 25%;",
     },
     {
       name: "Sequence Memory",
@@ -64,8 +64,8 @@
       img: "./maze.svg",
       border: "orange",
       link: "/games/sequence",
-      backgroundcolor:"background: rgba(255, 116, 177, 1);",
-      imagestyle: "left: 35%; top: 25%;"
+      backgroundcolor: "background: rgba(255, 116, 177, 1);",
+      imagestyle: "left: 35%; top: 25%;",
     },
     {
       name: "Number Memory",
@@ -74,8 +74,8 @@
       img: "./number.svg",
       border: "blue",
       link: "/games/number",
-      backgroundcolor:"background: rgba(255, 171, 115, 1);",
-      imagestyle: "left: 65%; top: 40%; transform:rotate(-45deg)"
+      backgroundcolor: "background: rgba(255, 171, 115, 1);",
+      imagestyle: "left: 65%; top: 40%; transform:rotate(-45deg)",
     },
     {
       name: "Word Retention",
@@ -84,8 +84,8 @@
       img: "./wordRetener.svg",
       border: "cyan",
       // link: "/games/word",
-      backgroundcolor:"background: rgba(190, 138, 191, 1);",
-      imagestyle: "left: 10%; top: 40%; transform:rotate(25deg)"
+      backgroundcolor: "background: rgba(190, 138, 191, 1);",
+      imagestyle: "left: 10%; top: 40%; transform:rotate(25deg)",
     },
     {
       name: "Chimpanzee Test",
@@ -94,8 +94,8 @@
       img: "./chimp.svg",
       border: "red",
       // link: "/chimpanzee",
-      backgroundcolor:"background: rgba(250, 188, 58, 1);",
-      imagestyle: "left: 0%; top: 0%; height:15rem; width:12rem;"
+      backgroundcolor: "background: rgba(250, 188, 58, 1);",
+      imagestyle: "left: 0%; top: 0%; height:15rem; width:12rem;",
     },
     {
       name: "Verbal Memory",
@@ -103,8 +103,8 @@
       img: "./verbal.svg",
       border: "orange",
       link: "/games/word",
-      backgroundcolor:"background: rgba(65, 170, 245, 1);",
-      imagestyle: "left: 30%; top: 40%; width:12rem;"
+      backgroundcolor: "background: rgba(65, 170, 245, 1);",
+      imagestyle: "left: 30%; top: 40%; width:12rem;",
     },
     {
       name: "Wordle",
@@ -112,8 +112,8 @@
       img: "./verbal.svg",
       border: "blue",
       link: "/wordle",
-      backgroundcolor:"background: rgba(217, 225, 228, 1);",
-      imagestyle: "left: 30%; top: 40%; width:12rem;"
+      backgroundcolor: "background: rgba(217, 225, 228, 1);",
+      imagestyle: "left: 30%; top: 40%; width:12rem;",
     },
   ];
 </script>
@@ -127,17 +127,21 @@
   <span class="body">
     <span class="grid-container">
       {#each datas as data}
-          <a class="card column" style=" {data.backgroundcolor};" href={data.link}>
-            <span class="info column">
-              <p class="title">{data.name}</p>
-              <p class="description">{data.desc}</p>
-            </span>
+        <a
+          class="card column"
+          style=" {data.backgroundcolor};"
+          href={data.link}
+        >
+          <span class="info column">
+            <p class="title">{data.name}</p>
+            <p class="description">{data.desc}</p>
+          </span>
 
-            <span
-              class="image"
-              style="background: url({data.img}); background-size: cover; background-repeat: no-repeat; {data.imagestyle}"
-            />
-          </a>
+          <span
+            class="image"
+            style="background: url({data.img}); background-size: cover; background-repeat: no-repeat; {data.imagestyle}"
+          />
+        </a>
       {/each}
     </span>
   </span>
@@ -200,8 +204,9 @@
     gap: 0.5rem;
     cursor: pointer;
     top: 0%;
+    overflow: hidden;
     transition: 0.2s all ease;
-    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    box-shadow: rgba(38, 57, 77, 0.5) 0px 20px 30px -10px;
   }
   .card:hover {
     top: -10px;
@@ -213,16 +218,13 @@
     font-weight: bold;
     text-align: center;
   }
-
   .description {
     font-size: 1.1rem;
     margin-left: 1rem;
   }
-
   .info {
     gap: 1rem;
   }
-
   .image {
     margin-left: auto;
     position: absolute;

@@ -8,7 +8,7 @@
     <span class="logo">
     </span>
     <span>
-      <a href="/">Mindinator</a>
+      <a style="color:black" href="/">Mindinator</a>
     </span>
   </span>
 
@@ -92,7 +92,8 @@
     gap: 1rem;
   }
   .navbar-container {
-    padding: 2rem;
+    padding: 1.2rem 2rem;
+    align-items: center;
     font-size: 1.2rem;
     justify-content: space-between;
   }
@@ -126,17 +127,18 @@
     justify-content: space-around;
     gap: 0.1rem;
   }
+  .menu-bars>span{
+    background-color: black;
+  }
   .menu-bars > span:first-child,
   .menu-bars > span:last-child {
     width: 1rem;
     display: flex;
     height: 0.15rem;
-    background-color: white;
   }
   .menu-bars > span:nth-child(2) {
     width: 100%;
     height: 0.15rem;
-    background-color: white;
   }
   .menu-bars > span:last-child {
     margin-left: auto;

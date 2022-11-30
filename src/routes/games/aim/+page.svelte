@@ -42,7 +42,7 @@
   function restartGame() {
     targetFinished = 0;
     gameFinished = false;
-    startGame();
+    gameStarted=false
   }
 
   let gameStarted = false;
@@ -77,13 +77,15 @@
     </span>
     {#if gameFinished}
       <div class="board">
-        <h1 class="result-text">
-          Time: <span class="primary">{finishTime / 1000} s</span>
-        </h1>
-        <h1 class="result-text">
-          Average Time: <span class="primary">{avg} ms</span>
-        </h1>
-        <div class="restartBtn" on:click={restartGame}>Click to Restart</div>
+        <div on:click={restartGame} class="result-span">
+          <h1 class="result-text">
+            Time: <span class="primary">{finishTime / 1000} s</span>
+          </h1>
+          <h1 class="result-text">
+            Average Time: <span class="primary">{avg} ms</span>
+          </h1>
+          <div class="restartBtn">Click to Restart</div>
+        </div>
       </div>
     {:else if gameStarted}
       <div
@@ -93,7 +95,7 @@
       >
         <div
           class="circle"
-          style="background-image: url('{target}'); top: {top}px; left: {left}px;"
+          style="top: {top}px; left: {left}px;"
           on:click={() => {
             createRandomCircle();
             targetFinished++;
@@ -111,18 +113,26 @@
 </div>
 
 <style>
-  @import url("https://fonts.googleapis.com/css?family=Khula&display=swap");
-
   * {
     box-sizing: border-box;
     padding: 0;
     margin: 0%;
   }
+  .result-span {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 1rem;
+    border: 1px solid red;
+  }
   .container {
     color: #232323;
     font-family: "Khula", sans-serif;
     margin: 0;
-    color: white;
     text-align: center;
     overflow: hidden;
   }
@@ -137,29 +147,25 @@
     width: 95%;
   }
   .start {
-    color: antiquewhite;
     transition: 0.2s all;
     padding: 0.1rem 0.3rem;
     height: fit-content;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid antiquewhite;
+    border: 1px solid black;
     text-align: center;
     border-radius: 5px;
     font-size: 1.2rem;
     position: relative;
-  }
-  .start:hover {
-    color: #f8f5f2;
   }
   h1 {
     line-height: 1.3;
     font-size: 3.5rem;
   }
   .result-text {
-    color: #f8f5f2;
     font-size: 1.7rem;
+    color: white;
   }
   .screen {
     display: flex;
@@ -181,6 +187,7 @@
     align-items: center;
     flex-direction: column;
     max-width: 90rem;
+    color: white;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     max-height: 35rem;
     width: 100%;
@@ -196,8 +203,11 @@
     background-repeat: no-repeat;
     background-size: cover;
     position: absolute;
+    display: flex;
+    background: url(../../aimTrainergame.svg);
     border-radius: 50%;
     cursor: pointer;
+    z-index: 100000;
     animation-name: circle-animation;
     animation-duration: 0.1s;
     animation-iteration-count: 1;
@@ -212,9 +222,8 @@
   }
   .restartBtn {
     display: flex;
-    color: #f8f5f2;
     height: fit-content;
-    padding: 0.3rem 0.5rem;
+    color: white;
     cursor: pointer;
     border-radius: 5px;
     font-size: 1.2rem;
@@ -230,6 +239,8 @@
   }
   #time,
   #remaining {
+    min-width: 9rem;
+    text-align: start;
     font-weight: normal;
   }
   .start-game {
@@ -239,7 +250,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #f8f5f2;
     font-size: 1.5rem;
   }
   @media screen and (max-width: 500px) {

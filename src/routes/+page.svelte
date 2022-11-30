@@ -16,15 +16,27 @@
       second = true;
       first = false;
       third = false;
-    }, 4000);
+    }, 5000);
     setTimeout(() => {
       first = false;
       second = false;
       third = true;
-    }, 8000);
+    }, 10000);
   }
   writtting();
-  setInterval(writtting, 12000);
+  setInterval(writtting, 15000);
+
+  function handleAnchorClick(event) {
+    event.preventDefault();
+    const link = event.currentTarget;
+    const anchorId = new URL(link.href).hash.replace("#", "");
+    const anchor = document.getElementById(anchorId); 
+    window.scrollTo({
+      top: anchor.offsetTop,
+      behavior: "smooth",
+    });
+  }
+
 </script>
 
 <SEO
@@ -34,36 +46,44 @@
 
 <Transition>
   <div class="home-container">
-    <section class="section section1">
-      <span class="home-page-content column">
-        <p class="title">Mindinator</p>
-
-        <span class="desc">
-          <span>Your pit stop for a </span>
-          <span class="dynamic-txt">
-            {#if first}
-              <p>healthy mind</p>
-            {/if}
-            {#if second}
-              <p>active mind</p>
-            {/if}
-            {#if third}
-              <p>stimulated mind</p>
-            {/if}
+    <section class="section section1 column" >
+      <span class="row" style="width: 100%;">
+        <span class="home-page-content column">
+          <p class="title">Mindinator</p>
+  
+          <span class="desc">
+            <span>Your pit stop for a </span>
+            <span class="dynamic-txt">
+              {#if first}
+                <p>healthy mind</p>
+              {/if}
+              {#if second}
+                <p>active brain</p>
+              {/if}
+              {#if third}
+                <p>boosted cognition</p>
+              {/if}
+            </span>
           </span>
+          <a class="start-button" href="/games">Start</a>
         </span>
-        <a class="start-button" href="/games">Start</a>
+  
+        <span class="img-container">
+          <span class="blur-span" />
+          <img src="./brain.svg" alt="brainimg"/>
+        </span>
       </span>
 
-      <span class="img-container">
-        <span class="blur-span" />
-        <img src="./brain.svg" alt="brainimg"/>
-      </span>
+      <a href="#section4" on:click={handleAnchorClick} class="downarrow-span">
+        <span class="downarrow">
+        </span>
+      </a>
+        
     </section>
 
-    <section class="section section2 row">
+    <section id="section" class="section section2 row">
       <span class="img-container">
-        <span class="blur-span" />
+        <!-- <span class="blur-span" /> -->
         <img src="./homepage1.png" alt="brainimg" />
       </span>
 
@@ -98,14 +118,14 @@
       </span>
 
       <span class="img-container">
-        <span class="blur-span" />
+        <!-- <span class="blur-span" /> -->
         <img src="./homepage2.png" alt="brainimg" />
       </span>
     </section>
 
     <section class="section section4 row">
       <span class="img-container">
-        <span class="blur-span" />
+        <!-- <span class="blur-span" /> -->
         <img src="./homepage3.png" alt="brainimg" />
       </span>
 
@@ -126,25 +146,61 @@
 </Transition>
 
 <style>
+  .downarrow-span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 3rem;
+    cursor: pointer;
+    height: 4rem;
+  }
+  .downarrow{
+    display: flex;
+    width: 2.5rem;
+    border-radius: 50%;
+    border: 1px solid black;
+    background-size: cover;
+    height: 2.5em;
+    transition:5s all;
+    animation: arrow alternate infinite 0.5s ease;
+    background:no-repeat url(./downArrow.svg);
+  }
+  @keyframes arrow{
+    100%{
+      margin-top: 1rem;
+    }
+  }
   .home-container{
     width: 100%;
     display: flex;
+    height: 90vh;
     flex-direction: column; 
-    justify-content: center;
+    scroll-behavior: smooth;
+    overflow-y: scroll;
+    scroll-snap-type:y mandatory;
     align-items: center;
   }
   .section {
     align-items: center;
     justify-content: space-between;
     width: 100%;
+    height: 100%;
+    scroll-snap-align: center;
     padding:0rem 5rem;
     max-width: 75rem;
-    background-color: #010101;
+    padding: 10rem;
+    /* background-color: #010101; */
     display: flex;
     padding: 2rem;  
   }
   .section1{
-    height: 40rem;
+    justify-content: space-between;
+  }
+  .section1>span:first-child{
+    height: 35rem;
+  }
+  .section4{
+    margin-bottom: 5rem;
   }
   .desc {
     display: flex;
@@ -166,8 +222,8 @@
     top: 0%;
     border-left: 2px solid #41aaf5;
     height: 100%;
-    animation: typing 4s steps(10) infinite;
-    background: #010101;
+    animation: typing 5s steps(10) infinite;
+    background: white;
   }
   @keyframes typing {
     40%,
@@ -258,9 +314,9 @@
     filter: blur(85px);
     z-index: 1;
   }
-  .section1>.img-container img{
-    width: 80%;
-    height: 80%;
+  .section1 .img-container img{
+    width: 70%;
+    height: 70%;
   }
   .section1 .img-container .blur-span{
     width: 70%;
@@ -297,8 +353,6 @@
       font-size: 1.15rem;
       text-align: start;
       padding: 1rem;
-    }
-    .home-page-content {
     }
   }
 </style>

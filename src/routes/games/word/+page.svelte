@@ -121,7 +121,7 @@
 <style>
   .verbal-container {
     display: flex;
-    height: 40rem;
+    height: 100vh;
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -129,8 +129,8 @@
     width: 100%;
   }
   .gradient-span {
-    width: 70%;
-    height: 30rem;
+    width: 80%;
+    height:80%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -175,6 +175,7 @@
     display: flex;
     width: 99%;
     padding: 1rem;
+    color: #fff;
     height: 98%;
     background: radial-gradient(50% 50% at 50% 50%, #1e1d1d 0%, #010101 100%);
     font-size: 1.3rem;
@@ -189,6 +190,7 @@
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    color: #fff;
     align-items: center;
     justify-content: center;
   }
