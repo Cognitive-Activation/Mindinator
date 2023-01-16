@@ -1,23 +1,24 @@
 <script>
   import { fly } from "svelte/transition";
+  import Toggle from "./Toggle.svelte";
   let menuSelected = false;
 </script>
 
 <span class="navbar-container row gap1">
   <span class="name row gap1">
-    <span class="logo">
-    </span>
+    <span class="logo" />
     <span>
-      <a style="color:black" href="/">Mindinator</a>
+      <a style="color:var(--text-color)" href="/">Mindinator</a>
     </span>
   </span>
 
   <span class="menu-options row  gap1">
+    <Toggle />
 
     <p>Dashboard</p>
 
     <p>Blog</p>
-  
+
     <p>Riddles</p>
 
     <p style="color: #41aaf5;">Sign in</p>
@@ -70,8 +71,8 @@
 </span>
 
 <style>
-  .logo{
-    background: url('./brain.svg');
+  .logo {
+    background: url("./brain.svg");
     display: flex;
     position: relative;
     width: 2rem;
@@ -127,7 +128,7 @@
     justify-content: space-around;
     gap: 0.1rem;
   }
-  .menu-bars>span{
+  .menu-bars > span {
     background-color: black;
   }
   .menu-bars > span:first-child,

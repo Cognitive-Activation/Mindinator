@@ -10,7 +10,10 @@
     in:fly={{ delay: 500, duration: 500, x: 50 }}
     out:fly={{ delay: 500, duration: 500, x: -50 }}
   > -->
-  <div>
+  <div
+    in:fly={{ delay: 500, duration: 500, x: 50 }}
+    out:fly={{ delay: 500, duration: 500, x: -50 }}
+  >
     <slot />
   </div>
 {/key}

@@ -1,5 +1,5 @@
 <script>
-    import { prevent_default } from "svelte/internal";
+    import { onDestroy } from "svelte";
     import SEO from "../../../components/SEO.svelte";
     let glowing = new Array(9).fill(false);
     let level = 1;
@@ -9,6 +9,8 @@
     let userTurn = false;
     let round = 0;
     const audioFiles = [];
+    const timeouts = [];
+
     for (let i = 0; i < 9; i++) {
         audioFiles.push(new Audio(`/audio/${i + 1}.wav`));
     }
@@ -27,7 +29,7 @@
     function makeGlow() {
         setTimeout(() => (userTurn = true), (level + 0.5) * glowTime);
         sequence.forEach((element, id) => {
-            setTimeout(glowColor, (id + 1) * glowTime, element);
+            timeouts.push(setTimeout(glowColor, (id + 1) * glowTime, element));
         });
     }
 
@@ -71,6 +73,12 @@
         showSequence();
     }
 
+    function clearTimeoutDestroy () {
+        timeouts.forEach((ele) => {
+            clearTimeout(ele);
+        })
+    }
+
     function handleClick() {
         if (gameFinished) {
             restartGame();
@@ -78,6 +86,8 @@
             showSequence();
         }
     }
+
+    onDestroy(clearTimeoutDestroy);
 </script>
 
 <SEO
