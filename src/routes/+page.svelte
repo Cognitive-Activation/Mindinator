@@ -6,7 +6,7 @@
   let currIndex = 0;
   let dirRev = false;
   let animationInterval;
-  let darkmode = false;
+  let darkmode = true;
 
   function handleAnchorClick(event) {
     event.preventDefault();
@@ -60,7 +60,7 @@
         <p class="title">Mindinator</p>
 
         <span class="desc">
-          <span>Your pit stop for a</span>
+          <span style="white-space: nowrap">Your pit stop for a</span>
           <span class="dynamic-txt">
             {dynamic}
           </span>
@@ -71,15 +71,26 @@
 
       <span class="img-container">
         <span class="blur-span" />
-
+        <img src="./brain.svg" alt="brainimg" />
       </span>
     </span>
 
     <a href="#section4" on:click={handleAnchorClick} class="downarrow-span">
       <span class="downarrow">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="{darkmode? 'white' : 'black'}" class="w-6 h-6">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-        </svg>        
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke={darkmode ? "white" : "black"}
+          class="w-6 h-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+          />
+        </svg>
       </span>
     </a>
   </section>
@@ -186,7 +197,6 @@
     border: 1px solid var(--text-color);
     background-size: cover;
     height: 2.5em;
-    transition: 5s all;
     animation: arrow alternate infinite 0.5s ease;
     /* background: no-repeat url(./downArrow.svg); */
   }
@@ -229,6 +239,7 @@
   }
   .desc {
     display: flex;
+    flex-direction: column;
     font-size: 1rem;
     text-align: start;
     gap: 0.4rem;

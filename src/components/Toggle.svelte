@@ -4,6 +4,7 @@
     function toggleMode() {
         window.document.body.classList.toggle("light");
     }
+    
     onMount(() => {
         if (window.matchMedia("(prefers-color-scheme: light)").matches) {
             window.document.body.classList.toggle("light");
