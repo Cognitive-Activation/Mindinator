@@ -8,7 +8,7 @@
   let round = 0;
   let avgArr = [];
   let avgTime = null;
-
+  let timeOut=null
   function resetGame() {
     greenAppeared = false;
     greenAppearedTime = null;
@@ -31,14 +31,14 @@
   function playGame() {
     page = "play-page";
     setRedColor();
-    setTimeout(setGreenColor, Math.floor(Math.random() * 6 + 2) * 1000);
+    timeOut = setTimeout(setGreenColor, Math.floor(Math.random() * 6 + 2) * 1000);
   }
 
   function handleAnchorClick(event) {
     event.preventDefault();
     const link = event.currentTarget;
     const anchorId = new URL(link.href).hash.replace("#", "");
-    const anchor = document.getElementById(anchorId); 
+    const anchor = document.getElementById(anchorId);
     window.scrollTo({
       top: anchor.offsetTop,
       behavior: "smooth",
@@ -58,6 +58,7 @@
         page = "time-show-page";
       }
     } else {
+      clearTimeout(timeOut)
       page = "too-soon-page";
     }
   }
@@ -126,6 +127,10 @@
   .reaction-container {
     width: 100%;
     display: flex;
+    user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
     overflow: hidden;
     height: 100%;
     min-height: 100vh;
@@ -137,10 +142,10 @@
     justify-content: center;
     align-items: center;
   }
-    .end-screen,
-  .resultPage{
+  .end-screen,
+  .resultPage {
   }
-  
+
   .end-screen,
   .main-menu,
   .resultPage,
@@ -167,7 +172,6 @@
   .avg-time,
   .resultPage > p:last-child,
   .main-menu > p:last-child {
-    color: #272f85;
     letter-spacing: 0.2rem;
     text-transform: uppercase;
     margin-top: 2rem;

@@ -245,7 +245,6 @@
   .title {
     font-size: 1.8rem;
     font-weight: bold;
-    color: #f8f5f2;
   }
   .game-start-container {
     background-color: transparent;
