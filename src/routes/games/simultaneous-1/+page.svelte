@@ -13,8 +13,14 @@
   let gameStarted = false;
   let timeOver = false;
   let stagePageRemove = true;
-  let expected;
-  let entered;
+  let expected1;
+  let entered1;
+  let entered2;
+  let x=null;
+  let y=null;
+  let expected2;
+  let firstCorrect = null;
+  let secondCorrect = null;
 
   function displayStagePage() {
     stagePageRemove = false;
@@ -27,8 +33,8 @@
   }
 
   function onSubmit() {
-    let x = whiteInput;
-    let y = blackInput;
+    x = whiteInput;
+    y = blackInput;
     let u = whiteOriginal;
     let v = blackOriginal;
     whiteInput = whiteInput.toLowerCase();
@@ -46,14 +52,20 @@
       refresh();
       displayStagePage();
     } else {
-      if (blackInput === blackOriginal) {
-        expected = u;
-        entered = x;
+      expected2 = u;
+      entered2 = x;
+      expected1 = v;
+      entered1 = y;
+      if (blackInput == blackOriginal) {
+        firstCorrect = true;
       } else {
-        expected = v;
-        entered = y;
+        firstCorrect = false;
       }
-
+      if (whiteInput == whiteOriginal) {
+        secondCorrect = true;
+      } else {
+        secondCorrect = false;
+      }
       result = false;
       gameStarted = false;
     }
@@ -66,6 +78,8 @@
   }
 
   function refresh() {
+    firstCorrect = null;
+    secondCorrect = null;
     gameStarted = true;
     result = true;
     blackInput = whiteInput = "";
@@ -133,7 +147,73 @@
 
     {#if result == false}
       <span on:click={clickedtoStart} class="game-start-container column">
-        <p style="color: red;">Incorrect answer!</p>
+        <span class="row board-container">
+          <span class="board {firstCorrect ? 'green' : 'red'}">
+            {#if timeOver == true}
+              <span
+                class="input-tag-container {firstCorrect
+                  ? 'darkgreen'
+                  : 'darkred'}"
+              >
+              <p class="black-tag correctFont">{y}</p>
+                <!-- <input
+                  bind:value={blackInput}
+                  id="black-tag"
+                  autocomplete="off"
+                  autofocus
+                  type="text"
+                  required
+                  class="black-tag"
+                  placeholder="Type here"
+                /> -->
+              </span>
+
+              {#if !firstCorrect}
+                <span>
+                  <p class="correctFont">
+                    Expected answer: {expected1}
+                  </p>
+                </span>
+              {/if}
+            {/if}
+          </span>
+
+          <span class="timer">
+            <p class="timer-p-tag">
+              {(5 - time / 1000).toFixed(2)}
+            </p>
+          </span>
+
+          <span class="board {secondCorrect ? 'green' : 'red'}">
+            {#if timeOver == true}
+              <span
+                class="input-tag-container {secondCorrect
+                  ? 'darkgreen'
+                  : 'darkred'}"
+              >
+              <p class="white-tag correctFont">{x}</p>
+                <!-- <input
+                  bind:value={whiteInput}
+                  id="white-tag"
+                  type="text"
+                  autocomplete="off"
+                  required
+                  class="white-tag"
+                  placeholder="Type here"
+                /> -->
+              </span>
+
+              {#if !secondCorrect}
+                <span>
+                  <p class="correctFont">
+                    Expected answer: {expected2}
+                  </p>
+                </span>
+              {/if}
+            {/if}
+          </span>
+        </span>
+        <!-- <p style="color: red;">Incorrect answer!</p>
         <span class="column" style="align-items: center; gap: 1rem;">
           <span class="row msg">
             <p>Expected:</p>
@@ -148,7 +228,10 @@
           </span>
         </span>
 
-        <p class="clickToStart">Click to Restart</p>
+        <p class="clickToStart">Click to Restart</p> -->
+        <span>
+          <p class="correctFont">Click to Restart !</p>
+        </span>
       </span>
     {/if}
 
@@ -308,7 +391,7 @@
   .board {
     width: 50%;
     height: 90%;
-    border-radius: 8px;
+    border-radius: 25px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     display: flex;
     transition: 0.2s all;
@@ -326,29 +409,42 @@
     background-color: #fffffe;
     color: #232323;
   }
-
+  .red {
+    background: rgba(255, 65, 65, 1);
+    gap: 3rem;
+  }
+  .green {
+    background: rgba(130, 205, 71, 1);
+    gap: 3rem;
+  }
   input {
     border: none;
     height: 1.5rem;
+    font-size: 1.05rem;
     width: 100%;
     padding-left: 0.4rem;
+    padding-bottom: 0.4rem;
   }
   input:focus {
     outline: none;
   }
   .black-tag {
-    background-color: #232323;
+    background-color: transparent;
     color: white;
+  }
+  .white-tag {
+    background-color: transparent;
   }
 
   .input-tag-container {
     max-width: 20rem;
     width: 100%;
-    height: 1.8rem;
+    height: 0.25rem;
     transition: 0.2s all;
     display: flex;
     align-items: flex-start;
-    background-color: #078080;
+    flex-direction: column-reverse;
+    background: rgba(65, 170, 245, 1);
   }
 
   .timer {
@@ -363,7 +459,7 @@
     text-align: center;
   }
   .submit-btn {
-    background-color: #1e6b6b;
+    background: rgba(65, 170, 245, 1);
     color: #f8f5f2;
     padding: 0.5rem 1rem;
     border: none;
@@ -378,6 +474,17 @@
   }
   .submit-btn:hover {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+  .darkgreen {
+    background: rgba(43, 133, 47, 1);
+  }
+  .darkred {
+    background: rgba(177, 0, 0, 1);
+  }
+  .correctFont {
+    font-size: 1.3rem;
+    padding-bottom: 0.2rem;
+    font-weight: 500;
   }
 
   @media screen and (max-width: 800px) {

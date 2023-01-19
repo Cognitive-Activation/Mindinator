@@ -129,7 +129,6 @@
     gap: 1rem;
   }
   .container {
-    font-family: "Khula", sans-serif;
     margin: 0;
     text-align: center;
     overflow: hidden;
