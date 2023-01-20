@@ -71,7 +71,7 @@
 
       <span class="img-container">
         <span class="blur-span" />
-        <img src="./brain.svg" alt="brainimg" />
+        <img src="/brain.svg" alt="brainimg" />
       </span>
     </span>
 

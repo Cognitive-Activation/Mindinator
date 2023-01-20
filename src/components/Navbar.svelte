@@ -72,7 +72,7 @@
 
 <style>
   .logo {
-    background: url("./brain.svg");
+    background: url("/brain.svg");
     display: flex;
     position: relative;
     width: 2rem;
