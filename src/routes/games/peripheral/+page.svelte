@@ -1,217 +1,204 @@
 <script>
-    import SEO from "../../../components/SEO.svelte";
+  import SEO from "../../../components/SEO.svelte";
 
-    let page = "main-page";
-    let greenAppeared = false;
-    let greenAppearedTime = null;
-    let reactionTime = null;
-    let round = 0;
-    let avgArr = [];
-    let avgTime = null;
+  let page = "main-page";
+  let greenAppeared = false;
+  let greenAppearedTime = null;
+  let reactionTime = null;
+  let round = 0;
+  let avgArr = [];
+  let avgTime = null;
+  let timeOut=null
+  function resetGame() {
+    greenAppeared = false;
+    greenAppearedTime = null;
+    reactionTime = null;
+    round = 0;
+    avgArr = [];
+    avgTime = null;
+    playGame();
+  }
 
-    function resetGame() {
-        greenAppeared = false;
-        greenAppearedTime = null;
-        reactionTime = null;
-        round = 0;
-        avgArr = [];
-        avgTime = null;
-        playGame();
+  function setRedColor() {
+    greenAppeared = false;
+  }
+
+  function setGreenColor() {
+    greenAppeared = true;
+    greenAppearedTime = Date.now();
+  }
+
+  function playGame() {
+    page = "play-page";
+    setRedColor();
+    timeOut = setTimeout(setGreenColor, Math.floor(Math.random() * 10 + 2) * 1000);
+  }
+
+  function playAreaClicked() {
+    if (greenAppeared == true) {
+      reactionTime = Date.now() - greenAppearedTime;
+      avgArr.push(reactionTime);
+      round++;
+      if (round == 3) {
+        const sum = avgArr.reduce((a, b) => a + b, 0);
+        avgTime = sum / avgArr.length || 0;
+        page = "end-page";
+      } else {
+        page = "time-show-page";
+      }
+    } else {
+      clearTimeout(timeOut)
+      page = "too-soon-page";
+
     }
-
-    function setRedColor() {
-        greenAppeared = false;
-    }
-
-    function setGreenColor() {
-        greenAppeared = true;
-        greenAppearedTime = Date.now();
-    }
-
-    function playGame() {
-        page = "play-page";
-        setRedColor();
-        setTimeout(setGreenColor, Math.floor(Math.random() * 10 + 2) * 1000);
-    }
-
-    function playAreaClicked() {
-        if (greenAppeared == true) {
-            reactionTime = Date.now() - greenAppearedTime;
-            avgArr.push(reactionTime);
-            round++;
-            if (round == 3) {
-                const sum = avgArr.reduce((a, b) => a + b, 0);
-                avgTime = sum / avgArr.length || 0;
-                page = "end-page";
-            } else {
-                page = "time-show-page";
-            }
-        } else {
-            page = "too-soon-page";
-        }
-    }
+  }
 </script>
 
 <SEO
-    title="Reaction time test ( peripheral vision )"
-    description="Evaluate your reaction time to color change on the screen perceived through your peripheral vision"
+  title="Reaction time test ( peripheral vision )"
+  description="Evaluate your reaction time to color change on the screen perceived through your peripheral vision"
 />
 
-{#if page == "end-page"}
-    <div class="end-screen">
-        <div class="container">
-            <h1>Reaction Time Test</h1>
-            <div class="reaction-time-text">
-                Average time is {avgTime.toFixed(0)}ms
-            </div>
-            <button class="play-again-btn" on:click={resetGame}
-                >Play Again</button
-            >
-        </div>
+<span id="rp-container">
+  {#if page == "end-page"}
+    <div class="end-screen" on:click={resetGame}>
+      <div class="container">
+        <span class="reaction-time-text">
+          <p>Reaction Time Test</p>
+          <p>AVERAGE TIME : {avgTime.toFixed(0)}ms</p>
+        </span>
+        <p>Click to play again !</p>
+      </div>
     </div>
-{:else if page == "main-page"}
-    <div class="main-menu active" on:click={playGame}>
-        <div class="container">
-            <h1>Reaction Time Test</h1>
-            <p>Click as soon as you see the green color on the screen.</p>
-            <p>Click anywhere to start.</p>
-        </div>
-    </div>
-{:else if page == "play-page"}
+  {:else if page == "main-page"}
+    <a class="main-menu active" on:click={playGame} href="#rp-container">
+      <div class="container">
+        <span>
+          <p>Reaction Time Test</p>
+          <p>Click as soon as you see the green color on the screen.</p>
+        </span>
+        <p>Click anywhere to start.</p>
+      </div>
+    </a>
+  {:else if page == "play-page"}
     <div
-        class="clickable-area"
-        style="background-color:{greenAppeared ? 'green' : 'red'}"
-        on:click={playAreaClicked}
+      class="clickable-area"
+      style="background-color:{greenAppeared
+        ? 'rgba(130, 205, 71, 1)'
+        : 'rgba(255, 65, 65, 1);'}"
+      on:click={playAreaClicked}
     >
-        <div class="circle" />
-        <div class="blackDot" />
+      <span class="circle">
+        <span class="blackdot" />
+      </span>
     </div>
-{:else if page == "too-soon-page"}
+  {:else if page == "too-soon-page"}
     <div class="resultPage" on:click={playGame}>
-        <div class="container">
-            <h1>Too soon!</h1>
-            <h1>click the page to try again</h1>
-        </div>
+      <div class="container">
+        <p>Too soon!</p>
+        <p>Click the page to try again</p>
+      </div>
     </div>
-{:else if page == "time-show-page"}
+  {:else if page == "time-show-page"}
     <div class="resultPage" on:click={playGame}>
-        <div class="container">
-            <h1>Your time:</h1>
-            <h1>{reactionTime}ms</h1>
-            <h1>click to keep going!</h1>
-        </div>
+      <div class="container">
+        <span class="row">
+          <p>Your time: {reactionTime}ms</p>
+        </span>
+        <p>Click to keep going!</p>
+      </div>
     </div>
-{/if}
+  {/if}
+</span>
 
 <style>
-    .clickable-area {
-        height: 100vh;
-        width: 100%;
-        cursor: pointer;
-        background: red;
-        display: grid;
-        place-items: center;
-        text-align: center;
-        font-size: 32px;
-        font-family: "Roboto", sans-serif;
-        color: #fff;
-        overflow: hidden;
-        top: 0;
-        left: 0;
-    }
+  #rp-container {
+    display: flex;
+    cursor: pointer;
+    overflow: hidden;
+    width: 100%;
+    user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    height: 100vh;
+  }
+  .clickable-area {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background-color: rgba(255, 65, 65, 1);
+  }
 
-    .end-screen,
-    .main-menu {
-        display: grid;
-        height: 100vh;
-        width: 100%;
-        top: 0;
-        left: 0;
-        background: #0d3b66;
-        color: #fff;
-        font-family: "Roboto", sans-serif;
-        text-align: center;
-        place-items: center;
-        overflow: hidden;
-    }
+  .end-screen,
+  .main-menu {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    padding: 0.8rem;
+    justify-content: center;
+    align-items: center;
+  }
 
-    .main-menu {
-        cursor: pointer;
-    }
+  .main-menu {
+    cursor: pointer;
+  }
 
-    .container {
-        max-width: 700px;
-        padding: 0 0px;
-        overflow: hidden;
-    }
+  .container {
+    display: flex;
+    font-size: 1.5rem;
+    gap: 3.5rem;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .container > span:first-child {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .container p:first-child {
+    font-size: 3rem;
+    font-weight: 500;
+  }
+  .container > p {
+    font-size: 1.8rem;
+    font-weight: 500;
+  }
+  .end-screen .play-again-btn {
+    border: none;
+    cursor: pointer;
+  }
 
-    .container h1 {
-        font-size: 70px;
-        margin: 8px 0;
-    }
+  .resultPage {
+    display: grid;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+  }
 
-    .main-menu h1 {
-        font-size: 70px;
-        margin: 8px 0;
-    }
+  .circle {
+    background-color: #ffffff;
+    width: 75%;
+    height: 150%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+  }
+  .reaction-time-text {
+    font-size: 2rem;
+  }
 
-    .container p {
-        font-size: 20px;
-        line-height: 2;
-        font-weight: 800;
-        margin: 0;
-    }
-
-    .end-screen h1 {
-        font-size: 30px;
-    }
-
-    .reaction-time-text {
-        font-size: 100px;
-        font-weight: 900;
-    }
-
-    .end-screen .play-again-btn {
-        border: none;
-        background: #faf0ca;
-        font-size: 20px;
-        padding: 8px 32px;
-        margin-top: 20px;
-        text-transform: uppercase;
-        font-weight: 900;
-        letter-spacing: 4px;
-        cursor: pointer;
-    }
-
-    .resultPage {
-        display: grid;
-        height: 100vh;
-        width: 100%;
-        top: 0;
-        left: 0;
-        background: #fffdd0;
-        color: #000000;
-        font-family: "Roboto", sans-serif;
-        text-align: center;
-        place-items: center;
-        overflow: hidden;
-    }
-
-    .circle {
-        background-color: #ffffff;
-        margin: 20px auto;
-        width: 1000px;
-        height: 1000px;
-        border-radius: 1000px;
-        overflow: hidden;
-    }
-
-    .blackDot {
-        background-color: #000000;
-        margin: 20px auto;
-        width: 20px;
-        height: 20px;
-        border-radius: 1000px;
-        overflow: hidden;
-    }
+  .blackdot {
+    background-color: #000000;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    display: flex;
+  }
 </style>

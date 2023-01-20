@@ -42,7 +42,7 @@
   function restartGame() {
     targetFinished = 0;
     gameFinished = false;
-    gameStarted=false
+    gameStarted = false;
   }
 
   let gameStarted = false;
@@ -55,7 +55,7 @@
   description="Sharpen your Aim and activate your senses by hitting 20 targets in the lowest time possible"
 />
 
-<div class="container">
+<div class="container" id="aim">
   <div class="screen">
     <span class="row">
       {#if gameStarted}
@@ -104,9 +104,9 @@
       </div>
     {:else}
       <div class="board">
-        <div class="start-game" on:click={startGame}>
-          <p class="starttext">Click to start</p>
-        </div>
+        <a href="#aim" class="start-game" on:click={startGame}>
+          <p class="starttext">Click to start !</p>
+        </a>
       </div>
     {/if}
   </div>
@@ -127,11 +127,8 @@
     flex-direction: column;
     cursor: pointer;
     gap: 1rem;
-    border: 1px solid red;
   }
   .container {
-    color: #232323;
-    font-family: "Khula", sans-serif;
     margin: 0;
     text-align: center;
     overflow: hidden;
@@ -148,12 +145,13 @@
   }
   .start {
     transition: 0.2s all;
-    padding: 0.1rem 0.3rem;
+    padding: 0.3rem 0.6rem;
     height: fit-content;
     display: flex;
+    cursor: pointer;
     align-items: center;
     justify-content: center;
-    border: 1px solid black;
+    border: 1px solid;
     text-align: center;
     border-radius: 5px;
     font-size: 1.2rem;
@@ -198,8 +196,8 @@
     overflow: hidden;
   }
   .circle {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     background-repeat: no-repeat;
     background-size: cover;
     position: absolute;

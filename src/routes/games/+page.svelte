@@ -11,26 +11,26 @@
       backgroundcolor: "background: rgba(237, 228, 224, 1);",
       imagestyle: "left: 50%; top: 40%;",
     },
-    {
-      name: "Simultaneous Stimulation level 2",
-      desc: "Coming Soon...",
-      // desc: "Activates your brain through 2 simultaneous inputs (text + Audio)",
-      img: "./SimultaneousStimulationlev2.svg",
-      border: "red",
-      // link: "/games/simultaneous-2",
-      backgroundcolor: "background: rgba(255, 159, 159, 1);",
-      imagestyle: "left: 5%; top: 40%;",
-    },
-    {
-      name: "Simultaneous Stimulation level 3",
-      desc: "Coming Soon...",
-      // desc: "Activates your brain through 3 simultaneous inputs (2 × text + 1 × Audio)",
-      img: "./SimultaneousStimulationlev3.svg",
-      border: "orange",
-      // link: "/simultaneous-3",
-      backgroundcolor: "background: rgba(250, 188, 58, 1);",
-      imagestyle: "left: 33%; top: 30%;",
-    },
+    // {
+    //   name: "Simultaneous Stimulation level 2",
+    //   desc: "Coming Soon...",
+    //   // desc: "Activates your brain through 2 simultaneous inputs (text + Audio)",
+    //   img: "./SimultaneousStimulationlev2.svg",
+    //   border: "red",
+    //   // link: "/games/simultaneous-2",
+    //   backgroundcolor: "background: rgba(255, 159, 159, 1);",
+    //   imagestyle: "left: 5%; top: 40%;",
+    // },
+    // {
+    //   name: "Simultaneous Stimulation level 3",
+    //   desc: "Coming Soon...",
+    //   // desc: "Activates your brain through 3 simultaneous inputs (2 × text + 1 × Audio)",
+    //   img: "./SimultaneousStimulationlev3.svg",
+    //   border: "orange",
+    //   // link: "/simultaneous-3",
+    //   backgroundcolor: "background: rgba(250, 188, 58, 1);",
+    //   imagestyle: "left: 33%; top: 30%;",
+    // },
     {
       name: "Reaction Test ",
       desc: "Test your reaction time to changing colors",
@@ -106,15 +106,15 @@
       backgroundcolor: "background: rgba(65, 170, 245, 1);",
       imagestyle: "left: 30%; top: 40%; width:12rem;",
     },
-    {
-      name: "Wordle",
-      desc: "Coming Soon...",
-      img: "./verbal.svg",
-      border: "blue",
-      link: "/wordle",
-      backgroundcolor: "background: rgba(217, 225, 228, 1);",
-      imagestyle: "left: 30%; top: 40%; width:12rem;",
-    },
+    // {
+    //   name: "Wordle",
+    //   desc: "Coming Soon...",
+    //   img: "./verbal.svg",
+    //   border: "blue",
+    //   link: "/wordle",
+    //   backgroundcolor: "background: rgba(217, 225, 228, 1);",
+    //   imagestyle: "left: 30%; top: 40%; width:12rem;",
+    // },
   ];
 </script>
 
@@ -167,7 +167,7 @@
     margin: 0%;
     box-sizing: border-box;
   }
-
+  
   .grid-container {
     max-width: 90%;
     width: 100%;
@@ -213,9 +213,9 @@
   }
   .title {
     letter-spacing: 0.1rem;
-    font-family: fantasy;
+    /* font-family: fantasy; */
+    font-weight: 500;
     font-size: 1.4rem;
-    font-weight: bold;
     text-align: center;
   }
   .description {
