@@ -16,8 +16,8 @@
   let expected1;
   let entered1;
   let entered2;
-  let x=null;
-  let y=null;
+  let x = null;
+  let y = null;
   let expected2;
   let firstCorrect = null;
   let secondCorrect = null;
@@ -148,34 +148,29 @@
     {#if result == false}
       <span on:click={clickedtoStart} class="game-start-container column">
         <span class="row board-container">
-          <span class="board {firstCorrect ? 'green' : 'red'}">
-            {#if timeOver == true}
-              <span
-                class="input-tag-container {firstCorrect
-                  ? 'darkgreen'
-                  : 'darkred'}"
-              >
-              <p class="black-tag correctFont">{y}</p>
-                <!-- <input
-                  bind:value={blackInput}
-                  id="black-tag"
-                  autocomplete="off"
-                  autofocus
-                  type="text"
-                  required
-                  class="black-tag"
-                  placeholder="Type here"
-                /> -->
-              </span>
-
-              {#if !firstCorrect}
-                <span>
-                  <p class="correctFont">
-                    Expected answer: {expected1}
-                  </p>
+          <span class="board-subcontainer">
+            <span class="board {firstCorrect ? 'green' : 'red'}">
+              {#if timeOver == true}
+                <span
+                  class="input-tag-container {firstCorrect
+                    ? 'darkgreen'
+                    : 'darkred'}"
+                >
+                  <p class="black-tag correctFont">{y}</p>
                 </span>
+
+                {#if !firstCorrect}
+                  <span>
+                    <p class="correctFont">
+                      Expected answer: {expected1}
+                    </p>
+                  </span>
+                {/if}
               {/if}
-            {/if}
+            </span>
+
+            <div class={firstCorrect?"correct-answer-img":"wrong-answer-img"} />
+
           </span>
 
           <span class="timer">
@@ -184,51 +179,31 @@
             </p>
           </span>
 
-          <span class="board {secondCorrect ? 'green' : 'red'}">
-            {#if timeOver == true}
-              <span
-                class="input-tag-container {secondCorrect
-                  ? 'darkgreen'
-                  : 'darkred'}"
-              >
-              <p class="white-tag correctFont">{x}</p>
-                <!-- <input
-                  bind:value={whiteInput}
-                  id="white-tag"
-                  type="text"
-                  autocomplete="off"
-                  required
-                  class="white-tag"
-                  placeholder="Type here"
-                /> -->
-              </span>
-
-              {#if !secondCorrect}
-                <span>
-                  <p class="correctFont">
-                    Expected answer: {expected2}
-                  </p>
+          <span class="board-subcontainer">
+            <span class="board {secondCorrect ? 'green' : 'red'}">
+              {#if timeOver == true}
+                <span
+                  class="input-tag-container {secondCorrect
+                    ? 'darkgreen'
+                    : 'darkred'}"
+                >
+                  <p class="white-tag correctFont">{x}</p>
                 </span>
+
+                {#if !secondCorrect}
+                  <span>
+                    <p class="correctFont">
+                      Expected answer: {expected2}
+                    </p>
+                  </span>
+                {/if}
               {/if}
-            {/if}
-          </span>
-        </span>
-        <!-- <p style="color: red;">Incorrect answer!</p>
-        <span class="column" style="align-items: center; gap: 1rem;">
-          <span class="row msg">
-            <p>Expected:</p>
-            <pre />
-            <p class="expMsg">{expected}</p>
-          </span>
+            </span>
 
-          <span class="row msg">
-            <p>Entered:</p>
-            <pre />
-            <p class="errorMsg">{entered}</p>
+            <span class={secondCorrect?"correct-answer-img":"wrong-answer-img"} />
           </span>
         </span>
 
-        <p class="clickToStart">Click to Restart</p> -->
         <span>
           <p class="correctFont">Click to Restart !</p>
         </span>
@@ -389,8 +364,8 @@
     justify-content: space-between;
   }
   .board {
-    width: 50%;
-    height: 90%;
+    width: 100%;
+    height: 100%;
     border-radius: 25px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     display: flex;
@@ -486,7 +461,29 @@
     padding-bottom: 0.2rem;
     font-weight: 500;
   }
-
+  .board-subcontainer {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+  }
+  .correct-answer-img {
+    width: 50px;
+    height: 60px;
+    background: url(../../correct.svg);
+    background-repeat: no-repeat;
+    background-size:contain;
+  }
+  .wrong-answer-img {
+    width: 50px;
+    height: 60px;
+    background: url(../../wrong.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
   @media screen and (max-width: 800px) {
     .container {
       height: 45rem;
