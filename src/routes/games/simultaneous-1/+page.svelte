@@ -1,4 +1,5 @@
 <script>
+  import { empty } from "svelte/internal";
   import SEO from "../../../components/SEO.svelte";
 
   let stage = 1;
@@ -486,7 +487,8 @@
   }
   @media screen and (max-width: 800px) {
     .container {
-      height: 45rem;
+      padding: 2rem 0rem;
+      min-height: 60rem;
       overflow: hidden;
     }
     .title {
@@ -495,6 +497,7 @@
     .board-container {
       flex-direction: column;
       width: 100%;
+      height: 100%;
       justify-content: center;
     }
     .board {

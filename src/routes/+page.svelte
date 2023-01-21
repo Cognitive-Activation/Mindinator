@@ -54,112 +54,178 @@
 
 <Transition />
 <div class="home-container">
-  <section class="section section1 column">
-    <span class="row" style="width: 100%;">
-      <span class="home-page-content column">
-        <p class="title">Mindinator</p>
+  <section class="section section1 ">
+    <div class="column">
+      <span class="row first-page-container" style="width: 100%;">
+        <span class="home-page-content column">
+          <p class="title">Mindinator</p>
 
-        <span class="desc">
-          <span style="white-space: nowrap">Your pit stop for a</span>
-          <span class="dynamic-txt">
-            {dynamic}
+          <span class="desc">
+            <span style="white-space: nowrap">Your pit stop for a</span>
+            <span class="dynamic-txt">
+              {dynamic}
+            </span>
+            <!-- <span class="white-box" /> -->
           </span>
-          <!-- <span class="white-box" /> -->
+          <a class="start-button" href="/games">Start</a>
         </span>
-        <a class="start-button" href="/games">Start</a>
+
+        <span class="img-container">
+          <span class="blur-span" />
+          <img src="/brain.svg" alt="brainimg" class="image0"/>
+        </span>
       </span>
 
-      <span class="img-container">
-        <span class="blur-span" />
-        <img src="/brain.svg" alt="brainimg" />
-      </span>
-    </span>
-
-    <a href="#section4" on:click={handleAnchorClick} class="downarrow-span">
+      <a href="#section4" on:click={handleAnchorClick} class="downarrow-span">
       <span class="downarrow">
         <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke={darkmode ? "white" : "black"}
-          class="w-6 h-6"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke={darkmode ? "white" : "black"}
+        class="w-6 h-6"
         >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M19.5 8.25l-7.5 7.5-7.5-7.5"
-          />
-        </svg>
-      </span>
-    </a>
+        <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+        />
+      </svg>
+    </span>
+  </a>
+    </div>
   </section>
 
-  <section id="section" class="section section2 row">
-    <span class="img-container">
-      <!-- <span class="blur-span" /> -->
-      <img src="./homepage1.png" alt="brainimg" />
-    </span>
-
-    <span class="home-page-content column">
-      <span>
-        <p class="title">Brain Stimulation</p>
+  <section id="section" class="section section2">
+    <div>
+      <span class="img-container image1">
+        <!-- <span class="blur-span" /> -->
+        <img src="./homepage1.png" alt="brainimg" />
       </span>
 
-      <span class="description">
-        <p>
-          Can`t concentrate on the work at hand? Feeling dull and can`t complete
-          your assignments? Our carefully curated games are proven to increase
-          brain activity and refresh your brain in a short amount of time.
-        </p>
+      <span class="home-page-content column">
+        <span>
+          <p class="title">Brain Stimulation</p>
+        </span>
+
+        <span class="description">
+          <p>
+            Can`t concentrate on the work at hand? Feeling dull and can`t
+            complete your assignments? Our carefully curated games are proven to
+            increase brain activity and refresh your brain in a short amount of
+            time.
+          </p>
+        </span>
       </span>
-    </span>
+    </div>
   </section>
 
   <section class="section section3 row">
-    <span class="home-page-content column">
-      <span>
-        <p class="title">Brain Games</p>
+    <div>
+      <span class="home-page-content column">
+        <span>
+          <p class="title">Brain Games</p>
+        </span>
+
+        <span class="description">
+          <p>
+            Our games are meant for quick brain activation aimed at improving
+            your work efficiency. These short and fun-to-play games will boost
+            your cognition and set you up for your ventures
+          </p>
+        </span>
       </span>
 
-      <span class="description">
-        <p>
-          Our games are meant for quick brain activation aimed at improving your
-          work efficiency. These short and fun-to-play games will boost your
-          cognition and set you up for your ventures
-        </p>
+      <span class="img-container">
+        <!-- <span class="blur-span" /> -->
+        <img src="./homepage2.png" alt="brainimg" />
       </span>
-    </span>
-
-    <span class="img-container">
-      <!-- <span class="blur-span" /> -->
-      <img src="./homepage2.png" alt="brainimg" />
-    </span>
+    </div>
   </section>
 
   <section class="section section4 row">
-    <span class="img-container">
-      <!-- <span class="blur-span" /> -->
-      <img src="./homepage3.png" alt="brainimg" />
-    </span>
-
-    <span class="home-page-content column">
-      <span>
-        <p class="title">Brain functioning</p>
+    <div>
+      <span class="img-container">
+        <!-- <span class="blur-span" /> -->
+        <img src="./homepage3.png" alt="brainimg" />
       </span>
 
-      <span class="description">
-        <p>
-          Too much monotonous work causes your brain to become sluggish and
-          inefficient. Our games are designed to stimulate your brain just
-          enough to boost your efficiency without exhausting your mind.
-        </p>
+      <span class="home-page-content column">
+        <span>
+          <p class="title">Brain functioning</p>
+        </span>
+
+        <span class="description">
+          <p>
+            Too much monotonous work causes your brain to become sluggish and
+            inefficient. Our games are designed to stimulate your brain just
+            enough to boost your efficiency without exhausting your mind.
+          </p>
+        </span>
       </span>
-    </span>
+    </div>
   </section>
 </div>
 
 <style>
+  .section > div{
+    height: 89vh;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .home-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    height: 89vh;
+    position: relative;
+  }
+  .section {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 80%;
+    height: 89vh;
+    max-width: 75rem;
+    scroll-snap-align: center;
+  }
+  .first-page-container {
+    display: flex;
+    height: 100%;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .img-container {
+    width: 100%;
+    max-width: 35rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .img-container > img {
+    z-index: 5;
+    width: 80%;
+  }
+  .image1 > img{
+    width: 65%;
+  }
+  .image0{
+    width: 60%;
+    padding: 2rem;
+  }
+  .first-page-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   .dynamic-txt::after {
     content: " ";
     height: 1.5rem;
@@ -198,44 +264,11 @@
     background-size: cover;
     height: 2.5em;
     animation: arrow alternate infinite 0.5s ease;
-    /* background: no-repeat url(./downArrow.svg); */
   }
   @keyframes arrow {
     100% {
       margin-top: 1rem;
     }
-  }
-  .home-container {
-    width: 100%;
-    display: flex;
-    height: 90vh;
-    flex-direction: column;
-    scroll-behavior: smooth;
-    overflow-y: scroll;
-    scroll-snap-type: y mandatory;
-    align-items: center;
-  }
-  .section {
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    height: 100%;
-    scroll-snap-align: center;
-    padding: 0rem 5rem;
-    max-width: 75rem;
-    padding: 10rem;
-    /* background-color: #010101; */
-    display: flex;
-    padding: 2rem;
-  }
-  .section1 {
-    justify-content: space-between;
-  }
-  .section1 > span:first-child {
-    height: 35rem;
-  }
-  .section4 {
-    margin-bottom: 5rem;
   }
   .desc {
     display: flex;
@@ -270,9 +303,7 @@
     margin: 0%;
   }
   .start-button {
-    border: 2px solid red;
     display: flex;
-    border: 100px solid red;
     color: white;
     border: none;
     height: 2rem;
@@ -304,19 +335,7 @@
     -webkit-transition: all 0.4s ease-in-out;
     transition: all 0.4s ease-in-out;
   }
-  .img-container {
-    position: relative;
-    width: 100%;
-    max-width: 32rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .img-container > img {
-    width: 100%;
-    z-index: 5;
-    height: 100%;
-  }
+
   .blur-span {
     width: 45%;
     display: flex;
@@ -330,24 +349,16 @@
     filter: blur(85px);
     z-index: 1;
   }
-  .section1 .img-container img {
-    width: 70%;
-    height: 70%;
-  }
-  .section1 .img-container .blur-span {
-    width: 70%;
-    height: 70%;
-  }
   @media screen and (max-width: 950px) {
-    /* .home-container {
-      padding: 1rem;
-      height: fit-content;
-      justify-content: flex-start;
-      gap: 0;
+    .section1 {
+      flex-direction: column;
+      display: flex;
+    }
+    .first-page-container {
+      display: flex;
       flex-direction: column-reverse;
-      max-height: none;
-    } */
-    .section {
+    }
+    .section div{
       flex-direction: column;
       justify-content: center;
       gap: 3rem;
@@ -355,8 +366,7 @@
     .description > p {
       text-align: center;
     }
-    .section1,
-    .section3 {
+    .section3 div{
       flex-direction: column-reverse;
     }
     .home-page-content {
