@@ -20,7 +20,7 @@
   async function getWord() {
     if (lives == 0) page = "end-page";
     const x = await fetch(
-      "https://cognitivestimulation.tech/api/word/getsingleword"
+      "https://mindinator.com/api/word/getsingleword"
     );
     const y = await x.json();
     let chance = Math.random() * 100;
