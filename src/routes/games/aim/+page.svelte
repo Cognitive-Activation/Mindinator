@@ -202,7 +202,7 @@
     background-size: cover;
     position: absolute;
     display: flex;
-    background: url("./aimTrainergame.svg");
+    background: url("../../../../static/aimTrainergame.svg");
     border-radius: 50%;
     cursor: pointer;
     z-index: 100000;
