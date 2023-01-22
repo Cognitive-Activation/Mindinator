@@ -107,7 +107,7 @@
 
   async function getSentenses() {
     const res = await fetch(
-      `https://cognitivestimulation.tech/api/sentence/getsentence${stage + 2}`
+      `https://mindinator.com/api/sentence/getsentence${stage + 2}`
     );
     const text = await res.json();
     if (res.ok) {
