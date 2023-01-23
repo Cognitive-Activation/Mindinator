@@ -5,12 +5,13 @@
   let targetFinished = 0;
   const numTargets = 20;
   const target = "./target.png";
+  let interval;
   function startGame() {
     gameStarted = true;
     createRandomCircle();
     const beginning = new Date();
     const beginningTime = beginning.getTime();
-    const interval = setInterval(() => {
+    interval = setInterval(() => {
       const current = new Date();
       const currentTime = current.getTime();
       time = currentTime - beginningTime;
@@ -25,6 +26,7 @@
     gameFinished = true;
     finishTime = time;
     avg = time / numTargets;
+    clearInterval(interval);
   }
 
   const circleSize = 100;
@@ -47,7 +49,7 @@
 
   let gameStarted = false;
   let gameFinished = false;
-  $: targetFinished >= numTargets ? finishGame() : console.log("");
+  $: targetFinished >= numTargets ? finishGame() : console.log();
 </script>
 
 <SEO
@@ -60,7 +62,7 @@
     <span class="row">
       {#if gameStarted}
         <span class="details">
-          <p id="time">Time: {(time / 1000).toFixed(3)} s</p>
+          <p id="time">Time: {(time / 1000).toFixed(1)} s</p>
           <p id="remaining">
             Remaining: {numTargets - targetFinished}
           </p>
@@ -117,6 +119,9 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0%;
+  }
+  a {
+    color: var(--text-color);
   }
   .result-span {
     width: 100%;
@@ -202,7 +207,7 @@
     background-size: cover;
     position: absolute;
     display: flex;
-    background: url("../../../../static/aimTrainergame.svg");
+    background: url("/aimTrainergame.svg");
     border-radius: 50%;
     cursor: pointer;
     z-index: 100000;

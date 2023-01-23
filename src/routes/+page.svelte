@@ -1,6 +1,5 @@
 <script>
   import SEO from "../components/SEO.svelte";
-  import Transition from "../components/Transition.svelte";
   const words = ["Healthy Mind", "Active Brain", "Boosted Cognition"];
   let dynamic = "Healthy Mind";
   let currIndex = 0;
@@ -52,7 +51,6 @@
   description="Mindinator is your daily dose of brain activation. Work more consciously with an activated mind and excel at all your endeavors"
 />
 
-<Transition />
 <div class="home-container">
   <section class="section section1 ">
     <div class="column">

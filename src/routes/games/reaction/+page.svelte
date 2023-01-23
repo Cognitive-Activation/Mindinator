@@ -124,6 +124,9 @@
 </span>
 
 <style>
+  a {
+    color: var(--text-color);
+  }
   .reaction-container {
     width: 100%;
     display: flex;
@@ -190,7 +193,7 @@
     color: #36395a;
     cursor: pointer;
     display: inline-flex;
-    font-family: "JetBrains Mono", monospace;
+    /* font-family: "JetBrains Mono", monospace; */
     height: 48px;
     justify-content: center;
     line-height: 1;

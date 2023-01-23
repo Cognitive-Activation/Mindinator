@@ -2,6 +2,7 @@
     import { onMount } from "svelte";
     let w, h;
     let boxArray = [];
+    let boxWidth = 120;
     let gameStarted = false;
     let gameLost = false;
     let gameWon = false;
@@ -15,16 +16,16 @@
     };
 
     function generateBox() {
-        const x = lb.x + Math.random() * (w - lb.x - 120);
-        const y = lb.y + Math.random() * (h - lb.y - 120);
+        const x = lb.x + Math.random() * (0.9 * w - lb.x - boxWidth);
+        const y = lb.y + Math.random() * (0.9 * h - lb.y - boxWidth);
         for (let i = 0; i < boxArray.length; i++) {
             if (
-                (x > boxArray[i].x && x < boxArray[i].x + 120) ||
-                (x > boxArray[i].x - 120 && x < boxArray[i].x)
+                (x > boxArray[i].x && x < boxArray[i].x + boxWidth) ||
+                (x > boxArray[i].x - boxWidth && x < boxArray[i].x)
             ) {
                 if (
-                    (y > boxArray[i].y && y < boxArray[i].y + 120) ||
-                    (y > boxArray[i].y - 120 && y < boxArray[i].y)
+                    (y > boxArray[i].y && y < boxArray[i].y + boxWidth) ||
+                    (y > boxArray[i].y - boxWidth && y < boxArray[i].y)
                 ) {
                     generateBox();
                     return;
@@ -38,14 +39,12 @@
         };
         boxArray.push(box);
         boxArray.length = boxArray.length;
-        console.log(boxArray);
     }
 
     function checkSequence(userInput) {
         gameStarted = true;
         boxArray[userInput - 1].visible = false;
         if (userInput == currRound) {
-            console.log("YEAa");
             currRound++;
         } else {
             gameLost = true;
@@ -106,6 +105,7 @@
                 <span
                     class="box"
                     id="box-{index}"
+                    bind:clientWidth={boxWidth}
                     style="top:{boxNum.y}px; left: {boxNum.x}px; background-color: {gameStarted
                         ? 'white'
                         : '#f45d48'};

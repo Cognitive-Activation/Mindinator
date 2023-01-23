@@ -1,6 +1,5 @@
 <script>
   import SEO from "../../components/SEO.svelte";
-  import Transition from "../../components/Transition.svelte";
   let datas = [
     {
       name: "Simultaneous Stimulation",
@@ -123,7 +122,6 @@
   description="Choose from a bunch of scientifically proven brain activation games aimed at improving your work efficiency"
 />
 
-<Transition>
   <span class="body">
     <span class="grid-container">
       {#each datas as data}
@@ -145,7 +143,6 @@
       {/each}
     </span>
   </span>
-</Transition>
 
 <style>
   .column {
