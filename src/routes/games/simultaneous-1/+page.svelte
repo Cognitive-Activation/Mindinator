@@ -4,6 +4,7 @@
 
   let stage = 1;
   let time = 0;
+  let timeOver = false;
   let result;
   let dataRecieved = false;
   let promise = Promise;
@@ -12,7 +13,6 @@
   let blackOriginal = "";
   let whiteOriginal = "";
   let gameStarted = false;
-  let timeOver = false;
   let stagePageRemove = true;
   let expected1;
   let entered1;
@@ -46,7 +46,6 @@
 
     whiteOriginal = whiteOriginal.toLowerCase().replace(/[\W_]+/g, "");
     blackOriginal = blackOriginal.toLowerCase().replace(/[\W_]+/g, "");
-    console.log(blackInput, whiteInput, blackOriginal, whiteOriginal);
 
     if (blackInput === blackOriginal && whiteInput === whiteOriginal) {
       stage++;
@@ -170,8 +169,9 @@
               {/if}
             </span>
 
-            <div class={firstCorrect?"correct-answer-img":"wrong-answer-img"} />
-
+            <div
+              class={firstCorrect ? "correct-answer-img" : "wrong-answer-img"}
+            />
           </span>
 
           <span class="timer">
@@ -201,7 +201,9 @@
               {/if}
             </span>
 
-            <span class={secondCorrect?"correct-answer-img":"wrong-answer-img"} />
+            <span
+              class={secondCorrect ? "correct-answer-img" : "wrong-answer-img"}
+            />
           </span>
         </span>
 
@@ -434,23 +436,6 @@
     font-size: 1.5rem;
     text-align: center;
   }
-  .submit-btn {
-    background: rgba(65, 170, 245, 1);
-    color: #f8f5f2;
-    padding: 0.5rem 1rem;
-    border: none;
-    font-size: 1rem;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: 0.3s all;
-  }
-  .submit-span {
-    height: fit-content;
-    height: 2.5rem;
-  }
-  .submit-btn:hover {
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  }
   .darkgreen {
     background: rgba(43, 133, 47, 1);
   }
@@ -476,7 +461,7 @@
     height: 60px;
     background: url(../../correct.svg);
     background-repeat: no-repeat;
-    background-size:contain;
+    background-size: contain;
   }
   .wrong-answer-img {
     width: 50px;

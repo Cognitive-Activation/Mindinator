@@ -34,3 +34,23 @@ a:visited(#exclude) {
     align-items: center;
     flex-direction: column;
 }
+
+.submit-btn {
+    background: rgba(65, 170, 245, 1);
+    color: #f8f5f2;
+    padding: 0.5rem 1rem;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s all;
+}
+
+.submit-span {
+    height: fit-content;
+    height: 2.5rem;
+}
+
+.submit-btn:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
