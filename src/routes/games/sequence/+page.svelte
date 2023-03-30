@@ -14,6 +14,7 @@
     for (let i = 0; i < 9; i++) {
         audioFiles.push(new Audio(`/audio/${i + 1}.wav`));
     }
+    
     let sequence = [];
     function showSequence() {
         gameStarted = true;
@@ -112,7 +113,7 @@
     {:else if gameFinished}
         <div on:click={restartGame} class="container">
             <h1>Game Finished!</h1>
-            <h1>Your Final Score: {level}</h1>
+            <h1>Your Final Score: {level - 1}</h1>
             <h1>Click anywhere to try again</h1>
         </div>
     {:else}
@@ -132,6 +133,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        text-align: center;
         height: 80vh;
         width: 100%;
         flex-direction: column;
@@ -145,9 +147,9 @@
     }
 
     .box {
-        width: 120px;
-        height: 120px;
-        border-radius: 20px;
+        width: min(20vw, 120px);
+        aspect-ratio: 1;
+        border-radius: min(20px, 2vw);
         margin: 20px;
         background-color: #f45d48;
         border: 2px solid black;

@@ -1,6 +1,6 @@
 <script>
   // import Login from "../components/Login.svelte";
-import SEO from "../components/SEO.svelte";
+  import SEO from "../components/SEO.svelte";
   const words = ["Healthy Mind", "Active Brain", "Boosted Cognition"];
   let dynamic = "Healthy Mind";
   let currIndex = 0;
