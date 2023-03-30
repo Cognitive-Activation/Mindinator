@@ -82,7 +82,7 @@
         fill="none"
         viewBox="0 0 24 24"
         stroke-width="1.5"
-        stroke={darkmode ? "white" : "black"}
+        stroke=var(--text-color)
         class="w-6 h-6"
         >
         <path

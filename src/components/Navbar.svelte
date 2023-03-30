@@ -129,7 +129,7 @@
     gap: 0.1rem;
   }
   .menu-bars > span {
-    background-color: black;
+    background-color: var(--text-color);
   }
   .menu-bars > span:first-child,
   .menu-bars > span:last-child {
