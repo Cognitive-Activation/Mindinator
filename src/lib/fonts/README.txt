@@ -51,7 +51,7 @@ In desktop apps
 Online
 
   https://developers.google.com/fonts/docs/getting_started
-  https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Fonts/Variable_Fonts_Guide
+  https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_$lib/Variable_Fonts_Guide
   https://developer.microsoft.com/en-us/microsoft-edge/testdrive/demos/variable-fonts
 
 Installing fonts
@@ -62,7 +62,7 @@ Installing fonts
 
 Android Apps
 
-  https://developers.google.com/fonts/docs/android
+  https://developers.google.com/$lib/docs/android
   https://developer.android.com/guide/topics/ui/look-and-feel/downloadable-fonts
 
 License

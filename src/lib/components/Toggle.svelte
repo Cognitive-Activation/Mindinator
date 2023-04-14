@@ -66,7 +66,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background-image: url("./light-mode.svg");
+        background-image: url("$lib/images/light-mode.svg");
         background-size: 50%;
         background-repeat: no-repeat;
         background-color: #ed9de1;
@@ -88,7 +88,7 @@
     }
 
     .input-dark + .slider {
-        background-image: url("./dark-mode.svg");
+        background-image: url("$lib/images/dark-mode.svg");
         background-position: center left;
         background-color: #2196f3;
     }

@@ -1,7 +1,9 @@
 <script>
-  // import Login from "../components/Login.svelte";
-  import SEO from "../components/SEO.svelte";
-  import Login from "../components/Login.svelte";
+  import SEO from "$lib/components/SEO.svelte";
+  import Brain from "$lib/images/brain.svg"
+  import Homepage1 from "$lib/images/homepage1.png"
+  import Homepage2 from "$lib/images/homepage2.png"
+  import Homepage3 from "$lib/images/homepage3.png"
   const words = ["Healthy Mind", "Active Brain", "Boosted Cognition"];
   let dynamic = "Healthy Mind";
   let currIndex = 0;
@@ -72,7 +74,7 @@
 
         <span class="img-container">
           <span class="blur-span" />
-          <img src="/brain.svg" alt="brainimg" class="image0" />
+          <img src="{Brain}" alt="brainimg" class="image0" />
         </span>
       </span>
 
@@ -101,7 +103,7 @@
     <div>
       <span class="img-container image1">
         <!-- <span class="blur-span" /> -->
-        <img src="./homepage1.png" alt="brainimg" />
+        <img src="{Homepage1}" alt="brainimg" />
       </span>
 
       <span class="home-page-content column">
@@ -139,7 +141,7 @@
 
       <span class="img-container">
         <!-- <span class="blur-span" /> -->
-        <img src="./homepage2.png" alt="brainimg" />
+        <img src="{Homepage2}" alt="brainimg" />
       </span>
     </div>
   </section>
@@ -148,7 +150,7 @@
     <div>
       <span class="img-container">
         <!-- <span class="blur-span" /> -->
-        <img src="./homepage3.png" alt="brainimg" />
+        <img src="{Homepage3}" alt="brainimg" />
       </span>
 
       <span class="home-page-content column">
@@ -288,7 +290,7 @@
     font-weight: 400;
     padding: 0%;
     margin: 0%;
-    src: url("fonts/RedHatDisplay-VariableFont_wght.ttf");
+    src: url("$lib/RedHatDisplay-VariableFont_wght.ttf");
   }
   .home-page-content {
     max-width: 650px;

@@ -1,5 +1,5 @@
 <script>
-  import SEO from "../../../components/SEO.svelte";
+  import SEO from "$lib/components/SEO.svelte";
 
   let time;
   let targetFinished = 0;
@@ -49,7 +49,7 @@
 
   let gameStarted = false;
   let gameFinished = false;
-  $: targetFinished >= numTargets ? finishGame() : console.log();
+  $: targetFinished >= numTargets ? finishGame() : console.log(); // Ye wala console.log noi hatana padega
 </script>
 
 <SEO

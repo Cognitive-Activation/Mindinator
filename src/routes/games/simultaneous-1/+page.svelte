@@ -1,6 +1,6 @@
 <script>
   import { empty } from "svelte/internal";
-  import SEO from "../../../components/SEO.svelte";
+  import SEO from "$lib/components/SEO.svelte";
 
   let stage = 1;
   let time = 0;
@@ -110,7 +110,6 @@
     );
     const text = await res.json();
     if (res.ok) {
-      console.log(text);
       blackOriginal = text[0];
       whiteOriginal = text[1];
       dataRecieved = true;

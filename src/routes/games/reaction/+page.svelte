@@ -1,5 +1,5 @@
 <script>
-  import SEO from "../../../components/SEO.svelte";
+  import SEO from "$lib/components/SEO.svelte";
 
   let page = "main-page";
   let greenAppeared = false;
@@ -8,7 +8,7 @@
   let round = 0;
   let avgArr = [];
   let avgTime = null;
-  let timeOut=null
+  let timeOut = null;
   function resetGame() {
     greenAppeared = false;
     greenAppearedTime = null;
@@ -31,7 +31,10 @@
   function playGame() {
     page = "play-page";
     setRedColor();
-    timeOut = setTimeout(setGreenColor, Math.floor(Math.random() * 6 + 2) * 1000);
+    timeOut = setTimeout(
+      setGreenColor,
+      Math.floor(Math.random() * 6 + 2) * 1000
+    );
   }
 
   function handleAnchorClick(event) {
@@ -58,7 +61,7 @@
         page = "time-show-page";
       }
     } else {
-      clearTimeout(timeOut)
+      clearTimeout(timeOut);
       page = "too-soon-page";
     }
   }

@@ -46,7 +46,6 @@
   }
 
   function checkInput() {
-    console.log(timeLimit);
     if (input == displayNum) {
       numLength++;
       timeLimit++;
