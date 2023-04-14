@@ -1,6 +1,7 @@
 <script>
   // import Login from "../components/Login.svelte";
   import SEO from "../components/SEO.svelte";
+  import Login from "../components/Login.svelte";
   const words = ["Healthy Mind", "Active Brain", "Boosted Cognition"];
   let dynamic = "Healthy Mind";
   let currIndex = 0;
@@ -71,28 +72,28 @@
 
         <span class="img-container">
           <span class="blur-span" />
-          <img src="/brain.svg" alt="brainimg" class="image0"/>
+          <img src="/brain.svg" alt="brainimg" class="image0" />
         </span>
       </span>
 
       <a href="#section4" on:click={handleAnchorClick} class="downarrow-span">
-      <span class="downarrow">
-        <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke-width="1.5"
-        stroke=var(--text-color)
-        class="w-6 h-6"
-        >
-        <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        d="M19.5 8.25l-7.5 7.5-7.5-7.5"
-        />
-      </svg>
-    </span>
-  </a>
+        <span class="downarrow">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="var(--text-color)"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+            />
+          </svg>
+        </span>
+      </a>
     </div>
   </section>
 
@@ -166,10 +167,9 @@
     </div>
   </section>
 </div>
-<!-- <Login /> -->
 
 <style>
-  .section > div{
+  .section > div {
     height: 89vh;
     display: flex;
     width: 100%;
@@ -214,10 +214,10 @@
     z-index: 5;
     width: 80%;
   }
-  .image1 > img{
+  .image1 > img {
     width: 65%;
   }
-  .image0{
+  .image0 {
     width: 60%;
     padding: 2rem;
   }
@@ -273,15 +273,15 @@
   .desc {
     display: flex;
     flex-direction: column;
-    font-size: 1rem;
     text-align: start;
     gap: 0.4rem;
     font-size: 1.3rem;
-    overflow: hidden;
   }
+  
   .dynamic-txt {
     color: #f8406e;
     position: relative;
+    height: 1.3rem;
   }
   @font-face {
     font-family: "RedHat";
@@ -354,11 +354,15 @@
       flex-direction: column;
       display: flex;
     }
+
+    .desc > * {
+      text-align: center;
+    }
     .first-page-container {
       display: flex;
       flex-direction: column-reverse;
     }
-    .section div{
+    .section div {
       flex-direction: column;
       justify-content: center;
       gap: 3rem;
@@ -366,7 +370,7 @@
     .description > p {
       text-align: center;
     }
-    .section3 div{
+    .section3 div {
       flex-direction: column-reverse;
     }
     .home-page-content {
