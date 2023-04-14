@@ -74,7 +74,7 @@
 
         <span class="img-container">
           <span class="blur-span" />
-          <img src="{Brain}" alt="brainimg" class="image0" />
+          <img src="{Brain}" alt="brainimg" class="image0"/>
         </span>
       </span>
 

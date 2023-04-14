@@ -1,11 +1,18 @@
-// import { writable } from "svelte/store";
-// import Simultaneous1 from "$lib/images/SimultaneousStimulation"
+import Aim from "$lib/images/game-images/aim-trainer.svg"
+import Chimp from "$lib/images/game-images/chimp.svg"
+import NumberMemory from "$lib/images/game-images/number-memory.svg"
+import Peripheral from "$lib/images/game-images/peripheral.svg"
+import Reaction from "$lib/images/game-images/reaction.svg"
+import Sequence from "$lib/images/game-images/sequence-memory.svg"
+import Simultaneous1 from "$lib/images/game-images/simultaneous.svg"
+import VerbalMemory from "$lib/images/game-images/verbal-memory.svg"
+import WordRetention from "$lib/images/game-images/word-retention.svg"
 
-export const gamesData = [
+const gamesData = [
     {
         name: "Simultaneous Stimulation",
         desc: "Activates your brain through 2 simultaneous text inputs",
-        img: "Simultaneous1",
+        img: Simultaneous1,
         border: "cyan",
         link: "/games/simultaneous-1",
         backgroundcolor: "background: rgba(237, 228, 224, 1);",
@@ -34,7 +41,7 @@ export const gamesData = [
     {
         name: "Reaction Test ",
         desc: "Test your reaction time to changing colors",
-        img: "Reaction",
+        img: Reaction,
         border: "blue",
         link: "/games/reaction",
         backgroundcolor: "background: rgba(106, 103, 206, 1);",
@@ -43,7 +50,7 @@ export const gamesData = [
     {
         name: "Reaction test (Peripheral Vision)",
         desc: "Test your reaction time with peripheral vision inputs",
-        img: "Peripheral",
+        img: Peripheral,
         border: "cyan",
         link: "/games/peripheral",
         backgroundcolor: "background: rgba(255, 214, 236, 1);",
@@ -52,7 +59,7 @@ export const gamesData = [
     {
         name: "Aim Trainer",
         desc: "Test and improve your hand-eye coordination",
-        img: "$lib/images/aimTrainer.svg",
+        img: Aim,
         border: "red",
         link: "/games/aim",
         backgroundcolor: "background: rgba(0, 207, 149, 1);",
@@ -61,7 +68,7 @@ export const gamesData = [
     {
         name: "Sequence Memory",
         desc: "Try to remember an increasing sequence",
-        img: "$lib/images/maze.svg",
+        img: Sequence,
         border: "orange",
         link: "/games/sequence",
         backgroundcolor: "background: rgba(255, 116, 177, 1);",
@@ -71,7 +78,7 @@ export const gamesData = [
         name: "Number Memory",
         desc: "Coming Soon",
         desc: "The number keeps on increasing; try to remember all of it.",
-        img: "$lib/images/number.svg",
+        img: NumberMemory,
         border: "blue",
         link: "/games/number-memory",
         backgroundcolor: "background: rgba(255, 171, 115, 1);",
@@ -81,7 +88,7 @@ export const gamesData = [
         name: "Word Retention",
         desc: "Coming Soon",
         desc: "Try to remember an increasing number of words",
-        img: "$lib/images/wordRetener.svg",
+        img: WordRetention,
         border: "cyan",
         link: "/games/word-retention",
         backgroundcolor: "background: rgba(190, 138, 191, 1);",
@@ -91,7 +98,7 @@ export const gamesData = [
         name: "Chimpanzee Test",
         desc: "Coming Soon",
         desc: "Check if you are smarter than a chimpanzee",
-        img: "$lib/images/chimp.svg",
+        img: Chimp,
         border: "red",
         link: "/games/chimpanzee",
         backgroundcolor: "background: rgba(250, 188, 58, 1);",
@@ -100,7 +107,7 @@ export const gamesData = [
     {
         name: "Verbal Memory",
         desc: "Tell if the shown word is new or repeated",
-        img: "$lib/images/verbal.svg",
+        img: VerbalMemory,
         border: "orange",
         link: "/games/word",
         backgroundcolor: "background: rgba(65, 170, 245, 1);",
@@ -117,8 +124,10 @@ export const gamesData = [
     // },
 ]
 
+export default gamesData
+
 export const gamesSEO = [
     {
-        game:"abcd"
+        game: "abcd"
     }
 ]
