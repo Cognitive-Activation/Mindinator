@@ -52,14 +52,12 @@
       numLength++;
       timeLimit += 0.5;
       prevSentence = sentence;
-      getWord();
       page = "break-page";
       clearInterval(interval);
     } else {
       endExpected = sentence;
       page = "end-page";
       sentence = "";
-      getWord();
     }
   }
 
@@ -104,7 +102,7 @@
   <div class="play-area">
     <p class="game-desc">Enter the words you remember</p>
     <form on:submit={checkInput} class="answer-form sentence-display-page">
-      <span class="input-tag-container">
+      <span class="input-tag-container normal-tag-color">
         <input
           class="input-field"
           autofocus="autofocus"
@@ -119,31 +117,62 @@
     </span>
   </div>
 {:else if page == "end-page"}
-  <div class="end-screen">
-    <form on:submit={resetGame}>
-      <h1 style="color: red;">Your Answer: {input}</h1>
+  <div class="play-area">
+    <p class="answer-display">
+      <span class="wrong-answer-img" /> Incorrect Answer
+    </p>
+    <form
+      on:submit={startGame}
+      class="wrong-answer answer-form sentence-display-page"
+    >
+      <!-- <h1 style="color: red;">Your Answer: {input}</h1>
 
       <h1>Expected Answer: {endExpected}</h1>
 
-      <h1>Current Level: {numLength}</h1>
-
-      <button autofocus class="button" on:click={resetGame}
-        >click here to play again</button
-      >
+      <h1>Current Level: {numLength}</h1> -->
+      <span class="input-tag-red input-tag-container">
+        <span class="display-solution">{input}</span>
+      </span>
     </form>
+    <span class="score-display">
+      Your Score: {numLength}
+
+      <span class="submit-span">
+        <button class="button submit-btn" on:click={startGame}>Restart</button>
+        <button class="submit-btn all-game-btn">All Games</button>
+      </span>
+    </span>
   </div>
 {:else if page == "break-page"}
-  <form class="break-screen" on:submit={setPlayScreen}>
+  <!-- <form class="break-screen">
     <h1>Your Answer: {input}</h1>
     <div class="user-num" />
     <h1 id="expected">Expected Answer: {prevSentence}</h1>
     <div class="actual-num" />
     <h1>Current Level: {numLength}</h1>
     <div class="level" />
-    <button autofocus class="button" type="submit" on:click={setPlayScreen}
-      >Next</button
+    <button class="button" type="submit" on:click={startGame}>Next</button>
+  </form> -->
+  <div class="play-area">
+    <p class="answer-display">
+      <span class="correct-answer-img" /> Correct Answer
+    </p>
+    <form
+      on:submit={startGame}
+      class="correct-answer answer-form sentence-display-page"
     >
-  </form>
+      <span class="input-tag-green input-tag-container">
+        <span class="display-solution">{input}</span>
+      </span>
+    </form>
+    <span class="score-display">
+      Your Score: {numLength}
+
+      <span class="submit-span">
+        <button class="button submit-btn" on:click={startGame}>Next</button>
+      </span>
+    </span>
+  </div>
 {/if}
 
 <style>
@@ -213,6 +242,27 @@
   input:focus {
     outline: none;
   }
+  .display-solution {
+    font-size: 1.05rem;
+    border: none;
+    height: 1.5rem;
+    font-size: 1.05rem;
+    width: 100%;
+    max-width: 392px;
+    padding-left: 0.4rem;
+    background-color: transparent;
+    padding-bottom: 0.4rem;
+    color: var(--text-color);
+  }
+  .input-tag-red {
+    background-color: rgba(255, 65, 65, 1);
+  }
+  .input-tag-green {
+    background-color: rgba(130, 205, 71, 1);
+  }
+  .normal-tag-color {
+    background: rgba(65, 170, 245, 1);
+  }
   .input-tag-container {
     max-width: 20rem;
     width: 100%;
@@ -221,6 +271,57 @@
     display: flex;
     align-items: flex-start;
     flex-direction: column-reverse;
-    background: rgba(65, 170, 245, 1);
+  }
+  .wrong-answer {
+    border: 2px solid rgba(255, 65, 65, 1);
+  }
+  .correct-answer {
+    border: 2px solid rgba(130, 205, 71, 1);
+  }
+  .answer-display {
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    gap: 0.5rem;
+    justify-content: center;
+  }
+  .correct-answer-img {
+    width: 35px;
+    height: 35px;
+    background: url(../../correct.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  .wrong-answer-img {
+    width: 35px;
+    height: 35px;
+    background: url(../../wrong.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  .score-display {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    border: 1px solid red;
+    align-items: center;
+    flex-direction: column;
+  }
+  .score-display >span:last-child {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    width: 100%;
+    align-items: center;
+  }
+  .submit-span{
+    display: flex;
+    justify-content: center;
+    border: 1px solid red;
+    align-items: center;
+  }
+  .all-game-btn{
+    background-color: var(--bg-color);
+    border: 1px solid var(--text-color);
   }
 </style>
