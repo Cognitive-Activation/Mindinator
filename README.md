@@ -1,38 +1,34 @@
-# create-svelte
+# Mindinator
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+Mindinator is a mental fitness website aimed at relaxing and stimulating the brain to achieve optimal brain activity and maximum efficiency in all of your work.
 
-## Creating a project
+## Setting up the project
 
-If you're seeing this, you've probably already done this step. Congrats!
+If you have developed a game, we'd love to see it and add your contribution!
+Here's a guide to help you get started with it
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+Fork this project.
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Navigate to the directory where you want to create this project.
 
 ```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
+git clone https://github.com/<your-github-username>/cognitive-stimulation-with-svelte.git
+cd cognitive-stimulation-with-svelte
+npm install
 npm run dev -- --open
 ```
 
-## Building
+After this, a new browser window will open with the mindinator.com website
 
-To create a production version of your app:
+Now, go to the routes/games directory and add a directory with your game's name
+In that directory, make a +page.svelte file which will contain your svelte code. Make sure you test it by going to the $localhosturl/games/<your-game>
+
+Once done, you can push it to your fork using
 
 ```bash
-npm run build
+git add src/routes/<your-game-name>
+git commit -m "<describe-your-game!>"
+git push -u origin main
 ```
 
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+Then, create a pull request! We will review your game and get back to you.
