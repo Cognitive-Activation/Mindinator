@@ -72,7 +72,7 @@
 
 <style>
   .logo {
-    background: url("/brain.svg");
+    background: url("/logo.svg");
     display: flex;
     position: relative;
     width: 2rem;
@@ -129,7 +129,7 @@
     gap: 0.1rem;
   }
   .menu-bars > span {
-    background-color: black;
+    background-color: var(--text-color);
   }
   .menu-bars > span:first-child,
   .menu-bars > span:last-child {

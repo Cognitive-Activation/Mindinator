@@ -1,6 +1,6 @@
 <script>
   // import Login from "../components/Login.svelte";
-import SEO from "../components/SEO.svelte";
+  import SEO from "../components/SEO.svelte";
   const words = ["Healthy Mind", "Active Brain", "Boosted Cognition"];
   let dynamic = "Healthy Mind";
   let currIndex = 0;
@@ -82,7 +82,7 @@ import SEO from "../components/SEO.svelte";
         fill="none"
         viewBox="0 0 24 24"
         stroke-width="1.5"
-        stroke={darkmode ? "white" : "black"}
+        stroke=var(--text-color)
         class="w-6 h-6"
         >
         <path
