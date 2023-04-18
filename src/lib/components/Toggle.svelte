@@ -3,7 +3,6 @@
 
     function toggleMode() {
         window.document.body.classList.toggle("light");
-        console.log(darkMode)
     }
 
     let darkMode = true;
@@ -17,7 +16,12 @@
 </script>
 
 <label class="toggle-switch">
-    <input type="checkbox" bind:checked={darkMode} on:change={toggleMode} class="{darkMode? 'input-dark' : 'input-light'}"/>
+    <input
+        type="checkbox"
+        bind:checked={darkMode}
+        on:change={toggleMode}
+        class={darkMode ? "input-dark" : "input-light"}
+    />
     <span class="slider round" />
 </label>
 
@@ -62,7 +66,11 @@
         left: 0;
         right: 0;
         bottom: 0;
+        background-image: url("$lib/images/light-mode.svg");
+        background-size: 50%;
+        background-repeat: no-repeat;
         background-color: #ed9de1;
+        background-position: center right;
         -webkit-transition: 0.4s;
         transition: 0.4s;
     }
@@ -79,11 +87,9 @@
         transition: 0.4s;
     }
 
-    /* input:focus + .slider {
-        box-shadow: 0 0 1px #2196f3;
-    } */
-    
     .input-dark + .slider {
+        background-image: url("$lib/images/dark-mode.svg");
+        background-position: center left;
         background-color: #2196f3;
     }
 

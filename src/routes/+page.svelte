@@ -1,6 +1,9 @@
 <script>
-  // import Login from "../components/Login.svelte";
-  import SEO from "../components/SEO.svelte";
+  import SEO from "$lib/components/SEO.svelte";
+  import Brain from "$lib/images/brain.svg"
+  import Homepage1 from "$lib/images/homepage1.png"
+  import Homepage2 from "$lib/images/homepage2.png"
+  import Homepage3 from "$lib/images/homepage3.png"
   const words = ["Healthy Mind", "Active Brain", "Boosted Cognition"];
   let dynamic = "Healthy Mind";
   let currIndex = 0;
@@ -71,28 +74,28 @@
 
         <span class="img-container">
           <span class="blur-span" />
-          <img src="/brain.svg" alt="brainimg" class="image0"/>
+          <img src="{Brain}" alt="brainimg" class="image0"/>
         </span>
       </span>
 
       <a href="#section4" on:click={handleAnchorClick} class="downarrow-span">
-      <span class="downarrow">
-        <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke-width="1.5"
-        stroke=var(--text-color)
-        class="w-6 h-6"
-        >
-        <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        d="M19.5 8.25l-7.5 7.5-7.5-7.5"
-        />
-      </svg>
-    </span>
-  </a>
+        <span class="downarrow">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="var(--text-color)"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+            />
+          </svg>
+        </span>
+      </a>
     </div>
   </section>
 
@@ -100,7 +103,7 @@
     <div>
       <span class="img-container image1">
         <!-- <span class="blur-span" /> -->
-        <img src="./homepage1.png" alt="brainimg" />
+        <img src="{Homepage1}" alt="brainimg" />
       </span>
 
       <span class="home-page-content column">
@@ -138,7 +141,7 @@
 
       <span class="img-container">
         <!-- <span class="blur-span" /> -->
-        <img src="./homepage2.png" alt="brainimg" />
+        <img src="{Homepage2}" alt="brainimg" />
       </span>
     </div>
   </section>
@@ -147,7 +150,7 @@
     <div>
       <span class="img-container">
         <!-- <span class="blur-span" /> -->
-        <img src="./homepage3.png" alt="brainimg" />
+        <img src="{Homepage3}" alt="brainimg" />
       </span>
 
       <span class="home-page-content column">
@@ -166,10 +169,9 @@
     </div>
   </section>
 </div>
-<!-- <Login /> -->
 
 <style>
-  .section > div{
+  .section > div {
     height: 89vh;
     display: flex;
     width: 100%;
@@ -214,10 +216,10 @@
     z-index: 5;
     width: 80%;
   }
-  .image1 > img{
+  .image1 > img {
     width: 65%;
   }
-  .image0{
+  .image0 {
     width: 60%;
     padding: 2rem;
   }
@@ -273,22 +275,22 @@
   .desc {
     display: flex;
     flex-direction: column;
-    font-size: 1rem;
     text-align: start;
     gap: 0.4rem;
     font-size: 1.3rem;
-    overflow: hidden;
   }
+  
   .dynamic-txt {
     color: #f8406e;
     position: relative;
+    height: 1.3rem;
   }
   @font-face {
     font-family: "RedHat";
     font-weight: 400;
     padding: 0%;
     margin: 0%;
-    src: url("fonts/RedHatDisplay-VariableFont_wght.ttf");
+    src: url("$lib/RedHatDisplay-VariableFont_wght.ttf");
   }
   .home-page-content {
     max-width: 650px;
@@ -354,11 +356,15 @@
       flex-direction: column;
       display: flex;
     }
+
+    .desc > * {
+      text-align: center;
+    }
     .first-page-container {
       display: flex;
       flex-direction: column-reverse;
     }
-    .section div{
+    .section div {
       flex-direction: column;
       justify-content: center;
       gap: 3rem;
@@ -366,7 +372,7 @@
     .description > p {
       text-align: center;
     }
-    .section3 div{
+    .section3 div {
       flex-direction: column-reverse;
     }
     .home-page-content {

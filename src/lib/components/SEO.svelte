@@ -1,4 +1,5 @@
 <script>
+    import { page } from "$app/stores";
     export let title = undefined;
     export let description = undefined;
 </script>

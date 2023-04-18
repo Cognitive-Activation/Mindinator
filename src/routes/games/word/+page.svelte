@@ -1,11 +1,11 @@
 <script>
-    import { fly } from "svelte/transition";
-  import SEO from "../../../components/SEO.svelte";
+  import { fly } from "svelte/transition";
+  import SEO from "$lib/components/SEO.svelte";
 
   let page = "main-page";
   let score = 0;
   let lives = 3;
-  let previous=null
+  let previous = null;
   let seenSet = new Set();
 
   let displayWord = null;
@@ -14,26 +14,24 @@
 
   function getRandomFromSet() {
     let items = Array.from(seenSet);
-    return items[Math.floor(Math.random() * (items.length))];
+    return items[Math.floor(Math.random() * items.length)];
   }
 
   async function getWord() {
     if (lives == 0) page = "end-page";
-    const x = await fetch(
-      "https://mindinator.com/api/word/getsingleword"
-    );
+    const x = await fetch("https://mindinator.com/api/word/getsingleword");
     const y = await x.json();
     let chance = Math.random() * 100;
 
-    if (!seenSet.size || chance >= 35 || score<3) {
+    if (!seenSet.size || chance >= 35 || score < 3) {
       displayWord = y[0];
-      previous=y[0]
+      previous = y[0];
     } else {
-      displayWord=getRandomFromSet()
-        while(displayWord==previous){
-          displayWord=getRandomFromSet();
-        }
-        previous=displayWord
+      displayWord = getRandomFromSet();
+      while (displayWord == previous) {
+        displayWord = getRandomFromSet();
+      }
+      previous = displayWord;
     }
   }
 
@@ -96,12 +94,14 @@
               </p>
             </div>
 
-            <h1 id="word" in:fly={{delay: 10, duration: 100, y: 50}} >{displayWord}</h1>
+            <h1 id="word" in:fly={{ delay: 10, duration: 100, y: 50 }}>
+              {displayWord}
+            </h1>
 
-    <!-- <div in:fly={{ delay: 100, duration: 2000, x: -5000, }} out:fly={{ delay: 200, duration: 1000,  x: 5000, }}> -->
+            <!-- <div in:fly={{ delay: 100, duration: 2000, x: -5000, }} out:fly={{ delay: 200, duration: 1000,  x: 5000, }}> -->
 
             <div class="submit-options">
-              <button class="btn button" on:click={seenClicked} >Seen</button>
+              <button class="btn button" on:click={seenClicked}>Seen</button>
               <button class="btn button" on:click={newClicked}>New</button>
             </div>
           </span>
@@ -130,7 +130,7 @@
   }
   .gradient-span {
     width: 80%;
-    height:80%;
+    height: 80%;
     display: flex;
     justify-content: center;
     align-items: center;

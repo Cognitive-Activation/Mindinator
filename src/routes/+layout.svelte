@@ -1,12 +1,16 @@
 <script>
-  import Navbar from "../components/Navbar.svelte";
-  import Transition from "../components/Transition.svelte";
   import "../styles/globals.css";
   import "@fontsource/red-hat-display";
+  import NavHandler from "$lib/components/NavHandler.svelte";
+  import SEO from "$lib/components/SEO.svelte";
 </script>
 
-<Navbar />
-<slot>404 not found</slot>
+<SEO />
+
+<NavHandler />
+<slot>
+  <h1>404 not found</h1>
+</slot>
 
 <style>
   :global(body) {

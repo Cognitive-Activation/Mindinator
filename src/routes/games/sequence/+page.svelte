@@ -1,6 +1,6 @@
 <script>
     import { onDestroy } from "svelte";
-    import SEO from "../../../components/SEO.svelte";
+    import SEO from "$lib/components/SEO.svelte";
     let glowing = new Array(9).fill(false);
     let level = 1;
     const glowTime = 700;
