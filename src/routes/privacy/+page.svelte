@@ -1,59 +1,359 @@
-<!DOCTYPE html>
-<head>
-	<title>Privacy Policy - Mindinator</title>
-</head>
-<body>
-	<h1>Privacy Policy for Mindinator</h1>
-	<p>At Mindinator, we understand that the privacy of our users is important. This Privacy Policy outlines the types of personal information we collect, how we use it, and how we protect it.</p>
-
-	<h2>Personal Information We Collect</h2>
-	<p>We may collect the following types of personal information from users:</p>
-	<ul>
-		<li>Name</li>
-		<li>Email address</li>
-		<li>Basic details</li>
-	</ul>
-	<p>Additionally, we may collect other information about users, such as demographic information and browsing history.</p>
-
-	<h2>How We Collect Personal Information</h2>
-	<p>We collect personal information through the following means:</p>
-	<ul>
-		<li>Registration forms</li>
-		<li>Contact forms</li>
-		<li>Cookies</li>
-		<li>Other forms on the website</li>
-	</ul>
-	<p>Some of the personal information we collect may be required for users to access certain features of the website or to receive certain services.</p>
-
-	<h2>How We Use Personal Information</h2>
-	<p>We use personal information for the following purposes:</p>
-	<ul>
-		<li>To personalize the user experience</li>
-		<li>To communicate with users and respond to their inquiries</li>
-		<li>To send marketing and promotional emails</li>
-		<li>To conduct market research and analysis</li>
-		<li>To improve the quality of our services</li>
-	</ul>
-	<p>We may also use personal information for other purposes that are consistent with the original purpose for which the information was collected, or for other purposes authorized by law.</p>
-
-	<h2>Sharing Personal Information with Third Parties</h2>
-	<p>We do not share personal information with any third parties, except in the following circumstances:</p>
-	<ul>
-		<li>If we are required to do so by law or to comply with a legal process</li>
-		<li>If we believe that disclosure is necessary to protect the rights, property, or safety of Mindinator, its users, or others</li>
-		<li>If we are involved in a merger, acquisition, or sale of all or a portion of our assets, in which case personal information may be transferred as part of the transaction</li>
-	</ul>
-	<p>We may also share aggregate, non-personally identifiable information with third parties for research or marketing purposes.</p>
-
-	<h2>Security Measures</h2>
-	<p>We take the security of personal information seriously and have implemented various measures to protect against unauthorized access, use, or disclosure. These measures include:</p>
-	<ul>
-		<li>Using secure servers and encryption technologies</li>
-		<li>Limiting access to personal information to authorized personnel</li>
-		<li>Regularly monitoring and testing our security procedures</li>
-	</ul>
-	<p>Despite our efforts, no security measures are perfect or impenetrable, and we cannot guarantee the security of personal information. Users should take steps to protect their own personal information as well, such as using strong passwords and not sharing sensitive information with others.</p>
-
-	<h2>Access, Editing, and Deletion of Personal Information</h2>
-	<p>Users can access, edit, or delete their personal information by logging into their account</p>
-</body>
+<html lang="en"
+    ><head
+        ><meta
+            content="text/html; charset=UTF-8"
+            http-equiv="content-type"
+        /></head
+    ><body class="c10 doc-content" style=""
+        ><p class="c0">
+            <span class="c4">&nbsp;</span><span class="c1">Mindinator</span
+            ><span class="c2 c1">&nbsp;PRIVACY POLICY</span>
+        </p>
+        <p class="c0 c3"><span class="c2 c1" /></p>
+        <p class="c0">
+            <span class="c1">Mindinator</span><span class="c2 c1"
+                >&nbsp;(the &ldquo;Company&rdquo;) is committed to maintaining
+                robust privacy protections for its users. &nbsp;Our Privacy
+                Policy (&ldquo;Privacy Policy&rdquo;) is designed to help you
+                understand how we collect, use and safeguard the information you
+                provide to us and to assist you in making informed decisions
+                when using our Service. &nbsp;</span
+            >
+        </p>
+        <p class="c0 c3"><span class="c2 c1" /></p>
+        <p class="c0">
+            <span class="c1"
+                >For purposes of this Agreement, &ldquo;Site&rdquo; refers to
+                the Company&rsquo;s website, which can be accessed at
+            </span><span class="c1">https://mindinator.com/</span><span
+                class="c2 c1">.</span
+            >
+        </p>
+        <p class="c0">
+            <span class="c1"
+                >&ldquo;Service&rdquo; refers to the Company&rsquo;s services
+                accessed via the Site, in which users can
+            </span><span class="c2 c1 c17"
+                >play games related to cognitive development.
+            </span>
+        </p>
+        <p class="c0">
+            <span class="c2 c1"
+                >The terms &ldquo;we,&rdquo; &ldquo;us,&rdquo; and
+                &ldquo;our&rdquo; refer to the Company.</span
+            >
+        </p>
+        <p class="c0">
+            <span class="c2 c1"
+                >&ldquo;You&rdquo; refers to you, as a user of our Site or our
+                Service.
+            </span>
+        </p>
+        <p class="c0">
+            <span class="c1"
+                >By accessing our Site or our Service, you accept our Privacy
+                Policy and Terms of Use (found here:
+            </span><span class="c1">https://mindinator.com/terms</span><span
+                class="c2 c1"
+                >), and you consent to our collection, storage, use and
+                disclosure of your Personal Information as described in this
+                Privacy Policy.</span
+            >
+        </p>
+        <p class="c0 c3"><span class="c2 c1" /></p>
+        <p class="c0"><span class="c2 c1">I. INFORMATION WE COLLECT</span></p>
+        <p class="c0 c3"><span class="c2 c1" /></p>
+        <p class="c0">
+            <span class="c4"
+                >We collect &ldquo;Non-Personal Information&rdquo; and
+                &ldquo;Personal Information.&rdquo;
+            </span><span class="c9">Non-Personal Information</span><span
+                class="c4"
+                >&nbsp;includes information that cannot be used to personally
+                identify you, such as anonymous usage data, general demographic
+                information we may collect, referring/exit pages and URLs,
+                platform types, preferences you submit and preferences that are
+                generated based on the data you submit and number of clicks.
+            </span><span class="c9">Personal Information</span><span class="c4"
+                >&nbsp;includes your email, name , and other publicly available
+                data which you submit to us through the registration process at
+                the
+            </span><span class="c4">Site</span><span class="c2 c4 c13">.</span>
+        </p>
+        <p class="c0 c3"><span class="c2 c4 c13" /></p>
+        <p class="c0 c14">
+            <span class="c4">1.</span><span class="c4 c11">&nbsp; &nbsp;</span
+            ><span class="c7 c1">Information collected via Technology</span>
+        </p>
+        <p class="c0 c14 c3"><span class="c7 c1" /></p>
+        <p class="c0">
+            <span class="c1"
+                >To activate the Service you do not need to submit any Personal
+                Information other than your email address and name. To use
+                certain personalized features of the website you may be prompted
+                to enter additional information. To use the normal Services, you
+            </span><span class="c1">may not</span><span class="c2 c1"
+                >&nbsp;need to submit further Personal Information. However, in
+                an effort to improve the quality of the Service, we track
+                information provided to us by your browser or by our software
+                application when you view or use the Service, such as the
+                website you came from (known as the &ldquo;referring
+                URL&rdquo;), the type of browser you use, the device from which
+                you connected to the Service, the time and date of access, and
+                other information that does not personally identify you. We
+                track this information using cookies, or small text files which
+                include an anonymous unique identifier. Cookies are sent to a
+                user&rsquo;s browser from our servers and are stored on the
+                user&rsquo;s computer hard drive. Sending a cookie to a
+                user&rsquo;s browser enables us to collect Non-Personal
+                information about that user and keep a record of the
+                user&rsquo;s preferences when utilizing our services, both on an
+                individual and aggregate basis. For example, the Company may use
+                cookies to collect the following information:</span
+            >
+        </p>
+        <ol class="c18 lst-kix_jbzrkv3n197-0 start" start="1">
+            <li class="c0 c8 li-bullet-0">
+                <span class="c2 c1">Information provided by the user.</span>
+            </li>
+            <li class="c0 c8 li-bullet-0">
+                <span class="c2 c1"
+                    >Other data related to the enhancement of user experience.</span
+                >
+            </li>
+        </ol>
+        <p class="c0 c3"><span class="c2 c1 c12" /></p>
+        <p class="c0">
+            <span class="c2 c1"
+                >The Company may use both persistent and session cookies;
+                persistent cookies remain on your computer after you close your
+                session and until you delete them, while session cookies expire
+                when you close your browser.</span
+            >
+        </p>
+        <p class="c0 c3"><span class="c2 c1" /></p>
+        <p class="c0 c14">
+            <span class="c4">2</span><span class="c4">.</span><span
+                class="c4 c11">&nbsp; &nbsp;</span
+            ><span class="c7 c1"
+                >Information you provide us by registering for an account</span
+            >
+        </p>
+        <p class="c0 c14 c3"><span class="c7 c1" /></p>
+        <p class="c0">
+            <span class="c2 c1"
+                >In addition to the information provided automatically by your
+                browser when you visit the Site, to become a subscriber to the
+                Service you will need to create a personal profile. You can
+                create a profile by registering with the Service and entering
+                your email address, and creating a user name and a password, or
+                by using social sign in methods. By registering, you are
+                authorizing us to collect, store and use your email address in
+                accordance with this Privacy Policy.</span
+            >
+        </p>
+        <p class="c0 c3"><span class="c2 c1" /></p>
+        <p class="c0 c6">
+            <span class="c1">3. </span><span class="c7 c1"
+                >Children&rsquo;s Privacy</span
+            >
+        </p>
+        <p class="c0 c3 c6"><span class="c7 c1" /></p>
+        <p class="c0">
+            <span class="c1"
+                >The Site and the Service are not directed to anyone under the
+                age of 13.
+            </span><span class="c2 c1"
+                >The Site does not knowingly collect or solicit information from
+                anyone under the age of 13, or allow anyone under the age of 13
+                to sign up for the Service. In the event that we learn that we
+                have gathered personal information from anyone under the age of
+                13 without the consent of a parent or guardian, we will delete
+                that information as soon as possible. If you believe we have
+                collected such information, please contact us by submitting a
+                contact form at the company website.
+            </span>
+        </p>
+        <p class="c0 c3"><span class="c2 c1" /></p>
+        <p class="c0">
+            <span class="c2 c1">II. HOW WE USE AND SHARE INFORMATION</span>
+        </p>
+        <p class="c0 c3"><span class="c2 c1" /></p>
+        <p class="c0"><span class="c7 c1">Personal Information:</span></p>
+        <p class="c0 c3"><span class="c7 c1" /></p>
+        <p class="c0">
+            <span class="c2 c1"
+                >Except as otherwise stated in this Privacy Policy, we do not
+                sell, trade, rent or otherwise share for marketing purposes your
+                Personal Information with third parties without your consent. We
+                do share Personal Information with vendors who are performing
+                services for the Company, such as the servers for our email
+                communications who are provided access to the user&#39;s email
+                address for purposes of sending emails from us. Those vendors
+                use your Personal Information only at our direction and in
+                accordance with our Privacy Policy.</span
+            >
+        </p>
+        <p class="c0">
+            <span class="c2 c1"
+                >In general, the Personal Information you provide to us is used
+                to help us communicate with you. For example, we use Personal
+                Information to contact users in response to questions, solicit
+                feedback from users, provide technical support, and inform users
+                about promotional offers.</span
+            >
+        </p>
+        <p class="c0">
+            <span class="c2 c1"
+                >We may share Personal Information with outside parties if we
+                have a good-faith belief that access, use, preservation or
+                disclosure of the information is reasonably necessary to meet
+                any applicable legal process or enforceable governmental
+                request; to enforce applicable Terms of Service, including
+                investigation of potential violations; address fraud, security
+                or technical concerns; or to protect against harm to the rights,
+                property, or safety of our users or the public as required or
+                permitted by law.
+            </span>
+        </p>
+        <p class="c0 c3"><span class="c7 c1" /></p>
+        <p class="c0"><span class="c7 c1">Non-Personal Information:</span></p>
+        <p class="c0 c3"><span class="c1 c7" /></p>
+        <p class="c0">
+            <span class="c2 c1"
+                >In general, we use Non-Personal Information to help us improve
+                the Service and customize the user experience. We also aggregate
+                Non-Personal Information in order to track trends and analyze
+                use patterns on the Site. This Privacy Policy does not limit in
+                any way our use or disclosure of Non-Personal Information and we
+                reserve the right to use and disclose such Non-Personal
+                Information to our partners, advertisers and other third parties
+                at our discretion.</span
+            >
+        </p>
+        <p class="c0">
+            <span class="c2 c1"
+                >In the event we undergo a business transaction such as a
+                merger, acquisition by another company, or sale of all or a
+                portion of our assets, your Personal Information may be among
+                the assets transferred. You acknowledge and consent that such
+                transfers may occur and are permitted by this Privacy Policy,
+                and that any acquirer of our assets may continue to process your
+                Personal Information as set forth in this Privacy Policy. If our
+                information practices change at any time in the future, we will
+                post the policy changes to the Site so that you may opt out of
+                the new information practices. We suggest that you check the
+                Site periodically if you are concerned about how your
+                information is used.</span
+            >
+        </p>
+        <p class="c0 c3"><span class="c2 c1" /></p>
+        <p class="c0">
+            <span class="c2 c1">III. HOW WE PROTECT INFORMATION</span>
+        </p>
+        <p class="c0 c3"><span class="c2 c1" /></p>
+        <p class="c0">
+            <span class="c2 c1"
+                >We implement security measures designed to protect your
+                information from unauthorized access. Your account is protected
+                by your account password and we urge you to take steps to keep
+                your personal information safe by not disclosing your password
+                and by logging out of your account after each use. We further
+                protect your information from potential security breaches by
+                implementing certain technological security measures including
+                encryption, firewalls and secure socket layer technology.
+                However, these measures do not guarantee that your information
+                will not be accessed, disclosed, altered or destroyed by breach
+                of such firewalls and secure server software. By using our
+                Service, you acknowledge that you understand and agree to assume
+                these risks.</span
+            >
+        </p>
+        <p class="c0 c3"><span class="c2 c1" /></p>
+        <p class="c0">
+            <span class="c1"
+                >IV. YOUR RIGHTS REGARDING THE USE OF YOUR PERSONAL
+            </span><span class="c2 c1">INFORMATION</span>
+        </p>
+        <p class="c0 c3"><span class="c2 c1" /></p>
+        <p class="c0">
+            <span class="c1"
+                >You have the right at any time to prevent us from contacting
+                you for marketing purposes. &nbsp;When we send a promotional
+                communication to a user, the user can opt out of further
+                promotional communications by following the unsubscribe
+                instructions provided in each promotional email. You can also
+                indicate that you do not wish to receive marketing
+                communications from us on</span
+            ><span class="c1">&nbsp;the Site</span><span class="c2 c1"
+                >. Please note that notwithstanding the promotional preferences
+                you indicate by either unsubscribing or opting out in the Site,
+                we may continue to send you administrative emails including, for
+                example, periodic updates to our Privacy Policy.</span
+            >
+        </p>
+        <p class="c0 c3"><span class="c2 c1" /></p>
+        <p class="c0"><span class="c2 c1">V. LINKS TO OTHER WEBSITES</span></p>
+        <p class="c0 c3"><span class="c2 c1" /></p>
+        <p class="c0">
+            <span class="c2 c1"
+                >As part of the Service, we may provide links to or
+                compatibility with other websites or applications. However, we
+                are not responsible for the privacy practices employed by those
+                websites or the information or content they contain. This
+                Privacy Policy applies solely to information collected by us
+                through the Site and the Service. Therefore, this Privacy Policy
+                does not apply to your use of a third party website accessed by
+                selecting a link on our Site or via our Service. To the extent
+                that you access or use the Service through or on another website
+                or application, then the privacy policy of that other website or
+                application will apply to your access or use of that site or
+                application. We encourage our users to read the privacy
+                statements of other websites before proceeding to use them.</span
+            >
+        </p>
+        <p class="c0 c3"><span class="c2 c1" /></p>
+        <p class="c0">
+            <span class="c2 c1">VI. CHANGES TO OUR PRIVACY POLICY</span>
+        </p>
+        <p class="c0 c3"><span class="c1 c2" /></p>
+        <p class="c0">
+            <span class="c2 c1"
+                >The Company reserves the right to change this policy and our
+                Terms of Service at any time. &nbsp;We will notify you of
+                significant changes to our Privacy Policy by sending a notice to
+                the primary email address specified in your account or by
+                placing a prominent notice on our site. Significant changes will
+                go into effect 30 days following such notification. Non-material
+                changes or clarifications will take effect immediately. You
+                should periodically check the Site and this privacy page for
+                updates.</span
+            >
+        </p>
+        <p class="c0 c3"><span class="c2 c1" /></p>
+        <p class="c0">
+            <span class="c2 c1"
+                >VII. &nbsp; &nbsp; &nbsp; &nbsp; CONTACT US</span
+            >
+        </p>
+        <p class="c0 c3"><span class="c2 c1" /></p>
+        <p class="c0">
+            <span class="c2 c1"
+                >If you have any questions regarding this Privacy Policy or the
+                practices of this Site, please contact us by submitting the
+                contact form at our website.</span
+            >
+        </p>
+        <p class="c0">
+            <span class="c1"
+                >Last Updated: This Privacy Policy was last updated on
+            </span><span class="c1">16/04/2023</span><span class="c2 c1">.</span
+            >
+        </p>
+        <p class="c0"><span class="c1">&nbsp;</span></p>
+        <div>
+            <p class="c15"><span class="c5">Privacy Policy</span></p>
+            <p class="c3 c16"><span class="c5" /></p>
+        </div></body
+    ></html
+>
