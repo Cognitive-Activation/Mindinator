@@ -290,7 +290,7 @@
     font-weight: 400;
     padding: 0%;
     margin: 0%;
-    src: url("$lib/RedHatDisplay-VariableFont_wght.ttf");
+    src: url("$lib/fonts/RedHatDisplay-VariableFont_wght.ttf");
   }
   .home-page-content {
     max-width: 650px;
