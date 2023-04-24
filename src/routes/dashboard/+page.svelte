@@ -28,7 +28,7 @@
 
     {#if $isWiredIn}
         <form
-            action="http://localhost:3000/api/auth/logout"
+            action="https://mindinator.com/api/auth/logout"
             method="POST"
             on:submit|preventDefault={handleLogout}
             use:enhance

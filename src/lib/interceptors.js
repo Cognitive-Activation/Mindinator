@@ -1,6 +1,6 @@
 import axios from "axios";
 
-axios.defaults.baseURL = "http://localhost:3000/api/"
+axios.defaults.baseURL = "https://mindinator.com/api/"
 
 axios.interceptors.response.use(resp => resp, async error => {
     if (error.response.status === 401) {

@@ -85,7 +85,7 @@
         <div class="log-in-body">
             <form
                 method="POST"
-                action="http://localhost:3000/api/auth/"
+                action="https://mindinator.com/api/auth/"
                 on:submit|preventDefault={handleSubmit}
                 use:enhance
             >
@@ -123,7 +123,7 @@
                 <button
                     class="sign-in-with"
                     on:click={() =>
-                        goto("http://localhost:3000/api/auth/google")}
+                        goto("https://mindinator.com/api/auth/google")}
                 >
                     <img src="./google.svg" alt="" />
                     <span class="text">{stateOfModal} with Google</span>
