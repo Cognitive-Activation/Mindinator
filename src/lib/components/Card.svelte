@@ -1,6 +1,5 @@
 <script>
     import gamesData from "$lib/GameData.js";
-    console.log(gamesData);
 </script>
 
 {#each gamesData as data}

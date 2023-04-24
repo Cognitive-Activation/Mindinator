@@ -4,19 +4,12 @@
   import Homepage1 from "$lib/images/homepage1.png";
   import Homepage2 from "$lib/images/homepage2.png";
   import Homepage3 from "$lib/images/homepage3.png";
-  import { onMount } from "svelte";
-  import axios from "axios";
+
   const words = ["Healthy Mind", "Active Brain", "Boosted Cognition"];
   let dynamic = "Healthy Mind";
   let currIndex = 0;
   let dirRev = false;
   let animationInterval;
-  let darkmode = true;
-
-  onMount(async () => {
-    const { myData } = await axios.get("http://localhost:3000/api/auth/user");
-    console.log(myData.email);
-  });
 
   function handleAnchorClick(event) {
     event.preventDefault();

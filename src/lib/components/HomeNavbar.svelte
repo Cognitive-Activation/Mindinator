@@ -1,18 +1,15 @@
 <script>
     import { fly } from "svelte/transition";
     import Toggle from "./Toggle.svelte";
-    import Login from "./Login.svelte";
-    import Cancel from "$lib/images/cancel.svg"
+    import Cancel from "$lib/images/cancel.svg";
+    import { isModalOpen } from "$lib/UtilityStore.js";
+    import { user, isWiredIn } from "$lib/UserStore";
+    import { goto } from "$app/navigation";
+
     let menuSelected = false;
-    let isOpenModal = false;
 
     function openModal() {
-        isOpenModal = true;
-        window.document.body.classList.toggle("modal-open");
-    }
-
-    function closeModal() {
-        isOpenModal = false;
+        $isModalOpen = true;
     }
 </script>
 
@@ -24,20 +21,24 @@
         </span>
     </span>
 
-    <span class="menu-options row  gap1">
+    <span class="menu-options row gap1">
         <Toggle />
 
-        <p>Dashboard</p>
+        <p on:click={() => goto("/dashboard")}>Dashboard</p>
 
         <p>Blog</p>
 
         <p>Riddles</p>
 
-        <p style="color: #41aaf5;">Sign in</p>
+        {#if !$isWiredIn}
+            <button on:click={openModal} class="submit-btn">Sign In</button>
+        {:else}
+            <p>{$user.name}</p>
+        {/if}
     </span>
     {#if menuSelected == true}
         <span
-            class="mobile-menu-options menu-options row  gap1"
+            class="mobile-menu-options menu-options row gap1"
             in:fly={{ delay: 0, duration: 500, x: 50 }}
             out:fly={{ delay: 0, duration: 500, x: 50 }}
         >
@@ -60,7 +61,7 @@
                         class="cancel-btn"
                         on:click={() => (menuSelected = false)}
                     >
-                        <img src="{Cancel}" alt="cancel" />
+                        <img src={Cancel} alt="cancel" />
                     </span>
                 </span>
 
@@ -70,12 +71,6 @@
                     <p>Blog</p>
 
                     <p>Riddles</p>
-
-                    <button on:click={openModal}>
-                        <h1>Open Modal</h1>
-                    </button>
-
-                    <Login {isOpenModal} on:closeModal={closeModal} />
 
                     <!-- <p style="color: #41aaf5;">Sign in</p> -->
                 </span>
@@ -95,6 +90,48 @@
 </span>
 
 <style>
+    /* Google sign in button CSS */
+    .google-button {
+        all: unset;
+        margin: auto;
+        width: fit-content;
+        height: 52px;
+        background-color: #4285f4;
+        border-radius: 2px;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
+        transition: all 300ms ease-in-out;
+        display: flex;
+        justify-content: space-between;
+    }
+    .google-button .google-icon-wrapper {
+        margin: 1px;
+        width: 50px;
+        height: 50px;
+        border-radius: 1px;
+        background-color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+    .google-button .google-button-text {
+        display: flex;
+        color: #ffffff;
+        font-size: 16px;
+        letter-spacing: 0.2px;
+        font-family: "Roboto";
+        margin-left: 1em;
+        margin-right: 1em;
+        align-items: center;
+    }
+    .google-button:hover {
+        box-shadow: 0 0 3px 3px rgba(66, 133, 244, 0.3);
+        cursor: pointer;
+    }
+    .google-button:active {
+        background: #3367d6;
+    }
+
+    /* End of Google Sign in button CSS */
     .logo {
         background: url("/logo.svg");
         display: flex;
