@@ -41,9 +41,11 @@
         color: var(--text-color);
     }
 
-    :global(*) {
-        transition: background-color 0.3s;
-        transition: color 0.3s;
+    :global(body) {
+        transition: background-color 1s;
+        transition: color 1s;
+        -webkit-transition: background-color 1s;
+        -webkit-transition: color 1s;
     }
 
     .toggle-switch {

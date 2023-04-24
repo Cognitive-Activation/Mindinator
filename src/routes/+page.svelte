@@ -1,15 +1,15 @@
 <script>
   import SEO from "$lib/components/SEO.svelte";
-  import Brain from "$lib/images/brain.svg"
-  import Homepage1 from "$lib/images/homepage1.png"
-  import Homepage2 from "$lib/images/homepage2.png"
-  import Homepage3 from "$lib/images/homepage3.png"
+  import Brain from "$lib/images/brain.svg";
+  import Homepage1 from "$lib/images/homepage1.png";
+  import Homepage2 from "$lib/images/homepage2.png";
+  import Homepage3 from "$lib/images/homepage3.png";
+
   const words = ["Healthy Mind", "Active Brain", "Boosted Cognition"];
   let dynamic = "Healthy Mind";
   let currIndex = 0;
   let dirRev = false;
   let animationInterval;
-  let darkmode = true;
 
   function handleAnchorClick(event) {
     event.preventDefault();
@@ -56,7 +56,7 @@
 />
 
 <div class="home-container">
-  <section class="section section1 ">
+  <section class="section section1">
     <div class="column">
       <span class="row first-page-container" style="width: 100%;">
         <span class="home-page-content column">
@@ -74,7 +74,7 @@
 
         <span class="img-container">
           <span class="blur-span" />
-          <img src="{Brain}" alt="brainimg" class="image0"/>
+          <img src={Brain} alt="brainimg" class="image0" />
         </span>
       </span>
 
@@ -103,7 +103,7 @@
     <div>
       <span class="img-container image1">
         <!-- <span class="blur-span" /> -->
-        <img src="{Homepage1}" alt="brainimg" />
+        <img src={Homepage1} alt="brainimg" />
       </span>
 
       <span class="home-page-content column">
@@ -141,7 +141,7 @@
 
       <span class="img-container">
         <!-- <span class="blur-span" /> -->
-        <img src="{Homepage2}" alt="brainimg" />
+        <img src={Homepage2} alt="brainimg" />
       </span>
     </div>
   </section>
@@ -150,7 +150,7 @@
     <div>
       <span class="img-container">
         <!-- <span class="blur-span" /> -->
-        <img src="{Homepage3}" alt="brainimg" />
+        <img src={Homepage3} alt="brainimg" />
       </span>
 
       <span class="home-page-content column">
@@ -279,7 +279,7 @@
     gap: 0.4rem;
     font-size: 1.3rem;
   }
-  
+
   .dynamic-txt {
     color: #f8406e;
     position: relative;

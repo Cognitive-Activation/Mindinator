@@ -136,9 +136,9 @@
               >We operate <bdt class="block-component" />the website
               <bdt class="question">
                 <a
-                  href="https://Mindinatorinator.com"
+                  href="https://mindinator.com"
                   target="_blank"
-                  data-custom-class="link">https://Mindinatorinator.com</a
+                  data-custom-class="link">https://mindinator.com</a
                 >
               </bdt>
               (the <bdt class="block-component" />' <strong>Site</strong>'
@@ -3149,9 +3149,9 @@
                     data-type="question"
                   >
                     <a
-                      href="https://Mindinatorinator.com/privacy"
+                      href="https://mindinator.com/privacy"
                       target="_blank"
-                      data-custom-class="link">https://Mindinatorinator.com/privacy</a
+                      data-custom-class="link">https://mindinator.com/privacy</a
                     >
                   </bdt>
                 </strong>. By using the Services, you agree to be bound by our Privacy
