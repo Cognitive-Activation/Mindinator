@@ -1,227 +1,349 @@
 <script>
-  import { tweened } from "svelte/motion";
-  import { cubicOut } from "svelte/easing";
+  import { goto } from "$app/navigation";
   let page = "main-page";
-  let numLength = 1;
-  let displayNum = null;
-
+  let numLength = 0;
   let timeLimit = 2;
-  let progress = 100;
-
+  let sentence = "";
+  let prevSentence = "";
+  let endExpected = "";
   let input = null;
+  let interval;
+  let time = 0;
+  let timeOver = false;
 
-  function playGame() {
+  function resetGame() {
+    prevSentence = "";
     timeLimit = 2;
-    input = 0;
-    numLength = 1;
-    setPlayScreen();
+    input = null;
+    numLength = 0;
+    startGame();
+  }
+
+  function startGame() {
+    page = "play-page";
+    getWord();
   }
 
   function generate(n) {
-    var add = 1,
+    let add = 1,
       max = 12 - add;
     if (n > max) {
       return generate(max) + generate(n - max);
     }
     max = Math.pow(10, n + add);
-    var min = max / 10; // Math.pow(10, n) basically
-    var number = Math.floor(Math.random() * (max - min + 1)) + min;
+    let min = max / 10; // Math.pow(10, n) basically
+    let number = Math.floor(Math.random() * (max - min + 1)) + min;
     return ("" + number).substring(add);
   }
 
-  function increaseProgress() {
-    if (progress === 0) {
-      // pp = 100;
-      page = "input-page";
-    }
-    progress--;
-  }
-
-  setInterval(increaseProgress, (timeLimit * 1000) / 100);
-
-  function setPlayScreen() {
-    page = "play-page";
-    progress = 100;
-    displayNum = generate(numLength);
+  async function getWord() {
+    const y = generate(numLength + 1);
+    sentence = y;
+    startTime();
   }
 
   function checkInput() {
-    if (input == displayNum) {
+    if (
+      input.toLowerCase().trim().replaceAll(" ", "") ==
+      sentence.trim().toLowerCase().replaceAll(" ", "")
+    ) {
       numLength++;
-      timeLimit++;
+      timeLimit += 0.5;
+      prevSentence = sentence;
       page = "break-page";
+      clearInterval(interval);
     } else {
+      endExpected = sentence;
       page = "end-page";
+      sentence = "";
     }
+  }
+
+  function startTime() {
+    const beginning = new Date();
+    const beginningTime = beginning.getTime();
+    const interval = setInterval(() => {
+      const current = new Date();
+      const currentTime = current.getTime();
+      time = currentTime - beginningTime;
+
+      if (time > 5000) {
+        timeOver = true;
+        time = 5000;
+        clearInterval(interval);
+        page = "input-page";
+      }
+    }, 10);
   }
 </script>
 
-{#if page == "main-page"}
-  <div class="main-menu" on:click={playGame}>
-    <div class="container">
-      <h1>Number memory</h1>
-      <p>Average person can remember 7 numbers at once, can you?</p>
-      <p>click to play!</p>
+<span class="page-container">
+  {#if page == "main-page"}
+    <div class="main-menu" on:click={startGame}>
+      <div class="container">
+        <p class="title">Number Memory</p>
+        <p class="game-desc">Remember the numbers that show up on the screen</p>
+        <p>Click to play !</p>
+      </div>
     </div>
-  </div>
-{:else if page == "play-page"}
-  <div class="play-area">
-    <h1>{displayNum}</h1>
+  {:else if page == "play-page"}
+    <div class="play-area">
+      <p class="title">Number Memory</p>
 
-    <div class="progress-bar">
-      <div class="progress" style="width: {progress}%;" />
+      <span class="timer">
+        <p class="timer-p-tag">
+          {(5 - time / 1000).toFixed(2)}
+        </p>
+      </span>
+      <span class="sentence-display-page sentence">{sentence}</span>
     </div>
-  </div>
-{:else if page == "input-page"}
-  <div class="play-area">
-    <!-- svelte-ignore a11y-autofocus -->
-    <form on:submit={checkInput}>
-      <input
-        type="number"
-        class="input-field"
-        autofocus="autofocus"
-        bind:value={input}
-        onfocus="this.value=''"
-      />
-      <button class="button" type="submit" on:click={checkInput}>submit</button>
-    </form>
-  </div>
-{:else if page == "end-page"}
-  <div class="end-screen">
-    <h1 style="color: red;">Your Answer: {input}</h1>
+  {:else if page == "input-page"}
+    <div class="play-area">
+      <p class="game-desc">Enter the number you remember</p>
+      <form on:submit={checkInput} class="answer-form sentence-display-page">
+        <span class="input-tag-container normal-tag-color">
+          <input
+            class="input-field"
+            autofocus="autofocus"
+            bind:value={input}
+            placeholder="Type here"
+            onfocus="this.value=''"
+          />
+        </span>
+      </form>
+      <span class="submit-span">
+        <button class="submit-btn" on:click={checkInput}>submit</button>
+      </span>
+    </div>
+  {:else if page == "end-page"}
+    <div class="play-area">
+      <p class="answer-display">
+        <span class="wrong-answer-img" /> Incorrect Answer
+      </p>
+      <form
+        on:submit={startGame}
+        class="wrong-answer answer-form sentence-display-page"
+      >
+        <span class="input-tag-red input-tag-container">
+          <span class="display-solution">{input}</span>
+        </span>
+      </form>
+      <span class="score-display">
+        <p class="game-desc">
+          Your Score: {numLength}
+        </p>
 
-    <h1>Expected Answer: {displayNum}</h1>
+        <span class="submit-span">
+          <button
+            class="button submit-btn"
+            autofocus
+            type="submit"
+            on:click={resetGame}>Restart</button
+          >
+          <button
+            class="submit-btn all-game-btn"
+            on:click={() => goto("/games")}>All Games</button
+          >
+        </span>
+      </span>
+    </div>
+  {:else if page == "break-page"}
+    <div class="play-area">
+      <p class="answer-display">
+        <span class="correct-answer-img" /> Correct Answer
+      </p>
+      <form
+        on:submit={startGame}
+        class="correct-answer answer-form sentence-display-page"
+      >
+        <span class="input-tag-green input-tag-container">
+          <span class="display-solution">{input}</span>
+        </span>
+      </form>
+      <span class="score-display">
+        <p class="game-desc">
+          Your Score: {numLength}
+        </p>
 
-    <h1>Current Level: {numLength}</h1>
-
-    <p on:click={playGame}>click here to play again</p>
-  </div>
-{:else if page == "break-page"}
-  <div class="break-screen">
-    <form on:submit={setPlayScreen}>
-      <h1>Your Answer: {input}</h1>
-      <div class="user-num" />
-      <h1>Expected Answer: {displayNum}</h1>
-      <div class="actual-num" />
-      <h1>Current Level: {numLength}</h1>
-      <div class="level" />
-      <button class="button" autofocus on:click={setPlayScreen}>Next</button>
-    </form>
-  </div>
-{/if}
+        <span class="submit-span">
+          <button
+            class="button submit-btn"
+            type="submit"
+            autofocus
+            on:click={startGame}>Next</button
+          >
+        </span>
+      </span>
+    </div>
+  {/if}
+</span>
 
 <style>
-  * {
-    box-sizing: border-box;
-  }
-
-  .play-area {
-    height: 100vh;
-    width: 100%;
-    background: #0d3b66;
-    display: grid;
-    place-items: center;
-    font-size: 32px;
-    font-family: "Roboto", sans-serif;
-    color: #fff;
-    overflow: hidden;
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    /* grid-auto-rows: 100px; */
-  }
-
-  .end-screen,
-  .main-menu {
-    display: grid;
-    position: fixed;
-    height: 100vh;
-    width: 100%;
-    top: 0;
-    left: 0;
-    background: #0d3b66;
-    color: #fff;
-    font-family: "Roboto", sans-serif;
-    text-align: center;
-    place-items: center;
-  }
-
-  .container {
-    padding: 0 32px;
-  }
-
-  .main-menu h1 {
-    font-size: 70px;
-    margin: 8px 0;
-  }
-
-  .container p {
-    font-size: 20px;
-    line-height: 2;
-    font-weight: 800;
-    margin: 0;
-  }
-
-  .end-screen h1 {
-    font-size: 30px;
-  }
-
-  .button {
-    background-color: #4caf50;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    cursor: pointer;
-  }
-
-  .button:hover {
-    background-color: #188d20;
-  }
-
-  .progress-bar {
-    width: 10%;
-    height: 10px;
-    background-color: white;
-    border-radius: 5px;
-    overflow: hidden;
-  }
-
-  .progress {
-    width: 100%;
-    height: 100%;
-    background-color: tomato;
-  }
-  .break-screen,
-  .user-num,
-  .actual-num,
-  .level {
+  .page-container {
     display: flex;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    padding: 0rem 1rem;
+  }
+  .main-menu {
+    display: flex;
+    min-height: 100vh;
+    padding: 1rem;
+    justify-content: center;
+  }
+  .container {
+    width: 100%;
+    height: 100vh;
+    justify-content: space-around;
+    display: flex;
+    align-items: center;
     flex-direction: column;
+  }
+  .game-desc {
+    font-size: 1.5rem;
+    font-weight: 800;
+  }
+  .sentence {
+    -webkit-user-select: none;
+    user-select: none;
+    -ms-user-select: none;
+  }
+  .sentence-display-page {
+    width: 100%;
+    max-width: 570px;
+    height: 100%;
+    max-height: 404px;
+    display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 25px;
+    color: var(--bg-color);
+    background: var(--text-color);
   }
-  .input-field {
-    width: 30%;
-    border: 0;
-    border-bottom: 2px solid gray;
-    outline: 0;
-    font-size: 4rem;
-    color: white;
-    padding: 7px 0;
-    background: transparent;
-    text-align: center;
+  .play-area {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
+    height: 100vh;
   }
-
-  input[type="number"]::-webkit-inner-spin-button,
-  input[type="number"]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    margin: 0;
+  .title {
+    font-weight: bolder;
+    font-size: 2.5rem;
+  }
+  .timer-p-tag {
+    font-size: 1.5rem;
+    font-weight: 800;
+  }
+  .sentence {
+    font-size: 1.5rem;
+    font-weight: 800;
+  }
+  .answer-form {
+    background-color: rgba(58, 58, 58, 1);
+  }
+  input {
+    border: none;
+    height: 1.5rem;
+    font-size: 1.05rem;
+    width: 100%;
+    max-width: 392px;
+    padding-left: 0.4rem;
+    background-color: transparent;
+    padding-bottom: 0.4rem;
+    color: var(--text-color);
+  }
+  input:focus {
+    outline: none;
+  }
+  .display-solution {
+    font-size: 1.05rem;
+    border: none;
+    height: 1.5rem;
+    font-size: 1.05rem;
+    width: 100%;
+    max-width: 392px;
+    padding-left: 0.4rem;
+    background-color: transparent;
+    padding-bottom: 0.4rem;
+    color: var(--text-color);
+  }
+  .input-tag-red {
+    background-color: rgba(255, 65, 65, 1);
+  }
+  .input-tag-green {
+    background-color: rgba(130, 205, 71, 1);
+  }
+  .normal-tag-color {
+    background: rgba(65, 170, 245, 1);
+  }
+  form {
+    padding: 1rem;
+  }
+  .input-tag-container {
+    max-width: 20rem;
+    width: 100%;
+    height: 0.25rem;
+    transition: 0.2s all;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column-reverse;
+  }
+  .wrong-answer {
+    border: 2px solid rgba(255, 65, 65, 1);
+  }
+  .correct-answer {
+    border: 2px solid rgba(130, 205, 71, 1);
+  }
+  .answer-display {
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    gap: 0.5rem;
+    justify-content: center;
+  }
+  .correct-answer-img {
+    width: 35px;
+    height: 35px;
+    background: url($lib/images/correct.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  .wrong-answer-img {
+    width: 35px;
+    height: 35px;
+    background: url($lib/images/wrong.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  .score-display {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .score-display > span:last-child {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    width: 100%;
+    align-items: center;
+  }
+  .submit-span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: max-content;
+  }
+  .submit-btn {
+    margin: auto;
+  }
+  .all-game-btn {
+    background-color: var(--bg-color);
+    border: 1px solid var(--text-color);
   }
 </style>

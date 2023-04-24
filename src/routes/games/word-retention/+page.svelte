@@ -1,15 +1,13 @@
 <script>
+  import { goto } from "$app/navigation";
   let page = "main-page";
-  let numLength = 1;
+  let numLength = 0;
   let timeLimit = 2;
-  let progress = 100;
-
   let sentence = "";
   let prevSentence = "";
   let endExpected = "";
   let input = null;
   let interval;
-
   let time = 0;
   let timeOver = false;
 
@@ -17,8 +15,8 @@
     prevSentence = "";
     timeLimit = 2;
     input = null;
-    numLength = 1;
-    setPlayScreen();
+    numLength = 0;
+    startGame();
   }
 
   function startGame() {
@@ -27,28 +25,19 @@
   }
 
   async function getWord() {
-    const x = await fetch("https://mindinator.com/api/word/getsingleword");
+    const x = await fetch(
+      `https://mindinator.com/api/sentence/randomsentence/${numLength + 1}`
+    );
     const y = await x.json();
-    sentence += y[0] + " ";
+    sentence = y[0] + " ";
     startTime();
   }
 
-  function increaseProgress() {
-    if (progress === 0) {
-      // pp = 100;
-      page = "input-page";
-    }
-    progress--;
-  }
-
-  function setPlayScreen() {
-    page = "play-page";
-    progress = 100;
-    interval = setInterval(increaseProgress, (timeLimit * 1000) / 100);
-  }
-
   function checkInput() {
-    if (input == sentence.trim()) {
+    if (
+      input.toLowerCase().trim().replaceAll(" ", "") ==
+      sentence.trim().toLowerCase().replaceAll(" ", "")
+    ) {
       numLength++;
       timeLimit += 0.5;
       prevSentence = sentence;
@@ -79,108 +68,126 @@
   }
 </script>
 
-{#if page == "main-page"}
-  <div class="main-menu" on:click={startGame}>
-    <div class="container">
-      <p class="title">Word Retention</p>
-      <p class="game-desc">Remember the words and that show up on the screen</p>
-      <p>Click to play !</p>
+<span class="page-container">
+  {#if page == "main-page"}
+    <div class="main-menu" on:click={startGame}>
+      <div class="container">
+        <p class="title">Word Retention</p>
+        <p class="game-desc">Remember the words that show up on the screen</p>
+        <p>Click to play !</p>
+      </div>
     </div>
-  </div>
-{:else if page == "play-page"}
-  <div class="play-area">
-    <p class="title">Word Retention</p>
+  {:else if page == "play-page"}
+    <div class="play-area">
+      <p class="title">Word Retention</p>
 
-    <span class="timer">
-      <p class="timer-p-tag">
-        {(5 - time / 1000).toFixed(2)}
+      <span class="timer">
+        <p class="timer-p-tag">
+          {(5 - time / 1000).toFixed(2)}
+        </p>
+      </span>
+      <span class="sentence-display-page sentence">{sentence}</span>
+    </div>
+  {:else if page == "input-page"}
+    <div class="play-area">
+      <p class="game-desc">Enter the words you remember</p>
+      <form on:submit={checkInput} class="answer-form sentence-display-page">
+        <span class="input-tag-container normal-tag-color">
+          <input
+            class="input-field"
+            autofocus="autofocus"
+            bind:value={input}
+            placeholder="Type here"
+            onfocus="this.value=''"
+          />
+        </span>
+      </form>
+      <span class="submit-span">
+        <button class="submit-btn" on:click={checkInput}>submit</button>
+      </span>
+    </div>
+  {:else if page == "end-page"}
+    <div class="play-area">
+      <p class="answer-display">
+        <span class="wrong-answer-img" /> Incorrect Answer
       </p>
-    </span>
-    <span class="sentence-display-page sentence">{sentence}</span>
-  </div>
-{:else if page == "input-page"}
-  <div class="play-area">
-    <p class="game-desc">Enter the words you remember</p>
-    <form on:submit={checkInput} class="answer-form sentence-display-page">
-      <span class="input-tag-container normal-tag-color">
-        <input
-          class="input-field"
-          autofocus="autofocus"
-          bind:value={input}
-          placeholder="Type here"
-          onfocus="this.value=''"
-        />
-      </span>
-    </form>
-    <span class="submit-span">
-      <button class="submit-btn" on:click={checkInput}>submit</button>
-    </span>
-  </div>
-{:else if page == "end-page"}
-  <div class="play-area">
-    <p class="answer-display">
-      <span class="wrong-answer-img" /> Incorrect Answer
-    </p>
-    <form
-      on:submit={startGame}
-      class="wrong-answer answer-form sentence-display-page"
-    >
-      <!-- <h1 style="color: red;">Your Answer: {input}</h1>
+      <form
+        on:submit={startGame}
+        class="wrong-answer answer-form sentence-display-page"
+      >
+        <span class="input-tag-red input-tag-container">
+          <span class="display-solution">{input}</span>
+        </span>
+      </form>
+      <span class="score-display">
+        <p class="game-desc">
+          Your Score: {numLength}
+        </p>
 
-      <h1>Expected Answer: {endExpected}</h1>
+        <span class="submit-span">
+          <button
+            class="button submit-btn"
+            autofocus
+            type="submit"
+            on:click={resetGame}>Restart</button
+          >
+          <button
+            class="submit-btn all-game-btn"
+            on:click={() => goto("/games")}>All Games</button
+          >
+        </span>
+      </span>
+    </div>
+  {:else if page == "break-page"}
+    <div class="play-area">
+      <p class="answer-display">
+        <span class="correct-answer-img" /> Correct Answer
+      </p>
+      <form
+        on:submit={startGame}
+        class="correct-answer answer-form sentence-display-page"
+      >
+        <span class="input-tag-green input-tag-container">
+          <span class="display-solution">{input}</span>
+        </span>
+      </form>
+      <span class="score-display">
+        <p class="game-desc">
+          Your Score: {numLength}
+        </p>
 
-      <h1>Current Level: {numLength}</h1> -->
-      <span class="input-tag-red input-tag-container">
-        <span class="display-solution">{input}</span>
+        <span class="submit-span">
+          <button
+            class="button submit-btn"
+            type="submit"
+            autofocus
+            on:click={startGame}>Next</button
+          >
+        </span>
       </span>
-    </form>
-    <span class="score-display">
-      Your Score: {numLength}
-
-      <span class="submit-span">
-        <button class="button submit-btn" on:click={startGame}>Restart</button>
-        <button class="submit-btn all-game-btn">All Games</button>
-      </span>
-    </span>
-  </div>
-{:else if page == "break-page"}
-  <!-- <form class="break-screen">
-    <h1>Your Answer: {input}</h1>
-    <div class="user-num" />
-    <h1 id="expected">Expected Answer: {prevSentence}</h1>
-    <div class="actual-num" />
-    <h1>Current Level: {numLength}</h1>
-    <div class="level" />
-    <button class="button" type="submit" on:click={startGame}>Next</button>
-  </form> -->
-  <div class="play-area">
-    <p class="answer-display">
-      <span class="correct-answer-img" /> Correct Answer
-    </p>
-    <form
-      on:submit={startGame}
-      class="correct-answer answer-form sentence-display-page"
-    >
-      <span class="input-tag-green input-tag-container">
-        <span class="display-solution">{input}</span>
-      </span>
-    </form>
-    <span class="score-display">
-      Your Score: {numLength}
-
-      <span class="submit-span">
-        <button class="button submit-btn" on:click={startGame}>Next</button>
-      </span>
-    </span>
-  </div>
-{/if}
+    </div>
+  {/if}
+</span>
 
 <style>
+  .page-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    padding: 0rem 1rem;
+  }
+
   .main-menu {
     display: flex;
     min-height: 100vh;
+    width: 100%;
     padding: 1rem;
     justify-content: center;
+  }
+  form {
+    padding: 1rem;
   }
   .container {
     width: 100%;
@@ -193,6 +200,11 @@
   .game-desc {
     font-size: 1.5rem;
     font-weight: 800;
+  }
+  .sentence {
+    -webkit-user-select: none;
+    user-select: none;
+    -ms-user-select: none;
   }
   .sentence-display-page {
     width: 100%;
@@ -208,6 +220,7 @@
   }
   .play-area {
     display: flex;
+    width: 100%;
     justify-content: space-evenly;
     align-items: center;
     flex-direction: column;
@@ -288,14 +301,14 @@
   .correct-answer-img {
     width: 35px;
     height: 35px;
-    background: url(../../correct.svg);
+    background: url($lib/images/correct.svg);
     background-repeat: no-repeat;
     background-size: contain;
   }
   .wrong-answer-img {
     width: 35px;
     height: 35px;
-    background: url(../../wrong.svg);
+    background: url($lib/images/wrong.svg);
     background-repeat: no-repeat;
     background-size: contain;
   }
@@ -303,24 +316,26 @@
     display: flex;
     gap: 1rem;
     justify-content: center;
-    border: 1px solid red;
     align-items: center;
     flex-direction: column;
   }
-  .score-display >span:last-child {
+  .score-display > span:last-child {
     display: flex;
     justify-content: space-between;
     gap: 1rem;
     width: 100%;
     align-items: center;
   }
-  .submit-span{
+  .submit-span {
     display: flex;
     justify-content: center;
-    border: 1px solid red;
     align-items: center;
+    width: max-content;
   }
-  .all-game-btn{
+  .submit-btn {
+    margin: auto;
+  }
+  .all-game-btn {
     background-color: var(--bg-color);
     border: 1px solid var(--text-color);
   }

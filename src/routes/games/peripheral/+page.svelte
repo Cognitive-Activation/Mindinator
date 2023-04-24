@@ -193,7 +193,9 @@
   .reaction-time-text {
     font-size: 2rem;
   }
-
+  a{
+    color: currentColor;
+  }
   .blackdot {
     background-color: #000000;
     width: 2rem;

@@ -4,22 +4,24 @@
   import Homepage1 from "$lib/images/homepage1.png";
   import Homepage2 from "$lib/images/homepage2.png";
   import Homepage3 from "$lib/images/homepage3.png";
+  import plus from "$lib/images/plus.svg";
+  import minus from "$lib/images/minus.svg";
+  import question from "$lib/images/question.svg";
 
   const words = ["Healthy Mind", "Active Brain", "Boosted Cognition"];
   let dynamic = "Healthy Mind";
   let currIndex = 0;
   let dirRev = false;
   let animationInterval;
+  let darkmode = true;
+  let answerToBeShown = -1;
 
-  function handleAnchorClick(event) {
-    event.preventDefault();
-    const link = event.currentTarget;
-    const anchorId = new URL(link.href).hash.replace("#", "");
-    const anchor = document.getElementById(anchorId);
-    window.scrollTo({
-      top: anchor.offsetTop,
-      behavior: "smooth",
-    });
+  function showAnswer(n) {
+    if (answerToBeShown == n) {
+      answerToBeShown = -1;
+    } else {
+      answerToBeShown = n;
+    }
   }
 
   function changeText() {
@@ -77,25 +79,6 @@
           <img src={Brain} alt="brainimg" class="image0" />
         </span>
       </span>
-
-      <a href="#section4" on:click={handleAnchorClick} class="downarrow-span">
-        <span class="downarrow">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="var(--text-color)"
-            class="w-6 h-6"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M19.5 8.25l-7.5 7.5-7.5-7.5"
-            />
-          </svg>
-        </span>
-      </a>
     </div>
   </section>
 
@@ -168,9 +151,149 @@
       </span>
     </div>
   </section>
+
+  <section class="section section4 row">
+    <div class="faq-container">
+      <span>
+        <span style="display: flex; flex-direction:column; gap:0.5rem;">
+          <img src={question} alt="img" style="width: 3rem; margin:auto;" />
+          <p>Have questions? We are here to help!</p>
+        </span>
+
+        <span class="faq-title">Frequently asked questions</span>
+      </span>
+
+      <span>
+        <span>
+          <span>
+            <p>What is brain activation?</p>
+            <img
+              src={answerToBeShown == 1 ? minus : plus}
+              alt="img"
+              on:click={() => showAnswer(1)}
+            />
+          </span>
+          <p>
+            {answerToBeShown == 1
+              ? "Brain activation refers to the increased activity or engagement of specific regions or networks in the brain in response to a given stimulus, task, or experience. When a particular area or network of the brain is activated, it typically results in increased blood flow, oxygen consumption, and metabolic activity in that region. Brain activation can occur in response to a wide variety of stimuli, ranging from sensory input such as visual or auditory information to cognitive tasks such as problem-solving or decision-making to emotional experiences such as pleasure or pain. Our plans have been specifically designed to boost your brain and help you excel at your task."
+              : ""}
+          </p>
+        </span>
+
+        <span>
+          <span>
+            <p>Why do I need to boost my cognition?</p>
+            <img
+              src={answerToBeShown == 2 ? minus : plus}
+              alt="img"
+              on:click={() => showAnswer(2)}
+            />
+          </span>
+
+          <p>
+            {answerToBeShown == 2
+              ? "Boosting cognition, which encompasses mental abilities like learning, memory, attention, problem-solving, and decision-making, can offer several benefits. These include improved academic or work performance, maintaining mental sharpness as we age, managing or preventing cognitive deficits related to medical conditions, enhancing the quality of life, and fostering personal growth. To improve cognition, focus on adequate sleep, regular exercise, a healthy diet, mentally stimulating activities, mindfulness, and brain training exercises or cognitive enhancement techniques."
+              : ""}
+          </p>
+        </span>
+
+        <span>
+          <span>
+            <p>
+              What are the benefits of stimulating your brain before any task?
+            </p>
+            <img
+              src={answerToBeShown == 3 ? minus : plus}
+              alt="img"
+              on:click={() => showAnswer(3)}
+            />
+          </span>
+
+          <p>
+            {answerToBeShown == 3
+              ? "Brain stimulation before a task can improve focus, increase creativity, enhance memory retention, boost problem-solving abilities, and reduce stress and anxiety. Methods to stimulate the brain include solving crossword puzzles, listening to music, meditating, and exercising, which can all contribute to better overall task performance."
+              : ""}
+          </p>
+        </span>
+
+        <span>
+          <span>
+            <p>Is not having an activated brain an issue?</p>
+            <img
+              src={answerToBeShown == 4 ? minus : plus}
+              alt="img"
+              on:click={() => showAnswer(4)}
+            />
+          </span>
+
+          <p>
+            {answerToBeShown == 4
+              ? "A non-activated brain may hinder learning, negatively impact performance, contribute to negative moods, and potentially lead to cognitive decline or health issues. Engaging and stimulating the brain during learning tasks, performance, and daily activities is crucial for maintaining cognitive abilities and overall well-being."
+              : ""}
+          </p>
+        </span>
+
+        <span>
+          <span>
+            <p>How can I increase my Brain activity?</p>
+            <img
+              src={answerToBeShown == 5 ? minus : plus}
+              alt="img"
+              on:click={() => showAnswer(5)}
+            />
+          </span>
+
+          <p>
+            {answerToBeShown == 5
+              ? "To increase brain activity, engage in regular exercise, mental stimulation, and social interaction. Prioritize a healthy diet, adequate sleep, and mindfulness practices. Use the brain training exercises and games available on our website. Remember, boosting brain activity is a long-term process and may not yield immediate results."
+              : ""}
+          </p>
+        </span>
+      </span>
+    </div>
+  </section>
 </div>
 
 <style>
+  .faq-title {
+    font-weight: bold;
+    font-size: 3.5rem;
+  }
+  .faq-container {
+    display: flex;
+    flex-direction: column;
+  }
+  .faq-container > span:first-child {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+  .faq-container > span:last-child {
+    display: flex;
+    flex-direction: column;
+    max-width: 60rem;
+    width: 100%;
+  }
+  .faq-container > span:last-child > span:not(:last-child) {
+    border-bottom: 1.5px solid rgba(124, 124, 124, 1);
+  }
+  .faq-container > span:last-child > span > span:first-child {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1.5rem;
+    width: 100%;
+  }
+  .faq-container > span:last-child > span > p {
+    padding-bottom: 1rem;
+    padding-left: 1rem;
+    padding-top: 0.5rem;
+    padding-right: 1rem;
+    font-size: 15px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.8);
+  }
   .section > div {
     height: 89vh;
     display: flex;
@@ -356,7 +479,9 @@
       flex-direction: column;
       display: flex;
     }
-
+    .home-container{
+      height: max-content;
+    }
     .desc > * {
       text-align: center;
     }
@@ -366,7 +491,7 @@
     }
     .section div {
       flex-direction: column;
-      justify-content: center;
+      justify-content: start;
       gap: 3rem;
     }
     .description > p {
@@ -386,6 +511,9 @@
       font-size: 1.15rem;
       text-align: start;
       padding: 1rem;
+    }
+    .faq-title {
+      font-size: 8vw;
     }
   }
 </style>
