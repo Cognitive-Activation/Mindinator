@@ -5,6 +5,8 @@
   // import Peripheral from "$lib/images/ReactionTestVision.svg";
   import Card from "$lib/components/Card.svelte";
   // import "$lib/images";
+  import { onMount } from "svelte";
+  import axios from "axios";
 </script>
 
 <SEO

@@ -9,7 +9,7 @@
         } else {
             return "home";
         }
-    }
+    };
 </script>
 
 {#if navSelector == "home"}

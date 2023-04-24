@@ -85,6 +85,7 @@
   <section id="section" class="section section2">
     <div>
       <span class="img-container image1">
+        <!-- <span class="blur-span" /> -->
         <img src={Homepage1} alt="brainimg" />
       </span>
 
@@ -412,7 +413,7 @@
     font-weight: 400;
     padding: 0%;
     margin: 0%;
-    src: url("$lib/RedHatDisplay-VariableFont_wght.ttf");
+    src: url("$lib/fonts/RedHatDisplay-VariableFont_wght.ttf");
   }
   .home-page-content {
     max-width: 650px;
