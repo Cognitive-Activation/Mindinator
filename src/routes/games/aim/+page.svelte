@@ -4,7 +4,7 @@
   let time;
   let targetFinished = 0;
   const numTargets = 20;
-  const target = "./target.png";
+  const target = "$lib/images/target.png";
   let interval;
   function startGame() {
     gameStarted = true;

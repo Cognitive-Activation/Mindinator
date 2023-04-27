@@ -12,7 +12,7 @@
     const timeouts = [];
 
     for (let i = 0; i < 9; i++) {
-        audioFiles.push(new Audio(`/audio/${i + 1}.wav`));
+        audioFiles.push(new Audio(`$lib/audio/${i + 1}.wav`));
     }
     
     let sequence = [];
