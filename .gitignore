@@ -8,3 +8,4 @@ node_modules
 !.env.example
 .7z
 .code-workspace
+/functions
